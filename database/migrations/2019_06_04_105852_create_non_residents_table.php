@@ -19,12 +19,12 @@ class CreateNonResidentsTable extends Migration
             $table->string('name');
             $table->string('surname');
             $table->string('father_name');
-            $table->integer('date_of_birth');
+            $table->string('date_of_birth');
             $table->string('citizenship');
             $table->string('client_requisite');
             $table->string('residential_address');
             $table->string('education_language');
-            $table->integer('phone');
+            $table->string('phone');
             $table->string('name_archive_with_data')->nullable();
             $table->timestamps();
         });

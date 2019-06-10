@@ -1,11 +1,11 @@
 <template>
-  <q-page class="">
+  <q-page class="ssss">
     <div class="text-center">
       <h3>{{$t('regTextOpen')}}</h3>
       <p>{{$t('registrationWillTakePlace')}}</p>
     </div>
-    <div class="row justify-center profile">
-      <div class="col-lg-4">
+    <div class="row justify-center resident_client">
+      <div class="col-lg-5">
         <h3>{{$t('profileText')}}</h3>
         <p>Академический лицей узбекского государственного университета мировых языков</p>
         <q-card class="my-card" style="margin-bottom: 50px;">
@@ -17,240 +17,340 @@
               ref="form"
             >
               <q-input
+                filled
                 label="Наименование Учебного заведения *"
                 v-model="form.place_of_education"
                 type="text"
                 clearable
                 lazy-rules
+                class="mt-4"
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
+              <q-select v-model="form.direction_code"
+                :options="[
+                  { label: 'Зарубежная филология', value: '3940001', },
+                  { label: 'Точные науки', value: '3910001', }
+                ]"
+                filled
+                label="Направление *"
+                clearable
+                lazy-rules
+                :disable="loading"
+                :rules="[
+                  val => val || 'Please type something'
+                ]"
+              />
               <q-input
+                filled
                 label="Имя *"
                 v-model="form.name"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Фамилия *"
                 v-model="form.surname"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Отчество *"
                 v-model="form.father_name"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Дата рождения *"
                 v-model="form.date_of_birth"
                 lazy-rules
                 clearable
+                :disable="loading"
                 mask="##/##/####"
-                :rules="[val => !!val || 'Please type something']">
+                :rules="[val => !!val || 'Please type something']"
+              >
                 <template v-slot:append>
                   <q-icon name="event" class="cursor-pointer">
-                    <q-popup-proxy ref="qDateProxy">
+                    <q-popup-proxy ref="qDateProxy1">
                       <q-date
                         mask="DD/MM/YYYY"
                         minimal
                         v-model="form.date_of_birth"
-                        @input="() => $refs.qDateProxy.hide()"
+                        @input="() => $refs.qDateProxy1.hide()"
                       />
                     </q-popup-proxy>
                   </q-icon>
                 </template>
               </q-input>
               <q-input
+                filled
                 label="Гражданство *"
                 v-model="form.citizenship"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Серия и номер паспорта/ свидетельство о рождения *"
                 v-model="form.client_requisite"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Адрес проживания *"
                 v-model="form.residential_address"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Школа Регион (Город / Область) *"
                 v-model="form.school_region"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Школа (Район / город) *"
                 v-model="form.school_district"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Номер или название школы *"
                 v-model="form.school_number_or_name"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Год окончания школы *"
                 v-model="form.graduation_year"
                 lazy-rules
+                :disable="loading"
                 clearable
                 mask="##/##/####"
                 :rules="[val => !!val || 'Please type something']">
                 <template v-slot:append>
                   <q-icon name="event" class="cursor-pointer">
-                    <q-popup-proxy ref="qDateProxy">
+                    <q-popup-proxy ref="qDateProxy2">
                       <q-date
                         mask="DD/MM/YYYY"
                         minimal
                         v-model="form.graduation_year"
-                        @input="() => $refs.qDateProxy.hide()"
+                        @input="() => $refs.qDateProxy2.hide()"
                       />
                     </q-popup-proxy>
                   </q-icon>
                 </template>
               </q-input>
               <q-input
+                filled
                 label="Язык обучения *"
                 v-model="form.education_language"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Номер аттестата *"
                 v-model="form.certificate_number"
                 type="number"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Номер акта *"
                 v-model="form.act_number"
                 type="number"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
               <q-input
+                filled
                 label="Номер телефона *"
                 v-model="form.phone"
                 type="text"
                 clearable
                 lazy-rules
+                :disable="loading"
                 :rules="[
                   val => !!val || 'Please type something',
                   val => val.length > 1 || 'Please use min 2',
                 ]"
               />
-              <q-input
-                label="Документы выпускника 9 класса *"
-                v-model="form.documents_graduate_9_grade"
-                type="text"
-                clearable
-                lazy-rules
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
-              />
-              <template v-if="all_files_with_size.length > 0">
-                <p class="mt-3 mb-0">Документы ({{ all_files_with_size.length }})</p>
-                <ol class="pl-4 mt-1 mb-0">
-                  <li v-for="(name, index) in all_files_with_size" :key="index">
-                    {{ name }}
-                    <q-icon
-                      name="close"
-                      color="red"
-                      class="cursor-pointer"
-                      @click="deleteOneFile(index)"
-                    />
-                  </li>
-                </ol>
-              </template>
-              <input type="file" multiple style="display: none" ref="fupload" @change="onFileChange">
-              <q-btn color="blue-grey" @click.stop="onButtonClick()" class="my-3 pl-2" :loading="select_loading">
-                <q-icon name="home" class="mr-2"/>
-                Прикрепить Документы
-              </q-btn>
+              <q-uploader
+                :disable="loading"
+                extensions=".jpg,.jpeg,.png,.doc,.exel"
+                accept=".jpg, .jpeg, .pdf, image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
+                :max-file-size="3048576"
+                :max-total-size="10248576"
+                @added="addFile"
+                multiple
+                :color="uploader_color"
+                class="resident_client_q_uploader"
+                ref="uploader"
+              >
+                <template v-slot:header="scope">
+                  <div class="row no-wrap items-center q-pa-sm q-gutter-xs">
+                    <q-btn v-if="scope.queuedFiles.length > 0" icon="delete_sweep" @click="scope.removeQueuedFiles" round dense flat >
+                      <q-tooltip>Удалить все</q-tooltip>
+                    </q-btn>
+                    <q-btn v-if="scope.uploadedFiles.length > 0" icon="done_all" @click="scope.removeUploadedFiles" round dense flat >
+                      <q-tooltip>Remove Uploaded Files</q-tooltip>
+                    </q-btn>
+                    <q-spinner v-if="scope.isUploading" class="q-uploader__spinner" />
+                    <div class="col">
+                      <div class="q-uploader__title">Документы выпускника 9 класса *</div>
+                      <div class="q-uploader__subtitle">{{ scope.uploadSizeLabel }}</div>
+                    </div>
+                    <q-btn v-if="scope.canAddFiles" type="a" flat>
+                      <q-uploader-add-trigger />
+                      <span>Добавить</span>
+                      <q-icon name="add_box" class="ml-2" />
+                      <q-tooltip>Прикрепить файлы</q-tooltip>
+                    </q-btn>
+                    <q-btn v-if="scope.isUploading" icon="clear" @click="scope.abort" round dense flat >
+                      <q-tooltip>Abort Upload</q-tooltip>
+                    </q-btn>
+                  </div>
+                </template>
+                <template v-slot:list="scope">
+                  <q-list separator>
+                    <q-item v-for="file in scope.files" :key="file.name">
+                      <q-item-section>
+                        <q-item-label class="full-width ellipsis">
+                          {{ file.name }}
+                        </q-item-label>
+                      </q-item-section>
+                      <q-item-section
+                        v-if="file.__img"
+                        thumbnail
+                        class="gt-xs"
+                      >
+                        <img :src="file.__img.src">
+                      </q-item-section>
+                      <q-item-section top side>
+                        <q-btn
+                          class="gt-xs"
+                          size="12px"
+                          flat
+                          dense
+                          round
+                          icon="delete"
+                          @click="scope.removeFile(file)"
+                        />
+                      </q-item-section>
+                    </q-item>
+                  </q-list>
+                </template>
+              </q-uploader>
+              <div v-if="showCheckboxNotRobot" class="ml-3" :class="'text-'+colorCheckbox">Подтвердите что вы не робот</div>
+              <q-checkbox
+                v-model="checkboxNotRobot"
+                v-if="showCheckboxNotRobot"
+                label="Я не робот"
+                :color="colorCheckbox"
+                class="mt-0"
+                :keep-color="true"/>
               <div class="action__btn">
                 <q-btn
-                  color="blue"
+                  color="secondary"
                   class="upload pl-2"
-                  :loading="btn_loading"
+                  :loading="loading"
                   type="submit"
                 >
                   <q-icon name="home" class="icon mr-2" />
                   Загрузить
                 </q-btn>
-                <q-btn type="reset" class="clear ml-3">Очистить</q-btn>
+                <q-btn
+                  outline
+                  type="reset"
+                  class="clear ml-3"
+                  color="secondary"
+                  :disable="loading"
+                >
+                  Очистить
+                </q-btn>
               </div>
             </q-form>
           </q-card-section>
@@ -261,19 +361,27 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 // :rules="[ val => val && val.length > 0 || 'Please type something']"
-
 export default {
   name: 'Resident',
+  meta: {
+    titleTemplate: title => `${title} - Resident`,
+    meta: {
+      description: { name: 'description', content: 'Resident Page 1' },
+      keywords: { name: 'keywords', content: 'Resident website' }
+    }
+  },
   data () {
     return {
-      all_files: [],
-      all_files_name: [],
-      all_files_with_size: [],
+      colorCheckbox: 'negative',
+      checkboxNotRobot: false,
+      showCheckboxNotRobot: false,
+      documentsMultiple: [],
+      files: [],
+      uploader_color: 'secondary',
       errors: false,
-      select_loading: false,
-      btn_loading: false,
+      loading: false,
       form: {
         place_of_education: null,
         direction_code: null,
@@ -300,67 +408,83 @@ export default {
   computed: {
     ...mapGetters(['mobileDetect'])
   },
+  watch: {
+    checkboxNotRobot (val) {
+      this.colorCheckbox = val ? 'teal' : 'negative'
+    }
+  },
+  mounted () {
+  },
   methods: {
-    onButtonClick () {
-      this.$refs.fupload.click()
-      this.errors = {}
+    ...mapActions([
+      'recaptchaToken'
+    ]),
+    addFile () {
+      this.uploader_color = 'secondary'
     },
-    onFileChange (e) {
-      this.all_files = Array.from(e.target.files)
-      if (this.all_files.length > 0) {
-        for (let file of this.all_files) {
-          if (this.all_files_name.indexOf(file.name) === -1) {
-            this.all_files_name.push(file.name)
-            this.all_files_with_size.push(file.name + ' (' + this.calcSize(file.size) + ')')
-          }
-        }
+    async onSubmit () {
+      let files = this.$refs['uploader'].files
+      if (files.length > 0) {
+        this.uploader_color = 'secondary'
+        this.loading = true
+        let token = await this.recaptchaToken()
+        this.$axios.post('check_recaptcha', {
+          recaptcha_token: token,
+          'checkbox': this.checkboxNotRobot
+        })
+          .then(() => {
+            this.form.direction_code = this.form.direction_code.value
+            let formData = new FormData()
+            files.forEach((file, i) => { formData.append(`files[${i}]`, file) })
+            Object.keys(this.form).forEach(key => { formData.append(key, this.form[key]) })
+            formData.append('recaptcha_token', localStorage.getItem('reCAPTCHA'))
+            this.$axios.post('new_resident', formData).then(res => {
+              this.loading = false
+              this.$axios.post('remove_files', res.data.files)
+              this.$refs['uploader'].files = []
+              this.$refs.form.reset()
+              this.$('.scroll').animate({ scrollTop: 0 }, 400)
+              this.$q.notify({
+                color: 'teal',
+                icon: 'home',
+                message: 'Success',
+                position: 'center',
+                timeout: 1500
+              })
+            })
+              .finally(() => { this.loading = false })
+          })
+          .catch(error => {
+            console.log(error.response.data)
+            this.showCheckboxNotRobot = true
+          })
+          .finally(() => { this.loading = false })
+      } else {
+        this.uploader_color = 'negative'
+        this.$q.notify({
+          color: 'negative',
+          icon: 'home',
+          message: 'Прикрепите документы!',
+          position: 'center',
+          timeout: 800
+        })
       }
-    },
-    onSubmit () {
-      this.loading = true
-      // this.form.direction_code = this.form.direction_code.value
-      let formData = new FormData()
-      this.all_files.forEach((file, i) => {
-        formData.append(`files[${i}]`, file)
-      })
-      Object.keys(this.form).forEach(key => {
-        formData.append(key, this.form[key])
-      })
-      this.$axios.post('new_application', formData).then(res => {
-        this.loading = false
-        this.$axios.post('remove_files', res.data.files)
-        this.$refs.form.reset()
-      }).catch(error => {
-        console.log(error.response.data)
-      })
     },
     onReset () {
       Object.keys(this.form).forEach(key => {
         this.form[key] = null
       })
       this.form.files = []
-      this.all_files = []
-      this.all_files_name = []
-      this.all_files_with_size = []
-    },
-    calcSize (size) {
-      size = size / 1024 // kb
-      if (size <= 1000) {
-        return Math.round(size) + 'Kb'
-      } else if (size > 1000 && size <= 1048506) {
-        return (size / 1024).toFixed(2) + 'Mb'
-      } else {
-        return (size / 1024 / 1000).toFixed(2) + 'Gb'
-      }
-    },
-    deleteOneFile (index) {
-      this.all_files.splice(index, 1)
-      this.all_files_name.splice(index, 1)
-      this.all_files_with_size.splice(index, 1)
+      this.$refs['uploader'].files = []
+      this.files = []
+      this.uploader_color = 'secondary'
+      this.showCheckboxNotRobot = false
     }
   }
 }
 </script>
 
 <style lang="stylus" scope>
+  .resident_client_q_uploader
+      width: auto !important
 </style>

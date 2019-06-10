@@ -2,10 +2,9 @@
 
 namespace App;
 
-use ZanySoft\Zip\Zip;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 
 class Residents extends Model
 {
@@ -38,45 +37,18 @@ class Residents extends Model
         return $profiles;
     }
 
-    public function uploadFiles($files)
+    public function upload($files)
     {
         if(!$files) return;
 
-        $temporaryUrl = storage_path() . '/app/public/temporary/';
-        foreach ($files as $file) {
-            $ext = $file->getClientOriginalExtension();
-            $fileName = str_random(10) . '.' . $ext;
-            $file->storeAs('public/temporary/', $fileName);
-            $temporaryFiles[] = $temporaryUrl . $fileName;
-            $filesName[] = $fileName;
-        }
+        $data = Files::add($files);
 
-        $zipname = $this->createZip($temporaryFiles);
+        $zipname = Zip::create($data['temporaryFilesUrl']);
 
         $this->name_archive_with_data = $zipname;
         $this->save();
 
-        return response()->json([
-            "message" => "Success",
-            "files" => $filesName
-        ], 200);
+        return $data['filesName'];
     }
 
-    public static function removeFiles($files)
-    {
-        foreach ($files as $name) {
-            Storage::delete('public/temporary/'.$name);
-        }
-        return response()->json(["message" => "Success"], 200);
-    }
-
-    public function createZip($files)
-    {
-        $publicUrl = storage_path() . '/app/public/';
-
-        $zipname = str_random(10) . '.zip';
-        $zip = Zip::create($publicUrl . $zipname);
-        $zip->add($files, true);
-        return $zipname;
-    }
 }

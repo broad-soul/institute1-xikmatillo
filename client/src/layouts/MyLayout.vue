@@ -10,6 +10,14 @@
           </q-btn>
         </q-toolbar-title>
         <q-space/>
+        <q-btn
+          v-if="isAdmin"
+          flat
+          type="button"
+          to="/admin"
+          label="go to admin panel"
+          class="ml-3"
+          icon="home" :tabindex="0"/>
         <template v-if="!mobileDetect">
           <q-btn-toggle
             v-model="navbarMenu"
@@ -18,11 +26,11 @@
             toggle-color="teal-13"
             :options="[
               {label: $t('navbarName')[0], value: '/resident'},
-              {label: $t('navbarName')[1], value: '/faq'},
-              {label: $t('navbarName')[2], value: '/not-resident'}
+              {label: $t('navbarName')[2], value: '/non-resident'},
+              {label: $t('navbarName')[1], value: '/faq'}
             ]"
           />
-          <q-btn flat color="white" @click="openUrl('http://aluzswlu.ort.uz/auth/login')">
+          <q-btn flat color="white" class="mr-3" @click="openUrl('http://aluzswlu.ort.uz/auth/login')">
             S.R.S
           </q-btn>
         </template>
@@ -45,7 +53,6 @@
         </q-btn>
       </q-toolbar>
     </q-header>
-
     <q-drawer
       v-model="rightDrawerOpen"
       content-class="bg-blue-3"
@@ -86,12 +93,18 @@
         </q-item>
       </q-list>
     </q-drawer>
-
     <q-page-container>
-      <transition name="fade">
+      <transition
+        appear
+        enter-active-class="animated fadeIn"
+        leave-active-class="animated fadeOut"
+      >
         <router-view />
       </transition>
     </q-page-container>
+    <q-page-scroller position="bottom-right" :scroll-offset="600" :offset="[18, 18]">
+      <q-btn fab style="color: #fff;height: 50px; width: 50px; background: linear-gradient(rgba(48, 73, 107, .9), rgba(48, 184, 210, .9));" icon="keyboard_arrow_up"/>
+    </q-page-scroller>
     <div class="contact">
       <h3>CONTACT</h3>
       <a href="tel:+998903500202"><q-icon name="mdi-phone" /> 998903500202</a>
@@ -111,9 +124,20 @@ import languages from 'quasar/lang/index.json'
 
 export default {
   name: 'MyLayout',
+  meta: {
+    title: 'You site'
+  },
+  computed: {
+    ...mapGetters([
+      'getToken',
+      'mobileDetect',
+      'getLangPr'
+    ])
+  },
   data () {
     return {
       model: null,
+      isAdmin: false,
       rightDrawerOpen: false,
       lang: this.$q.lang.isoName,
       languages: languages,
@@ -133,16 +157,21 @@ export default {
       this.changeLang(lang)
       this.$q.cookies.set('local_lang', lang)
       this.$i18n.locale = lang
+      this.$q.notify({
+        color: 'secondary',
+        icon: 'home',
+        message: 'Язык переключен на ' + lang,
+        position: 'top-right',
+        timeout: 200
+      })
     },
     navbarMenu (val) {
       this.$router.push(val)
     }
   },
-  computed: {
-    ...mapGetters([
-      'mobileDetect',
-      'getLangPr'
-    ])
+  created () {
+    this.$axios.defaults.headers.Authorization = 'Bearer ' + this.getToken
+    this.$axios.get('user').then(res => { if (res.data.is_admin === 1) this.isAdmin = true })
   },
   mounted () {
     this.navbarMenu = this.$route.path
@@ -157,8 +186,6 @@ export default {
     this.$q.cookies.set('local_lang', this.getLangPr)
     this.$i18n.locale = this.getLangPr
     // END changeLang
-  },
-  created () {
   },
   methods: {
     ...mapActions([
@@ -175,7 +202,7 @@ export default {
 
 <style lang="stylus" scope>
   .header
-    background linear-gradient(145deg,$cyan-12 11%,$indigo 75%) !important
+    background $linear_gradient
   .q-avatar__content
     border-radius unset
   .contact

@@ -23,6 +23,13 @@
 <script>
 export default {
   name: 'Error404',
+  meta: {
+    titleTemplate: title => `${title} - Not found`,
+    meta: {
+      description: { name: 'description', content: 'Not found Page 1' },
+      keywords: { name: 'keywords', content: 'Not found website' }
+    }
+  },
   methods: {
     goBack () {
       this.$router.go(-1)

@@ -2,10 +2,9 @@
   <q-page class="main">
     <div class="row">
       <div class="col">
-        <div class="">
-          <h1>{{$t('aboutUs')}}</h1>
-          <p>Принимаем выпускников 9-х классов</p>
-          <p>В нашем академическом Узбекистана и международные вузы по следующим направлениям:</p>
+        <div class="q-pa-md">
+          <h3>Admin home</h3>
+          <h6>Статистика</h6>
         </div>
       </div>
     </div>

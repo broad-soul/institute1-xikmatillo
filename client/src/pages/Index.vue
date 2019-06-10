@@ -50,6 +50,12 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'PageIndex',
+  meta: {
+    meta: {
+      description: { name: 'description', content: 'Home Page 1' },
+      keywords: { name: 'keywords', content: 'Home website' }
+    }
+  },
   data () {
     return {
       slide: 1
@@ -70,7 +76,7 @@ export default {
     background url('~assets/partners.jpg') no-repeat
     background-size 150%
   .about__us
-    background $indigo
+    background $linear_gradient
     padding 50px 80px
     padding-top 1px
     margin 80px
@@ -79,7 +85,7 @@ export default {
       text-transform uppercase
       color #fff
   .partners
-      background $indigo
+      background $linear_gradient
       img
         height 100%
     .text

@@ -4,5 +4,5 @@ export default {
   regTextOpen: 'Registration is open',
   registrationWillTakePlace: 'Registration of students will take place from 0 to 1000 numbers.',
   profileText: 'Profile',
-  aboutUs: 'About as'
+  aboutUs: 'About us'
 }

@@ -30,14 +30,14 @@ export default {
   },
   table: {
     noData: 'Нет данных',
-    noResults: 'Совпадений не найдено',
+    noResults: 'Topilmadi! Совпадений не найдено',
     loading: 'Загрузка...',
     selectedRecords: function (rows) {
       return rows > 0 ?
         rows + ' ' + plurals(rows, ['строка выбрана', 'строки выбраны', 'строк выбрано']) + '.' :
         'Ни одна строка не выбрана.'
     },
-    recordsPerPage: 'Строк на странице:',
+    recordsPerPage: 'Qatorlar sahifada:',
     allRows: 'Все',
     pagination: function (start, end, total) {
       return start + '-' + end + ' из ' + total

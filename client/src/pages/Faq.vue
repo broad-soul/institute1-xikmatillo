@@ -29,6 +29,13 @@ import { mapGetters } from 'vuex'
 
 export default {
   name: 'Faq',
+  meta: {
+    titleTemplate: title => `${title} - Faq`,
+    meta: {
+      description: { name: 'description', content: 'Faq Page 1' },
+      keywords: { name: 'keywords', content: 'Faq website' }
+    }
+  },
   data () {
     return {
       slide: 1
