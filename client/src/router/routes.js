@@ -16,10 +16,12 @@ const routes = [
     meta: { needsAuthorization: true },
     children: [
       { path: '', component: () => import('pages/admin/Index.vue') },
+      { path: 'main', component: () => import('pages/admin/MainPage.vue') },
       { path: 'residents', component: () => import('pages/admin/Residents.vue') },
       { path: 'residents/show/:id', component: () => import('pages/admin/ShowResident.vue') },
       { path: 'non-residents', component: () => import('pages/admin/NonResidents.vue') },
-      { path: 'non-residents/show/:id', component: () => import('pages/admin/ShowNonResident.vue') }
+      { path: 'non-residents/show/:id', component: () => import('pages/admin/ShowNonResident.vue') },
+      { path: 'titles', component: () => import('pages/admin/Titles.vue') }
     ]
   },
   {

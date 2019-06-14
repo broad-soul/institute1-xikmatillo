@@ -1,9 +1,16 @@
 <template>
   <q-page class="page__residents">
+    <div class="q-pa-md">
+      <q-breadcrumbs>
+        <q-breadcrumbs-el icon="home" label="Home" to="/" />
+        <q-breadcrumbs-el label="Dashboard" to="/admin" />
+        <q-breadcrumbs-el label="Residents" />
+      </q-breadcrumbs>
+    </div>
     <div class="row justify-center profile">
       <div class="col-12 q-pa-md">
         <q-table
-          class="page__residents-sticky-table"
+          class="page__residents__table"
           :data="residents"
           :columns="columns"
           row-key="id"
@@ -31,9 +38,10 @@
               :display-value="$q.lang.table.columns"
               emit-value
               map-options
+              style="min-width: 50px"
               :options="columns"
               option-value="name"
-              style="min-width: 50px"
+              options-selected-class="page__residents__table-columns__select"
             />
             <q-toggle v-model="changeVisibleColumns" color="light-blue" label="Показать все" />
             <q-btn
@@ -64,11 +72,6 @@
             <q-td key="phone" :props="props">{{props.row.phone}}</q-td>
             <q-td key="documents_graduate_9_grade" :props="props">{{props.row.documents_graduate_9_grade}}</q-td>
             <q-td key="created_at" :props="props">{{props.row.created_at}}</q-td>
-            <q-td key="name_archive_with_data" :props="props">
-              <q-btn color="secondary" class="w-100p" @click="download(props.row.name_archive_with_data)">
-                <q-icon name="cloud_download" color="white" />
-              </q-btn>
-            </q-td>
             <q-td key="actions" :props="props">
               <q-btn color="red" @click="deleteResident(props.row.id)">
                 <q-icon name="delete_forever" color="white" />
@@ -123,30 +126,7 @@ export default {
       loading: false,
       filter: '',
       visibleColumns: [],
-      columns: [
-        { align: 'left', name: 'id', label: 'Id', field: row => row.id, format: val => `${val}`, sortable: true },
-        { align: 'left', name: 'place_of_education', label: 'Наименование учебного заведения', field: 'place_of_education', format: val => `${val}`, sortable: true },
-        { align: 'left', name: 'direction_code', label: 'Направление', field: 'direction_code', sortable: true },
-        { align: 'left', name: 'name', label: 'Имя', field: 'name', sortable: true },
-        { align: 'left', name: 'surname', label: 'Фамилия', field: 'surname', sortable: true },
-        { align: 'left', name: 'father_name', label: 'Отчество', field: 'father_name', sortable: true },
-        { align: 'left', name: 'date_of_birth', label: 'Дата рождения', field: 'date_of_birth', sortable: true },
-        { align: 'left', name: 'citizenship', label: 'Гражданство', field: 'citizenship', sortable: true },
-        { align: 'left', name: 'client_requisite', label: 'Серия и номер пасспорта паспорта / свидетельство о рождения', field: 'client_requisite', sortable: true },
-        { align: 'left', name: 'residential_address', label: 'Адрес проживания', field: 'residential_address', sortable: true },
-        { align: 'left', name: 'school_region', label: 'Школа (регион/область)', field: 'school_region', sortable: true },
-        { align: 'left', name: 'school_district', label: 'Школа(район/город)', field: 'school_district', sortable: true },
-        { align: 'left', name: 'school_number_or_name', label: 'Номер школы', field: 'school_number_or_name', sortable: true },
-        { align: 'left', name: 'graduation_year', label: 'Год окончания школы', field: 'graduation_year', sortable: true },
-        { align: 'left', name: 'education_language', label: 'Язык оубчения', field: 'education_language', sortable: true },
-        { align: 'left', name: 'certificate_number', label: 'Номер аттестата', field: 'certificate_number', sortable: true },
-        { align: 'left', name: 'actions', field: 'actions', label: 'Действие' },
-        { align: 'left', name: 'act_number', label: 'Номер акта', field: 'act_number', sortable: true },
-        { align: 'left', name: 'phone', label: 'Номер телефона', field: 'phone', sortable: true },
-        { align: 'left', name: 'documents_graduate_9_grade', label: 'Документ выпускника 9 класса', field: 'documents_graduate_9_grade', sortable: true },
-        { align: 'left', name: 'created_at', label: 'Дата подачи документов', field: 'created_at', sortable: true },
-        { align: 'left', name: 'name_archive_with_data', label: 'Архив с данными', sortable: true }
-      ],
+      direction: 'sdsda',
       residents: [],
       resident: []
     }
@@ -156,7 +136,32 @@ export default {
       'getToken',
       'getVisibleColumnsResident',
       'getAllColumnsResident'
-    ])
+    ]),
+    columns () {
+      return [
+        { align: 'left', name: 'id', label: 'Id', field: row => row.id, format: val => `${val}`, sortable: true },
+        { align: 'left', name: 'place_of_education', label: this.$t('place_of_education'), field: 'place_of_education', format: val => `${val}`, sortable: true },
+        { align: 'left', name: 'direction_code', label: this.$t('direction'), field: 'direction_code', sortable: true },
+        { align: 'left', name: 'name', label: this.$t('name'), field: 'name', sortable: true },
+        { align: 'left', name: 'surname', label: this.$t('surname'), field: 'surname', sortable: true },
+        { align: 'left', name: 'father_name', label: this.$t('father_name'), field: 'father_name', sortable: true },
+        { align: 'left', name: 'date_of_birth', label: this.$t('date_of_birth'), field: 'date_of_birth', sortable: true },
+        { align: 'left', name: 'citizenship', label: this.$t('citizenship'), field: 'citizenship', sortable: true },
+        { align: 'left', name: 'client_requisite', label: this.$t('client_requisite'), field: 'client_requisite', sortable: true },
+        { align: 'left', name: 'residential_address', label: this.$t('residential_address'), field: 'residential_address', sortable: true },
+        { align: 'left', name: 'school_region', label: this.$t('school_region'), field: 'school_region', sortable: true },
+        { align: 'left', name: 'school_district', label: this.$t('school_district'), field: 'school_district', sortable: true },
+        { align: 'left', name: 'school_number_or_name', label: this.$t('school_number_or_name'), field: 'school_number_or_name', sortable: true },
+        { align: 'left', name: 'graduation_year', label: this.$t('graduation_year'), field: 'graduation_year', sortable: true },
+        { align: 'left', name: 'education_language', label: this.$t('education_language'), field: 'education_language', sortable: true },
+        { align: 'left', name: 'certificate_number', label: this.$t('certificate_number'), field: 'certificate_number', sortable: true },
+        { align: 'left', name: 'actions', label: this.$t('table_actions'), field: 'actions' },
+        { align: 'left', name: 'act_number', label: this.$t('act_number'), field: 'act_number', sortable: true },
+        { align: 'left', name: 'phone', label: this.$t('phone'), field: 'phone', sortable: true },
+        { align: 'left', name: 'documents_graduate_9_grade', label: this.$t('documents_graduate_9_grade'), field: 'documents_graduate_9_grade', sortable: true },
+        { align: 'left', name: 'created_at', label: this.$t('table_created_at'), field: 'created_at', sortable: true }
+      ]
+    }
   },
   watch: {
     changeVisibleColumns (val) {
@@ -205,16 +210,19 @@ export default {
 }
 </script>
 
-<style lang="stylus" scope>
-  .page__residents-sticky-table
+<style lang="stylus" scoped>
+  .page__residents__table
     .q-table__top,
     .q-table__bottom,
     thead tr:first-child th
-      background-color $cyan-3
       opacity 1
     th
       &:first-child
         min-width: 80px !important
       min-width: 150px !important
       white-space initial !important
+</style>
+<style lang="stylus">
+  .page__residents__table-columns__select
+    color: $teal-5
 </style>

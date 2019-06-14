@@ -53,3 +53,9 @@ export async function recaptchaToken () {
     })
   })
 }
+
+export async function mainGetData (context) {
+  let res = await axios.post('/api/main_get')
+  context.commit('SET_MAIN_DATA', res.data)
+  return context.getters.getMainData
+}

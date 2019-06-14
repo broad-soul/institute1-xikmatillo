@@ -53,7 +53,6 @@ export function getAllColumnsResident () {
     'certificate_number',
     'act_number',
     'phone',
-    'name_archive_with_data',
     'created_at'
   ]
 }
@@ -85,7 +84,9 @@ export function getAllColumnsNonResident () {
     'residential_address',
     'education_language',
     'phone',
-    'name_archive_with_data',
     'created_at'
   ]
+}
+export function getMainData (state) {
+  return state.mainData
 }

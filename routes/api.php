@@ -16,6 +16,7 @@ Route::post('/new_resident', 'ProfileController@new_resident');
 Route::post('/new_non_resident', 'ProfileController@new_non_resident');
 Route::post('/remove_files', 'ProfileController@destroy');
 Route::post('/check_recaptcha', 'UserController@check_recaptcha');
+Route::get('/main', 'SpaController@main');
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/get_residents', 'ProfileController@get_residents');
@@ -25,4 +26,8 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/download_file', 'ProfileController@download_file');
     Route::get('/admin_show_resident/{id}', 'ProfileController@show_resident');
     Route::get('/admin_show_non_resident/{id}', 'ProfileController@show_non_resident');
+    Route::post('/main_store', 'SpaController@main_store');
+    Route::post('/titles_store', 'SpaController@titles_store');
 });
+Route::post('/main_get', 'SpaController@main_get');
+Route::post('/get_titles', 'SpaController@get_titles');

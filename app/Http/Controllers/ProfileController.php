@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 
-use App\Files;
-use App\NonResidents;
-use App\Residents;
+use App\Model\Files;
+use App\Model\NonResidents;
+use App\Model\Residents;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 

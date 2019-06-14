@@ -1,52 +1,63 @@
 <template>
-  <q-page class="main">
-    <div class="row about__us__row">
-      <div class="col">
-        <div class="about__us">
-          <h1>{{$t('aboutUs')}}</h1>
-          <p>Принимаем выпускников 9-х классов</p>
-          <p>В нашем академическом лицее можно получить подготовку в вузы Узбекистана и международные вузы по следующим направлениям:</p>
-          <p>- Социально-гуманитарные науки.</p>
-          <p>- Точные науки.</p>
-          <p>Условие поступления: тестирование. Предметы тестирования зависят от направления подготовки.</p>
-
-          <p>Срок  обучения  в академическом лицее- 2 года</p>
-          <p>1-курс по программе SТЕАМ   -  (S - science, T - technology, E - engineering, A - art и M – mathematics-естественные науки, технология, инженерное искусство, творчество, математика)</p>
-          <p>2-курс по программе  IFP - (подготовительные курсы  в вузы)</p>
-          <p>Языки обучения в лицее: узбекский, русский и английский.</p>
-          <p>Основные иностранные языки: английский, немецкий, французский.</p>
-          <p>Дополнительные иностранные языки:  китайский, корейский,  которые преподаются начиная со второго курса обучения  по программе  IFP - подготовительные курсы  в вузы.</p>
-        </div>
-      </div>
-    </div>
-    <div class="row partners">
+  <q-page class="main smooth">
+    <section id="page1" class="main__section about__us" v-if="aboutUs.visible">
+      <div class="content" v-html="aboutUs.content"></div>
+    </section>
+    <section id="page2" class="main__section row partners">
       <div class="col"><img src="~assets/partners.jpg" alt=""></div>
       <div class="col">
         <div class="text">
-          <h3>ПАРТНЕРЫ</h3>
-          <p>НАЦИОНАЛЬНЫЙ УНИВЕРСИТЕТ ИМЕНИ МИРЗО УЛУГБЕКА;</p>
-          <p>ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ПЕДАГОГИЧЕСКИЙ УНИВЕРСИТЕТ ИМЕНИ НИЗАМИ</p>
-          <p>ГЕРМАНСКИЙ ЦЕНТР ZFA “ SCHULMANAGEMENT WELWEIT. ZENTRALSTELLE FUR DAS AUSLANDSSCHULWESEN”</p>
-          <p>ЦЕНТРЫ КУЛЬТУРЫ ГЕРМАНИИ И ФРАНЦИИ</p>
-          <p>АССОЦИАЦИЯ ПРЕПОДАВАТЕЛЕЙ АНГЛИЙСКОГО ЯЗЫКА УЗБЕКИСТАНА</p>
+          <template v-if="$t('prefix') === 'ru'">
+            <h3>ПАРТНЕРЫ</h3>
+            <p>НАЦИОНАЛЬНЫЙ УНИВЕРСИТЕТ ИМЕНИ МИРЗО УЛУГБЕКА</p>
+            <p>ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ПЕДАГОГИЧЕСКИЙ УНИВЕРСИТЕТ ИМЕНИ НИЗАМИ</p>
+            <p>ГЕРМАНСКИЙ ЦЕНТР ZFA “ SCHULMANAGEMENT WELWEIT. ZENTRALSTELLE FUR DAS AUSLANDSSCHULWESEN”</p>
+            <p>ЦЕНТРЫ КУЛЬТУРЫ ГЕРМАНИИ И ФРАНЦИИ</p>
+            <p>АССОЦИАЦИЯ ПРЕПОДАВАТЕЛЕЙ АНГЛИЙСКОГО ЯЗЫКА УЗБЕКИСТАНА</p>
+          </template>
+          <template v-else-if="$t('prefix') === 'en'">
+            <h3>PARTNERS</h3>
+            <p>NATIONAL UNIVERSITY NAMED AFTER MIRZO ULUGBEK</p>
+            <p>TASHKENT STATE PEDAGOGICAL UNIVERSITY NAMED AFTER NIZAMI</p>
+            <p>GERMAN CENTER ZFA “SCHULMANAGEMENT WELWEIT. ZENTRALSTELLE FUR DAS AUSLANDSSCHULWESEN”</p>
+            <p>CENTERS OF CULTURE OF GERMANY AND FRANCE</p>
+            <p>ASSOCIATION OF ENGLISH LANGUAGE TEACHERS OF UZBEKISTAN</p>
+          </template>
+          <template v-else-if="$t('prefix') === 'uz'">
+            <h3>Hamkorlar</h3>
+            <p>MIRZO ULUGBEK NOMIDAGI MILLIY UNIVERSITETI</p>
+            <p>NIZAMI NOMIDAGI TOSHKENT DAVLAT PEDAGOGICAL UNIVERSITETI</p>
+            <p>Germaniyaning ZFA markazi "SCHULMANAGEMENT WELWEIT. ZENTRALSTELLE FUR DAS AUSLANDSSCHULWESEN"</p>
+            <p>GERMANIYA VA FRANSA MADANIYAT MARKAZLARI</p>
+            <p>O'ZBEKISTON ENGLISH TILI O'QITUVCHILARI UYUSHMASI</p>
+          </template>
         </div>
       </div>
-    </div>
-    <q-carousel
-      animated
-      v-model="slide"
-      infinite
-      :autoplay="10000"
-      swipeable
-    >
-      <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
-      <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
-    </q-carousel>
+    </section>
+    <section id="page3" class="main__section">
+      <q-carousel
+        animated
+        v-model="slide"
+        infinite
+        :autoplay="10000"
+        swipeable
+      >
+        <q-carousel-slide :name="1" img-src="https://cdn.quasar.dev/img/mountains.jpg" />
+        <q-carousel-slide :name="2" img-src="https://cdn.quasar.dev/img/parallax1.jpg" />
+      </q-carousel>
+    </section>
+    <section class="main__section contact">
+      <h3>{{$t('contact')}}</h3>
+      <a href="tel:+998903500202"><q-icon name="mdi-phone" /> 998903500202</a>
+      <br>
+      <br>
+      <a href="tel:+998955252323"><q-icon name="mdi-phone" /> 998955252323</a>
+    </section>
   </q-page>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'PageIndex',
@@ -58,29 +69,107 @@ export default {
   },
   data () {
     return {
-      slide: 1
+      slide: 1,
+      aboutUs: {
+        visible: true,
+        content: ''
+      },
+      logo: {
+        image: '',
+        title: ''
+      },
+      mainData: {},
+      scrollAnimated: true
     }
   },
   computed: {
-    ...mapGetters(['mobileDetect'])
+    ...mapGetters([
+      'getMainData',
+      'getLangPr',
+      'mobileDetect'
+    ])
+  },
+  async beforeMount () {
+    this.mainData = await this.mainGetData()
+    if (this.mainData) {
+      let aboutUs = this.mainData.about_us
+      let logo = this.mainData.logo
+      this.aboutUs.content = aboutUs[this.$t('prefix')]
+      this.aboutUs.visible = aboutUs[this.$t('prefix')]
+      this.logo.image = logo.bgimage
+      this.logo.title = logo[this.$t('prefix')]
+    }
+  },
+  mounted () {
+    this.$('body').css('overflow', 'hidden')
+    // smooth scroll
+    let sections = this.$('.main__section')
+    let scrollInt = 0
+    let th = this
+    document.querySelector('.smooth').addEventListener('wheel', function (e) {
+      let deltaY = e.deltaY || e.detail || e.wheelDelta
+      if (deltaY > 0) {
+        // вниз
+        if (scrollInt < sections.length - 1 && th.scrollAnimated) {
+          scrollInt++
+          th.scrollAnimated = false
+          th.$('html, body').off().animate({
+            scrollTop: th.$(sections[scrollInt]).offset().top
+          }, 600, function () {
+            th.scrollAnimated = true
+          })
+        }
+      } else {
+        // вверх
+        if (scrollInt > 0 && th.scrollAnimated) {
+          th.scrollAnimated = false
+          scrollInt--
+          th.$('html, body').off().animate({
+            scrollTop: th.$(sections[scrollInt]).offset().top
+          }, 600, function () {
+            th.scrollAnimated = true
+          })
+        }
+      }
+    })
+    // End smooth scroll
+    this.$store.subscribe((mutation, state) => {
+      switch (mutation.type) {
+        case 'CHANGE_LANG':
+          setTimeout(() => {
+            this.aboutUs.content = this.mainData.about_us[this.$t('prefix')]
+          }, 100)
+          break
+      }
+    })
+  },
+  beforeDestroy () {
+    this.$('body').css('overflow', 'visible')
+  },
+  methods: {
+    ...mapActions([
+      'mainGetData'
+    ])
   }
 }
 </script>
 
-<style lang="stylus" scope>
+<style lang="stylus">
+  .main__section
+    height: 100vh
   .main
     min-height 100vh !important
     .q-carousel
       height 100vh
-  .about__us__row
-    background url('~assets/partners.jpg') no-repeat
-    background-size 150%
   .about__us
     background $linear_gradient
-    padding 50px 80px
-    padding-top 1px
-    margin 80px
     color #fff
+    height: 100vh
+    .content
+      padding: 20px 50px
+      margin: auto
+      @media (max-width: 1200px)
+        display: none
     h1
       text-transform uppercase
       color #fff

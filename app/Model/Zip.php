@@ -6,7 +6,7 @@
  * Time: 9:26
  */
 
-namespace App;
+namespace App\Model;
 
 use ZanySoft\Zip\Zip as ZipArchive;
 

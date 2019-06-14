@@ -7,7 +7,7 @@
     <div class="row justify-center resident_client">
       <div class="col-lg-5">
         <h3>{{$t('profileText')}}</h3>
-        <p>Академический лицей узбекского государственного университета мировых языков</p>
+        <p>{{$t('lyceum_title')}}</p>
         <q-card class="my-card" style="margin-bottom: 50px;">
           <q-card-section>
             <q-form
@@ -18,17 +18,14 @@
             >
               <q-input
                 filled
-                label="Наименование Учебного заведения *"
+                :label="$t('place_of_education') + ' *'"
                 v-model="form.place_of_education"
                 type="text"
                 clearable
                 lazy-rules
                 class="mt-4"
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-select v-model="form.direction_code"
                 :options="[
@@ -36,62 +33,53 @@
                   { label: 'Точные науки', value: '3910001', }
                 ]"
                 filled
-                label="Направление *"
+                :label="$t('direction') + ' *'"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => val || 'Please type something'
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Имя *"
+                :label="$t('name') + ' *'"
                 v-model="form.name"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
                 :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
+                  val => !!val || $t('required_fields')
                 ]"
               />
               <q-input
                 filled
-                label="Фамилия *"
+                :label="$t('surname') + ' *'"
                 v-model="form.surname"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Отчество *"
+                :label="$t('father_name') + ' *'"
                 v-model="form.father_name"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Дата рождения *"
+                :label="$t('date_of_birth') + ' *'"
                 v-model="form.date_of_birth"
                 lazy-rules
                 clearable
                 :disable="loading"
                 mask="##/##/####"
-                :rules="[val => !!val || 'Please type something']"
+                :rules="[val => !!val || $t('required_fields')]"
               >
                 <template v-slot:append>
                   <q-icon name="event" class="cursor-pointer">
@@ -108,91 +96,73 @@
               </q-input>
               <q-input
                 filled
-                label="Гражданство *"
+                :label="$t('citizenship') + ' *'"
                 v-model="form.citizenship"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Серия и номер паспорта/ свидетельство о рождения *"
+                :label="$t('client_requisite') + ' *'"
                 v-model="form.client_requisite"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Адрес проживания *"
+                :label="$t('residential_address') + ' *'"
                 v-model="form.residential_address"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Школа Регион (Город / Область) *"
+                :label="$t('school_region') + ' *'"
                 v-model="form.school_region"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Школа (Район / город) *"
+                :label="$t('school_district') + ' *'"
                 v-model="form.school_district"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Номер или название школы *"
+                :label="$t('school_number_or_name') + ' *'"
                 v-model="form.school_number_or_name"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Год окончания школы *"
+                :label="$t('graduation_year') + ' *'"
                 v-model="form.graduation_year"
                 lazy-rules
                 :disable="loading"
                 clearable
                 mask="##/##/####"
-                :rules="[val => !!val || 'Please type something']">
+                :rules="[val => !!val || $t('required_fields')]">
                 <template v-slot:append>
                   <q-icon name="event" class="cursor-pointer">
                     <q-popup-proxy ref="qDateProxy2">
@@ -208,55 +178,43 @@
               </q-input>
               <q-input
                 filled
-                label="Язык обучения *"
+                :label="$t('education_language') + ' *'"
                 v-model="form.education_language"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Номер аттестата *"
+                :label="$t('certificate_number') + ' *'"
                 v-model="form.certificate_number"
                 type="number"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Номер акта *"
+                :label="$t('act_number') + ' *'"
                 v-model="form.act_number"
                 type="number"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-input
                 filled
-                label="Номер телефона *"
+                :label="$t('phone') + ' *'"
                 v-model="form.phone"
                 type="text"
                 clearable
                 lazy-rules
                 :disable="loading"
-                :rules="[
-                  val => !!val || 'Please type something',
-                  val => val.length > 1 || 'Please use min 2',
-                ]"
+                :rules="[val => !!val || $t('required_fields')]"
               />
               <q-uploader
                 :disable="loading"
@@ -280,14 +238,12 @@
                     </q-btn>
                     <q-spinner v-if="scope.isUploading" class="q-uploader__spinner" />
                     <div class="col">
-                      <div class="q-uploader__title">Документы выпускника 9 класса *</div>
+                      <div class="q-uploader__title">{{$t('documents_graduate_9_grade')}} *</div>
                       <div class="q-uploader__subtitle">{{ scope.uploadSizeLabel }}</div>
                     </div>
-                    <q-btn v-if="scope.canAddFiles" type="a" flat>
+                    <q-btn v-if="scope.canAddFiles" type="a" icon="add_box" round dense flat>
                       <q-uploader-add-trigger />
-                      <span>Добавить</span>
-                      <q-icon name="add_box" class="ml-2" />
-                      <q-tooltip>Прикрепить файлы</q-tooltip>
+                      <q-tooltip>{{$t('attach_documents')}}</q-tooltip>
                     </q-btn>
                     <q-btn v-if="scope.isUploading" icon="clear" @click="scope.abort" round dense flat >
                       <q-tooltip>Abort Upload</q-tooltip>
@@ -324,7 +280,9 @@
                   </q-list>
                 </template>
               </q-uploader>
-              <div v-if="showCheckboxNotRobot" class="ml-3" :class="'text-'+colorCheckbox">Подтвердите что вы не робот</div>
+              <div v-if="showCheckboxNotRobot" class="ml-3" :class="'text-'+colorCheckbox">
+                Подтвердите что вы не робот
+              </div>
               <q-checkbox
                 v-model="checkboxNotRobot"
                 v-if="showCheckboxNotRobot"
@@ -339,8 +297,7 @@
                   :loading="loading"
                   type="submit"
                 >
-                  <q-icon name="home" class="icon mr-2" />
-                  Загрузить
+                  {{$q.lang.label.create}}
                 </q-btn>
                 <q-btn
                   outline
@@ -349,7 +306,7 @@
                   color="secondary"
                   :disable="loading"
                 >
-                  Очистить
+                  {{$q.lang.label.clear}}
                 </q-btn>
               </div>
             </q-form>
@@ -484,7 +441,7 @@ export default {
 }
 </script>
 
-<style lang="stylus" scope>
+<style lang="stylus">
   .resident_client_q_uploader
       width: auto !important
 </style>

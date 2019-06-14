@@ -1,4 +1,5 @@
 // Configuration for your app
+const webpack = require('webpack')
 
 module.exports = function (ctx) {
   return {
@@ -73,6 +74,12 @@ module.exports = function (ctx) {
           loader: 'eslint-loader',
           exclude: /node_modules/
         })
+        cfg.plugins.push(
+          new webpack.ProvidePlugin({
+            'window.Quill': 'quill/dist/quill.js',
+            'Quill': 'quill/dist/quill.js'
+          })
+        )
       }
     },
 

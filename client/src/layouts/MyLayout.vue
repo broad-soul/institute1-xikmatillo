@@ -5,8 +5,9 @@
         <q-toolbar-title>
           <q-btn flat @click="goHome()">
             <q-avatar>
-              <img src="~assets/logo.png" alt="logo">
+              <div class="logo" :style="logo.image"></div>
             </q-avatar>
+            <span class="ml-3">{{logo.title}}</span>
           </q-btn>
         </q-toolbar-title>
         <q-space/>
@@ -15,21 +16,10 @@
           flat
           type="button"
           to="/admin"
-          label="go to admin panel"
+          :label="$t('go_to_admin_panel')"
           class="ml-3"
-          icon="home" :tabindex="0"/>
+          icon="airplay" :tabindex="0"/>
         <template v-if="!mobileDetect">
-          <q-btn-toggle
-            v-model="navbarMenu"
-            stretch
-            flat
-            toggle-color="teal-13"
-            :options="[
-              {label: $t('navbarName')[0], value: '/resident'},
-              {label: $t('navbarName')[2], value: '/non-resident'},
-              {label: $t('navbarName')[1], value: '/faq'}
-            ]"
-          />
           <q-btn flat color="white" class="mr-3" @click="openUrl('http://aluzswlu.ort.uz/auth/login')">
             S.R.S
           </q-btn>
@@ -47,7 +37,6 @@
           round
           @click="rightDrawerOpen = !rightDrawerOpen"
           aria-label="Menu"
-          v-if="mobileDetect"
         >
           <q-icon name="menu" />
         </q-btn>
@@ -55,35 +44,30 @@
     </q-header>
     <q-drawer
       v-model="rightDrawerOpen"
-      content-class="bg-blue-3"
+      content-class="sidebar"
       side="right"
+      behavior="mobile"
     >
       <q-list>
-        <q-item clickable to="/resident">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Анкета(Resident)</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable to="/faq">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>F.A.Q</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable to="/no-resident">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>Анкета(NOT A Resident)</q-item-label>
-          </q-item-section>
-        </q-item>
-        <q-item clickable tag="a" target="_blank" href="http://aluzswlu.ort.uz/auth/login">
+        <q-scroll-area
+          :thumb-style="thumbStyle"
+          style="height: 100vh"
+        >
+          <q-item
+            active-class="sidebar-menu__link"
+            v-for="(item, i) in sidebarPages"
+            :key="i"
+            clickable
+            :to="item"
+          >
+            <q-item-section avatar>
+              <q-icon :name="item.icon" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>{{item.title}}</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item clickable tag="a" v-if="mobileDetect" target="_blank" href="http://aluzswlu.ort.uz/auth/login">
           <q-item-section avatar>
             <q-icon name="school" />
           </q-item-section>
@@ -91,6 +75,7 @@
             <q-item-label>S.R.S</q-item-label>
           </q-item-section>
         </q-item>
+        </q-scroll-area>
       </q-list>
     </q-drawer>
     <q-page-container>
@@ -105,13 +90,6 @@
     <q-page-scroller position="bottom-right" :scroll-offset="600" :offset="[18, 18]">
       <q-btn fab style="color: #fff;height: 50px; width: 50px; background: linear-gradient(rgba(48, 73, 107, .9), rgba(48, 184, 210, .9));" icon="keyboard_arrow_up"/>
     </q-page-scroller>
-    <div class="contact">
-      <h3>CONTACT</h3>
-      <a href="tel:+998903500202"><q-icon name="mdi-phone" /> 998903500202</a>
-      <br>
-      <br>
-      <a href="tel:+998955252323"><q-icon name="mdi-phone" /> 998955252323</a>
-    </div>
     <footer class="footer">
       Footer
     </footer>
@@ -127,15 +105,13 @@ export default {
   meta: {
     title: 'You site'
   },
-  computed: {
-    ...mapGetters([
-      'getToken',
-      'mobileDetect',
-      'getLangPr'
-    ])
-  },
   data () {
     return {
+      logo: {
+        image: '',
+        title: ''
+      },
+      mainData: {},
       model: null,
       isAdmin: false,
       rightDrawerOpen: false,
@@ -146,7 +122,40 @@ export default {
         { label: 'En', value: 'en-us' },
         { label: 'Uz', value: 'uz' }
       ],
-      navbarMenu: null
+      sidebarPages: [
+        { title: this.$t('sidebarPages').home, path: '/', icon: 'home' },
+        { title: this.$t('sidebarPages').about_us, path: '/about-us', icon: 'pages' },
+        { title: this.$t('sidebarPages').resident, path: '/resident', icon: 'pages' },
+        { title: this.$t('sidebarPages').non_resident, path: '/non-resident', icon: 'pages' },
+        { title: this.$t('sidebarPages').teachers, path: '/teachers', icon: 'pages' },
+        { title: this.$t('sidebarPages').event, path: '/event', icon: 'pages' },
+        { title: this.$t('sidebarPages').blog, path: '/blog', icon: 'pages' },
+        { title: this.$t('sidebarPages').extra_classes, path: '/extra-classes', icon: 'pages' },
+        { title: this.$t('sidebarPages').gallery, path: '/gallery', icon: 'pages' },
+        { title: this.$t('sidebarPages').statistics, path: '/statistics', icon: 'pages' },
+        { title: this.$t('sidebarPages').faq, path: '/faq', icon: 'pages' },
+        { title: this.$t('sidebarPages').partners, path: '/partners', icon: 'pages' },
+        { title: this.$t('sidebarPages').contests, path: '/contests', icon: 'pages' },
+        { title: this.$t('sidebarPages').regulations, path: '/regulations', icon: 'pages' },
+        { title: this.$t('sidebarPages').contacts, path: '/contacts', icon: 'pages' }
+      ]
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getMainData',
+      'getToken',
+      'mobileDetect',
+      'getLangPr'
+    ]),
+    thumbStyle () {
+      return {
+        right: '2px',
+        borderRadius: '5px',
+        backgroundColor: 'teal',
+        width: '5px',
+        opacity: 0.75
+      }
     }
   },
   watch: {
@@ -157,24 +166,21 @@ export default {
       this.changeLang(lang)
       this.$q.cookies.set('local_lang', lang)
       this.$i18n.locale = lang
+      this.logo.title = this.mainData.logo[this.$t('prefix')]
       this.$q.notify({
-        color: 'secondary',
-        icon: 'home',
-        message: 'Язык переключен на ' + lang,
-        position: 'top-right',
+        color: 'cyan',
+        icon: 'check_circle',
+        message: this.$t(lang),
+        position: 'top',
         timeout: 200
       })
-    },
-    navbarMenu (val) {
-      this.$router.push(val)
     }
   },
-  created () {
+  beforeMount () {
     this.$axios.defaults.headers.Authorization = 'Bearer ' + this.getToken
     this.$axios.get('user').then(res => { if (res.data.is_admin === 1) this.isAdmin = true })
   },
   mounted () {
-    this.navbarMenu = this.$route.path
     // START changeLang
     if (!this.getLangPr) {
       this.changeLang(navigator.language.split('-')[0])
@@ -186,6 +192,15 @@ export default {
     this.$q.cookies.set('local_lang', this.getLangPr)
     this.$i18n.locale = this.getLangPr
     // END changeLang
+    this.$store.subscribe((mutation, state) => {
+      switch (mutation.type) {
+        case 'SET_MAIN_DATA':
+          this.mainData = this.getMainData
+          this.logo.image = this.mainData.logo.bgimage
+          this.logo.title = this.mainData.logo[this.$t('prefix')]
+          break
+      }
+    })
   },
   methods: {
     ...mapActions([
@@ -193,7 +208,6 @@ export default {
       'changeLang'
     ]),
     goHome () {
-      this.navbarMenu = ''
       this.$router.push('/')
     }
   }
@@ -203,6 +217,13 @@ export default {
 <style lang="stylus" scope>
   .header
     background $linear_gradient
+    .logo
+      width: 60px
+      height: 40px
+      background-size: contain
+      background-repeat no-repeat
+    .q-field--standard .q-field__control:before
+      border none
   .q-avatar__content
     border-radius unset
   .contact
@@ -215,4 +236,12 @@ export default {
   .change_lang
     .q-field__native, .q-field__append
       color #fff
+  .sidebar
+    background: $bg-grey-1
+    &-menu__link:first-child
+      background: none
+      color: #000
+    &-menu__link
+      background: $cyan
+      color: #fff
 </style>
