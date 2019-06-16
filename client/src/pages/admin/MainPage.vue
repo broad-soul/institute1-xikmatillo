@@ -1,7 +1,7 @@
 <template>
   <q-scroll-area
-    :thumb-style="thumbStyle"
-    style="height: calc(100vh - 60px)"
+    :thumb-style="getThumbStyle"
+    style="height: calc(100vh - 56px)"
   >
     <q-page class="admin__main">
       <div class="q-pa-md">
@@ -35,7 +35,7 @@
             </q-tabs>
             <q-separator />
             <q-tab-panels v-model="tab" animated>
-              <q-tab-panel name="about-us" class="p-0 about__us">
+              <q-tab-panel name="about-us" class="p-0 admin__main-about__us">
                 <div class="row q-pa-md">
                   <q-toggle
                     v-model="aboutUsEditor.visible"
@@ -135,17 +135,9 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'mobileDetect'
-    ]),
-    thumbStyle () {
-      return {
-        right: '2px',
-        borderRadius: '5px',
-        backgroundColor: 'teal',
-        width: '5px',
-        opacity: 0.75
-      }
-    }
+      'mobileDetect',
+      'getThumbStyle'
+    ])
   },
   watch: {
   },
@@ -189,7 +181,7 @@ export default {
 
 <style lang="stylus" scoped>
   .admin__main
-    .about__us
+    &-about__us
       .q-panel.scroll
         overflow: visible
 </style>

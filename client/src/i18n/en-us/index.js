@@ -5,8 +5,8 @@ export default {
   sidebarPages: {
     'home': 'Home',
     'about_us': 'About us',
-    'resident': 'Profile (Rezident)',
-    'non_resident': 'Profile (Not a rezident)',
+    'resident': 'Application (Rezident)',
+    'non_resident': 'Application (Not a rezident)',
     'teachers': 'Teachers',
     'event': 'Event',
     'blog': 'Blog',
@@ -22,7 +22,7 @@ export default {
   pages: 'Pages',
   regTextOpen: 'Registration is open',
   registrationWillTakePlace: 'Registration of students will take place from 0 to 1000 numbers.',
-  profileText: 'Profile',
+  profileText: 'Application',
   aboutUs: 'About us',
   'lyceum_title': 'ACADEMIC LYCEUM OF UZBEK STATE UNIVERSITY OF WORLD LANGUAGES',
   place_of_education: 'Name of the educational institution',
@@ -46,11 +46,18 @@ export default {
   attach_documents: 'Attach Documents',
   contact: 'Contacts',
   required_fields: '* Fields should be filled obligatory!',
-  go_to_admin_panel: 'go to admin panel',
+  go_to_admin_panel: 'Go to admin panel',
   back_to_site: 'back to site',
   table_actions: 'Actions',
   table_created_at: 'Created at',
   breadcrumb: {
     dashboard: 'Home'
-  }
+  },
+  education_language_select: ['Russian', 'Uzbek'],
+  exact_sciences: 'Exact sciences',
+  foreign_philology: 'Foreign philology',
+  question: 'Question',
+  answer: 'Answer',
+  faq_title: 'Frequently asked Questions',
+  srs_btn: 'S.R.S'
 }

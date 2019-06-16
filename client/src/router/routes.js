@@ -7,6 +7,10 @@ const routes = [
       { path: '', component: () => import('pages/Index.vue') },
       { path: '/resident', component: () => import('pages/Resident.vue') },
       { path: '/non-resident', component: () => import('pages/NonResident.vue') },
+      { path: '/about-us', component: () => import('pages/AboutUs.vue') },
+      { path: '/teachers', component: () => import('pages/Teachers.vue') },
+      { path: '/event', component: () => import('pages/Event.vue') },
+      { path: '/blog', component: () => import('pages/Blog.vue') },
       { path: '/faq', component: () => import('pages/Faq.vue') }
     ]
   },
@@ -21,7 +25,8 @@ const routes = [
       { path: 'residents/show/:id', component: () => import('pages/admin/ShowResident.vue') },
       { path: 'non-residents', component: () => import('pages/admin/NonResidents.vue') },
       { path: 'non-residents/show/:id', component: () => import('pages/admin/ShowNonResident.vue') },
-      { path: 'titles', component: () => import('pages/admin/Titles.vue') }
+      { path: 'titles', component: () => import('pages/admin/Titles.vue') },
+      { path: 'faq', component: () => import('pages/admin/Faq.vue') }
     ]
   },
   {

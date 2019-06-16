@@ -5,23 +5,23 @@
         <q-toolbar-title>
           <q-btn flat @click="goHome()">
             <q-avatar>
-              <div class="logo" :style="logo.image"></div>
+              <div class="logo" :style="logoImage"></div>
             </q-avatar>
-            <span class="ml-3">{{logo.title}}</span>
           </q-btn>
+          <span class="ml-3 logo__title" v-if="!mobileDetect">{{logoTitle}}</span>
         </q-toolbar-title>
         <q-space/>
-        <q-btn
-          v-if="isAdmin"
-          flat
-          type="button"
-          to="/admin"
-          :label="$t('go_to_admin_panel')"
-          class="ml-3"
-          icon="airplay" :tabindex="0"/>
         <template v-if="!mobileDetect">
+          <q-btn
+            v-if="isAdmin"
+            flat
+            type="button"
+            to="/admin"
+            :label="$t('go_to_admin_panel')"
+            class="ml-3"
+            icon="airplay" :tabindex="0"/>
           <q-btn flat color="white" class="mr-3" @click="openUrl('http://aluzswlu.ort.uz/auth/login')">
-            S.R.S
+            {{$t('srs_btn')}}
           </q-btn>
         </template>
         <q-select
@@ -54,7 +54,20 @@
           style="height: 100vh"
         >
           <q-item
+            clickable
+            to="/admin"
+            v-if="isAdmin && mobileDetect"
+          >
+            <q-item-section avatar>
+              <q-icon name="airplay" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>{{$t('go_to_admin_panel')}}</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item
             active-class="sidebar-menu__link"
+            :class="item.icon === 'home' ? 'home' : ''"
             v-for="(item, i) in sidebarPages"
             :key="i"
             clickable
@@ -90,9 +103,6 @@
     <q-page-scroller position="bottom-right" :scroll-offset="600" :offset="[18, 18]">
       <q-btn fab style="color: #fff;height: 50px; width: 50px; background: linear-gradient(rgba(48, 73, 107, .9), rgba(48, 184, 210, .9));" icon="keyboard_arrow_up"/>
     </q-page-scroller>
-    <footer class="footer">
-      Footer
-    </footer>
   </q-layout>
 </template>
 
@@ -107,11 +117,7 @@ export default {
   },
   data () {
     return {
-      logo: {
-        image: '',
-        title: ''
-      },
-      mainData: {},
+      getLogo: {},
       model: null,
       isAdmin: false,
       rightDrawerOpen: false,
@@ -121,8 +127,27 @@ export default {
         { label: 'Ru', value: 'ru' },
         { label: 'En', value: 'en-us' },
         { label: 'Uz', value: 'uz' }
-      ],
-      sidebarPages: [
+      ]
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'getThumbStyle',
+      'getToken',
+      'mobileDetect',
+      'getLangPr'
+    ]),
+    thumbStyle () {
+      return {
+        right: '2px',
+        borderRadius: '5px',
+        backgroundColor: 'teal',
+        width: '5px',
+        opacity: 0.75
+      }
+    },
+    sidebarPages () {
+      return [
         { title: this.$t('sidebarPages').home, path: '/', icon: 'home' },
         { title: this.$t('sidebarPages').about_us, path: '/about-us', icon: 'pages' },
         { title: this.$t('sidebarPages').resident, path: '/resident', icon: 'pages' },
@@ -139,23 +164,12 @@ export default {
         { title: this.$t('sidebarPages').regulations, path: '/regulations', icon: 'pages' },
         { title: this.$t('sidebarPages').contacts, path: '/contacts', icon: 'pages' }
       ]
-    }
-  },
-  computed: {
-    ...mapGetters([
-      'getMainData',
-      'getToken',
-      'mobileDetect',
-      'getLangPr'
-    ]),
-    thumbStyle () {
-      return {
-        right: '2px',
-        borderRadius: '5px',
-        backgroundColor: 'teal',
-        width: '5px',
-        opacity: 0.75
-      }
+    },
+    logoTitle () {
+      return this.getLogo[this.$t('prefix')]
+    },
+    logoImage () {
+      return this.getLogo.bgimage
     }
   },
   watch: {
@@ -166,7 +180,6 @@ export default {
       this.changeLang(lang)
       this.$q.cookies.set('local_lang', lang)
       this.$i18n.locale = lang
-      this.logo.title = this.mainData.logo[this.$t('prefix')]
       this.$q.notify({
         color: 'cyan',
         icon: 'check_circle',
@@ -176,7 +189,9 @@ export default {
       })
     }
   },
-  beforeMount () {
+  async beforeMount () {
+    let res = await this.$axios.post('get_logo')
+    this.getLogo = res.data
     this.$axios.defaults.headers.Authorization = 'Bearer ' + this.getToken
     this.$axios.get('user').then(res => { if (res.data.is_admin === 1) this.isAdmin = true })
   },
@@ -195,15 +210,13 @@ export default {
     this.$store.subscribe((mutation, state) => {
       switch (mutation.type) {
         case 'SET_MAIN_DATA':
-          this.mainData = this.getMainData
-          this.logo.image = this.mainData.logo.bgimage
-          this.logo.title = this.mainData.logo[this.$t('prefix')]
           break
       }
     })
   },
   methods: {
     ...mapActions([
+      'mainGetData',
       'openUrl',
       'changeLang'
     ]),
@@ -217,19 +230,19 @@ export default {
 <style lang="stylus" scope>
   .header
     background $linear_gradient
+    .q-toolbar__title
+      flex: 1 1 15%
     .logo
       width: 60px
       height: 40px
       background-size: contain
       background-repeat no-repeat
+    .logo__title
+      font-size: 14px
     .q-field--standard .q-field__control:before
       border none
   .q-avatar__content
     border-radius unset
-  .contact
-    background #eee
-    padding 20px
-    text-align center
   .footer
     background $indigo-4
     padding 20px
@@ -238,7 +251,7 @@ export default {
       color #fff
   .sidebar
     background: $bg-grey-1
-    &-menu__link:first-child
+    &-menu__link.home
       background: none
       color: #000
     &-menu__link

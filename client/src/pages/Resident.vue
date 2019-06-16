@@ -1,320 +1,306 @@
 <template>
-  <q-page class="ssss">
-    <div class="text-center">
-      <h3>{{$t('regTextOpen')}}</h3>
-      <p>{{$t('registrationWillTakePlace')}}</p>
-    </div>
-    <div class="row justify-center resident_client">
-      <div class="col-lg-5">
-        <h3>{{$t('profileText')}}</h3>
-        <p>{{$t('lyceum_title')}}</p>
-        <q-card class="my-card" style="margin-bottom: 50px;">
-          <q-card-section>
-            <q-form
-              @submit="onSubmit"
-              @reset="onReset"
-              class="q-gutter-md"
-              ref="form"
-            >
-              <q-input
-                filled
-                :label="$t('place_of_education') + ' *'"
-                v-model="form.place_of_education"
-                type="text"
-                clearable
-                lazy-rules
-                class="mt-4"
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-select v-model="form.direction_code"
-                :options="[
-                  { label: 'Зарубежная филология', value: '3940001', },
-                  { label: 'Точные науки', value: '3910001', }
-                ]"
-                filled
-                :label="$t('direction') + ' *'"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('name') + ' *'"
-                v-model="form.name"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[
-                  val => !!val || $t('required_fields')
-                ]"
-              />
-              <q-input
-                filled
-                :label="$t('surname') + ' *'"
-                v-model="form.surname"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('father_name') + ' *'"
-                v-model="form.father_name"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('date_of_birth') + ' *'"
-                v-model="form.date_of_birth"
-                lazy-rules
-                clearable
-                :disable="loading"
-                mask="##/##/####"
-                :rules="[val => !!val || $t('required_fields')]"
-              >
-                <template v-slot:append>
-                  <q-icon name="event" class="cursor-pointer">
-                    <q-popup-proxy ref="qDateProxy1">
-                      <q-date
-                        mask="DD/MM/YYYY"
-                        minimal
-                        v-model="form.date_of_birth"
-                        @input="() => $refs.qDateProxy1.hide()"
-                      />
-                    </q-popup-proxy>
-                  </q-icon>
-                </template>
-              </q-input>
-              <q-input
-                filled
-                :label="$t('citizenship') + ' *'"
-                v-model="form.citizenship"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('client_requisite') + ' *'"
-                v-model="form.client_requisite"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('residential_address') + ' *'"
-                v-model="form.residential_address"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('school_region') + ' *'"
-                v-model="form.school_region"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('school_district') + ' *'"
-                v-model="form.school_district"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('school_number_or_name') + ' *'"
-                v-model="form.school_number_or_name"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('graduation_year') + ' *'"
-                v-model="form.graduation_year"
-                lazy-rules
-                :disable="loading"
-                clearable
-                mask="##/##/####"
-                :rules="[val => !!val || $t('required_fields')]">
-                <template v-slot:append>
-                  <q-icon name="event" class="cursor-pointer">
-                    <q-popup-proxy ref="qDateProxy2">
-                      <q-date
-                        mask="DD/MM/YYYY"
-                        minimal
-                        v-model="form.graduation_year"
-                        @input="() => $refs.qDateProxy2.hide()"
-                      />
-                    </q-popup-proxy>
-                  </q-icon>
-                </template>
-              </q-input>
-              <q-input
-                filled
-                :label="$t('education_language') + ' *'"
-                v-model="form.education_language"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('certificate_number') + ' *'"
-                v-model="form.certificate_number"
-                type="number"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('act_number') + ' *'"
-                v-model="form.act_number"
-                type="number"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-input
-                filled
-                :label="$t('phone') + ' *'"
-                v-model="form.phone"
-                type="text"
-                clearable
-                lazy-rules
-                :disable="loading"
-                :rules="[val => !!val || $t('required_fields')]"
-              />
-              <q-uploader
-                :disable="loading"
-                extensions=".jpg,.jpeg,.png,.doc,.exel"
-                accept=".jpg, .jpeg, .pdf, image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
-                :max-file-size="3048576"
-                :max-total-size="10248576"
-                @added="addFile"
-                multiple
-                :color="uploader_color"
-                class="resident_client_q_uploader"
-                ref="uploader"
-              >
-                <template v-slot:header="scope">
-                  <div class="row no-wrap items-center q-pa-sm q-gutter-xs">
-                    <q-btn v-if="scope.queuedFiles.length > 0" icon="delete_sweep" @click="scope.removeQueuedFiles" round dense flat >
-                      <q-tooltip>Удалить все</q-tooltip>
-                    </q-btn>
-                    <q-btn v-if="scope.uploadedFiles.length > 0" icon="done_all" @click="scope.removeUploadedFiles" round dense flat >
-                      <q-tooltip>Remove Uploaded Files</q-tooltip>
-                    </q-btn>
-                    <q-spinner v-if="scope.isUploading" class="q-uploader__spinner" />
-                    <div class="col">
-                      <div class="q-uploader__title">{{$t('documents_graduate_9_grade')}} *</div>
-                      <div class="q-uploader__subtitle">{{ scope.uploadSizeLabel }}</div>
-                    </div>
-                    <q-btn v-if="scope.canAddFiles" type="a" icon="add_box" round dense flat>
-                      <q-uploader-add-trigger />
-                      <q-tooltip>{{$t('attach_documents')}}</q-tooltip>
-                    </q-btn>
-                    <q-btn v-if="scope.isUploading" icon="clear" @click="scope.abort" round dense flat >
-                      <q-tooltip>Abort Upload</q-tooltip>
-                    </q-btn>
-                  </div>
-                </template>
-                <template v-slot:list="scope">
-                  <q-list separator>
-                    <q-item v-for="file in scope.files" :key="file.name">
-                      <q-item-section>
-                        <q-item-label class="full-width ellipsis">
-                          {{ file.name }}
-                        </q-item-label>
-                      </q-item-section>
-                      <q-item-section
-                        v-if="file.__img"
-                        thumbnail
-                        class="gt-xs"
-                      >
-                        <img :src="file.__img.src">
-                      </q-item-section>
-                      <q-item-section top side>
-                        <q-btn
-                          class="gt-xs"
-                          size="12px"
-                          flat
-                          dense
-                          round
-                          icon="delete"
-                          @click="scope.removeFile(file)"
-                        />
-                      </q-item-section>
-                    </q-item>
-                  </q-list>
-                </template>
-              </q-uploader>
-              <div v-if="showCheckboxNotRobot" class="ml-3" :class="'text-'+colorCheckbox">
-                Подтвердите что вы не робот
-              </div>
-              <q-checkbox
-                v-model="checkboxNotRobot"
-                v-if="showCheckboxNotRobot"
-                label="Я не робот"
-                :color="colorCheckbox"
-                class="mt-0"
-                :keep-color="true"/>
-              <div class="action__btn">
-                <q-btn
-                  color="secondary"
-                  class="upload pl-2"
-                  :loading="loading"
-                  type="submit"
-                >
-                  {{$q.lang.label.create}}
-                </q-btn>
-                <q-btn
-                  outline
-                  type="reset"
-                  class="clear ml-3"
-                  color="secondary"
-                  :disable="loading"
-                >
-                  {{$q.lang.label.clear}}
-                </q-btn>
-              </div>
-            </q-form>
-          </q-card-section>
-        </q-card>
+  <q-scroll-area
+    :thumb-style="getThumbStyle"
+    style="height: calc(100vh - 56px)"
+  >
+    <q-page class="client__resident">
+      <div class="text-center">
+        <h3>{{$t('regTextOpen')}}</h3>
+        <p>{{$t('registrationWillTakePlace')}}</p>
       </div>
-    </div>
-  </q-page>
+      <div class="row justify-center resident_client">
+        <div class="col-lg-5">
+          <h3>{{$t('profileText')}}</h3>
+          <q-card class="my-card" style="margin-bottom: 50px;">
+            <q-card-section>
+              <q-form
+                @submit="onSubmit"
+                @reset="onReset"
+                class="q-gutter-md"
+                ref="form"
+              >
+                <q-input
+                  filled
+                  :label="$t('place_of_education') + ' *'"
+                  v-model="form.place_of_education"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  class="mt-4"
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-select v-model="form.direction_code"
+                  :options="[
+                    { label: $t('foreign_philology'), value: '3940001', },
+                    { label: $t('exact_sciences'), value: '3910001', }
+                  ]"
+                  filled
+                  :label="$t('direction') + ' *'"
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-input
+                  filled
+                  :label="$t('name') + ' *'"
+                  v-model="form.name"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[
+                    val => !!val || $t('required_fields')
+                  ]"
+                />
+                <q-input
+                  filled
+                  :label="$t('surname') + ' *'"
+                  v-model="form.surname"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-input
+                  filled
+                  :label="$t('father_name')"
+                  v-model="form.father_name"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                />
+                <q-input
+                  filled
+                  :label="$t('date_of_birth') + ' *'"
+                  v-model="form.date_of_birth"
+                  lazy-rules
+                  clearable
+                  :disable="loading"
+                  mask="##/##/####"
+                  :rules="[val => !!val || $t('required_fields')]"
+                >
+                  <template v-slot:append>
+                    <q-icon name="event" class="cursor-pointer">
+                      <q-popup-proxy ref="qDateProxy1">
+                        <q-date
+                          mask="DD/MM/YYYY"
+                          minimal
+                          v-model="form.date_of_birth"
+                          @input="() => $refs.qDateProxy1.hide()"
+                        />
+                      </q-popup-proxy>
+                    </q-icon>
+                  </template>
+                </q-input>
+                <q-input
+                  filled
+                  :label="$t('citizenship') + ' *'"
+                  v-model="form.citizenship"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-input
+                  filled
+                  :label="$t('client_requisite') + ' *'"
+                  v-model="form.client_requisite"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-input
+                  filled
+                  :label="$t('residential_address') + ' *'"
+                  v-model="form.residential_address"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-input
+                  filled
+                  :label="$t('school_region') + ' *'"
+                  v-model="form.school_region"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-input
+                  filled
+                  :label="$t('school_district') + ' *'"
+                  v-model="form.school_district"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-input
+                  filled
+                  :label="$t('school_number_or_name') + ' *'"
+                  v-model="form.school_number_or_name"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-select filled
+                  :disable="loading"
+                  v-model="form.graduation_year"
+                  :label="$t('graduation_year') + ' *'"
+                  :options="graduationYearSelect"
+                  lazy-rules
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-select filled
+                  :disable="loading"
+                  v-model="form.education_language"
+                  :label="$t('education_language') + ' *'"
+                  :options="$t('education_language_select')"
+                  lazy-rules
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-input
+                  filled
+                  :label="$t('certificate_number')"
+                  v-model="form.certificate_number"
+                  type="number"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                />
+                <q-input
+                  filled
+                  :label="$t('act_number') + ' *'"
+                  v-model="form.act_number"
+                  type="number"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-input
+                  filled
+                  :label="$t('phone') + ' *'"
+                  v-model="form.phone"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || $t('required_fields')]"
+                />
+                <q-uploader
+                  :disable="loading"
+                  extensions=".jpg,.jpeg,.png,.doc,.exel"
+                  accept=".jpg, .jpeg, .pdf, image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
+                  :max-file-size="3048576"
+                  :max-total-size="10248576"
+                  @added="addFile"
+                  multiple
+                  :color="uploader_color"
+                  class="resident_client_q_uploader"
+                  ref="uploader"
+                >
+                  <template v-slot:header="scope">
+                    <div class="row no-wrap items-center q-pa-sm q-gutter-xs">
+                      <q-btn v-if="scope.queuedFiles.length > 0" icon="delete_sweep" @click="scope.removeQueuedFiles" round dense flat >
+                        <q-tooltip>Удалить все</q-tooltip>
+                      </q-btn>
+                      <q-btn v-if="scope.uploadedFiles.length > 0" icon="done_all" @click="scope.removeUploadedFiles" round dense flat >
+                        <q-tooltip>Remove Uploaded Files</q-tooltip>
+                      </q-btn>
+                      <q-spinner v-if="scope.isUploading" class="q-uploader__spinner" />
+                      <div class="col">
+                        <div class="q-uploader__title">{{$t('documents_graduate_9_grade')}} *</div>
+                        <div class="q-uploader__subtitle">{{ scope.uploadSizeLabel }}</div>
+                      </div>
+                      <q-btn v-if="scope.canAddFiles" type="a" icon="add_box" round dense flat>
+                        <q-uploader-add-trigger />
+                        <q-tooltip>{{$t('attach_documents')}}</q-tooltip>
+                      </q-btn>
+                      <q-btn v-if="scope.isUploading" icon="clear" @click="scope.abort" round dense flat >
+                        <q-tooltip>Abort Upload</q-tooltip>
+                      </q-btn>
+                    </div>
+                  </template>
+                  <template v-slot:list="scope">
+                    <q-list separator>
+                      <q-item v-for="file in scope.files" :key="file.name">
+                        <q-item-section>
+                          <q-item-label class="full-width ellipsis">
+                            {{ file.name }}
+                          </q-item-label>
+                        </q-item-section>
+                        <q-item-section
+                          v-if="file.__img"
+                          thumbnail
+                          class="gt-xs"
+                        >
+                          <img :src="file.__img.src">
+                        </q-item-section>
+                        <q-item-section top side>
+                          <q-btn
+                            class="gt-xs"
+                            size="12px"
+                            flat
+                            dense
+                            round
+                            icon="delete"
+                            @click="scope.removeFile(file)"
+                          />
+                        </q-item-section>
+                      </q-item>
+                    </q-list>
+                  </template>
+                </q-uploader>
+                <div v-if="showCheckboxNotRobot" class="ml-3" :class="'text-'+colorCheckbox">
+                  Подтвердите что вы не робот
+                </div>
+                <q-checkbox
+                  v-model="checkboxNotRobot"
+                  v-if="showCheckboxNotRobot"
+                  label="Я не робот"
+                  :color="colorCheckbox"
+                  class="mt-0"
+                  :keep-color="true"/>
+                <div class="action__btn">
+                  <q-btn
+                    color="secondary"
+                    class="upload pl-2"
+                    :loading="loading"
+                    type="submit"
+                  >
+                    {{$q.lang.label.create}}
+                  </q-btn>
+                  <q-btn
+                    outline
+                    type="reset"
+                    class="clear ml-3"
+                    color="secondary"
+                    :disable="loading"
+                  >
+                    {{$q.lang.label.clear}}
+                  </q-btn>
+                </div>
+              </q-form>
+            </q-card-section>
+          </q-card>
+        </div>
+      </div>
+      <footer>footer</footer>
+    </q-page>
+  </q-scroll-area>
 </template>
 
 <script>
@@ -363,18 +349,32 @@ export default {
     }
   },
   computed: {
-    ...mapGetters(['mobileDetect'])
+    ...mapGetters([
+      'mobileDetect',
+      'getThumbStyle'
+    ]),
+    graduationYearSelect () {
+      let yearNow = new Date().getFullYear()
+      let years = []
+      for (; yearNow >= 1980; yearNow--) {
+        years.push(yearNow)
+      }
+      return years
+    }
   },
   watch: {
     checkboxNotRobot (val) {
       this.colorCheckbox = val ? 'teal' : 'negative'
     }
   },
+  async beforeMount () {
+  },
   mounted () {
   },
   methods: {
     ...mapActions([
-      'recaptchaToken'
+      'recaptchaToken',
+      'mainGetData'
     ]),
     addFile () {
       this.uploader_color = 'secondary'
@@ -442,6 +442,13 @@ export default {
 </script>
 
 <style lang="stylus">
+  .client__resident
+    display: flex
+    flex-direction: column
+    footer
+      margin-top: auto
+      padding: 20px
+      background-color: #ccc
   .resident_client_q_uploader
       width: auto !important
 </style>

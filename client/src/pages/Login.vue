@@ -21,6 +21,7 @@
               lazy-rules
               color="grey-10"
               bg-color="teal-24"
+              type="email"
               clearable
               :rules="[ val => val && val.length > 0 || 'Email is required']"
             >

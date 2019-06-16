@@ -5,8 +5,8 @@ export default {
   sidebarPages: {
     'home': 'Главная',
     'about_us': 'О нас',
-    'resident': 'Анкета (Резидент)',
-    'non_resident': 'Анкета (Не резидент)',
+    'resident': 'Поступление (Резидент)',
+    'non_resident': 'Поступление (Не резидент)',
     'teachers': 'Учителя',
     'event': 'События',
     'blog': 'Блог',
@@ -22,7 +22,7 @@ export default {
   pages: 'Страницы',
   regTextOpen: 'Регистрация открыта',
   registrationWillTakePlace: 'Регистрация учеников будет проходить с 0 до 1000 числа.',
-  profileText: 'Анкета',
+  profileText: 'Поступление',
   aboutUs: 'О нас',
   lyceum_title: 'АКАДЕМИЧЕСКИЙ ЛИЦЕЙ УЗБЕКСКОГО ГОСУДАРСТВЕННОГО УНИВЕРСИТЕТА МИРОВЫХ ЯЗЫКОВ',
   place_of_education: 'Наименование Учебного заведения',
@@ -37,7 +37,7 @@ export default {
   school_region: 'Школа Регион (Город / Область)',
   school_district: 'Школа (Район / Город)',
   school_number_or_name: 'Номер или название школы',
-  graduation_year: 'Год окончания школы ',
+  graduation_year: 'Год окончания школы',
   education_language: 'Язык обучения',
   certificate_number: 'Номер аттестата',
   act_number: 'Номер акта',
@@ -46,11 +46,18 @@ export default {
   attach_documents: 'Прикрепить Документы',
   contact: 'Контакты',
   required_fields: '* Поля - обязательны для заполнения!',
-  go_to_admin_panel: 'перейти в админку',
+  go_to_admin_panel: 'Перейти в админку',
   back_to_site: 'вернуться на сайт',
   table_actions: 'Действия',
   table_created_at: 'Дата',
   breadcrumb: {
     dashboard: 'Домой'
-  }
+  },
+  education_language_select: ['Русский', 'Узбекский'],
+  exact_sciences: 'Точные науки',
+  foreign_philology: 'Зарубежная филология',
+  question: 'Вопрос',
+  answer: 'Ответ',
+  faq_title: 'Часто задаваемые вопросы',
+  srs_btn: 'С.У.С'
 }

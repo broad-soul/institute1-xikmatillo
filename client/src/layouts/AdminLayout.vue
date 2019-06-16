@@ -46,7 +46,7 @@
     >
       <q-scroll-area
         :thumb-style="thumbStyle"
-        style="height: calc(100vh - 60px)"
+        style="height: calc(100vh - 56px)"
       >
         <q-list class="pt-3">
           <q-item clickable to="/admin" class="text-cyan-1">
@@ -90,13 +90,21 @@
               </q-item-section>
             </q-item>
             <q-item clickable to="/admin/non-residents" active-class="admin__sidebar-menu__link">
-                  <q-item-section avatar>
-                    <q-icon name="bookmark_border" />
-                  </q-item-section>
-                  <q-item-section>
-                    <q-item-label>{{$t('sidebarPagesAdmin')[2]}}</q-item-label>
-                  </q-item-section>
-                </q-item>
+              <q-item-section avatar>
+                <q-icon name="bookmark_border" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{$t('sidebarPagesAdmin')[2]}}</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item clickable to="/admin/faq" active-class="admin__sidebar-menu__link">
+              <q-item-section avatar>
+                <q-icon name="supervisor_account" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>Faq</q-item-label>
+              </q-item-section>
+            </q-item>
           </q-expansion-item>
           <q-item clickable to="/admin/titles" active-class="admin__sidebar-menu__link">
             <q-item-section avatar>
@@ -151,8 +159,8 @@ export default {
         this.$q.lang.set(lang.default)
       })
       this.changeLang(lang)
-      this.$q.cookies.set('local_lang', lang)
       this.$i18n.locale = lang
+      this.$q.cookies.set('local_lang', this.$t('prefix'))
       this.$q.notify({
         color: 'teal',
         icon: 'check_circle',
