@@ -3,7 +3,7 @@
     <q-header reveal elevated class="header">
       <q-toolbar>
         <q-toolbar-title>
-          <q-btn flat @click="goHome()">
+          <q-btn flat @click="goHome()" class="pl-0 pl-md-3">
             <q-avatar>
               <div class="logo" :style="logoImage"></div>
             </q-avatar>
@@ -14,22 +14,38 @@
         <template v-if="!mobileDetect">
           <q-btn
             v-if="isAdmin"
-            flat
             type="button"
+            color="deep-orange-6"
             to="/admin"
             :label="$t('go_to_admin_panel')"
             class="ml-3"
             icon="airplay" :tabindex="0"/>
-          <q-btn flat color="white" class="mr-3" @click="openUrl('http://aluzswlu.ort.uz/auth/login')">
+          <q-btn color="light-green-13" outline class="mx-2" @click="openUrl('http://aluzswlu.ort.uz/auth/login')">
             {{$t('srs_btn')}}
           </q-btn>
         </template>
+        <q-btn-dropdown color="yellow-12" :label="sidebarPages[0].title" class="text-black">
+          <q-list>
+            <q-item clickable v-close-popup
+              v-for="(elem, i) in sidebarPages[0].children"
+              :key="i"
+              :to="elem.path"
+              active-class="bg-cyan-6 text-white"
+              dense
+            >
+              <q-item-section>
+                <q-item-label>{{elem.title}}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
         <q-select
           v-model="lang"
           :options="langOptions"
           emit-value
           map-options
-          class="change_lang"
+          class="change_lang ml-3 mr-2"
+          color="cyan-13"
         />
         <q-btn
           flat
@@ -47,18 +63,25 @@
       content-class="sidebar"
       side="right"
       behavior="mobile"
+      :width="230"
     >
       <q-list>
         <q-scroll-area
           :thumb-style="thumbStyle"
           style="height: 100vh"
         >
+          <q-btn flat class="w-100p pl-2" to="/">
+            <q-avatar class="mr-auto">
+              <div class="logo" :style="logoImage" style="background-size: contain; width: 50px;height: 50px;"></div>
+            </q-avatar>
+          </q-btn>
           <q-item
             clickable
             to="/admin"
             v-if="isAdmin && mobileDetect"
+            dense
           >
-            <q-item-section avatar>
+            <q-item-section avatar class="pr-0" style="min-width: 35px;">
               <q-icon name="airplay" />
             </q-item-section>
             <q-item-section>
@@ -66,28 +89,23 @@
             </q-item-section>
           </q-item>
           <q-item
-            active-class="sidebar-menu__link"
-            :class="item.icon === 'home' ? 'home' : ''"
             v-for="(item, i) in sidebarPages"
+            dense
+            active-class="sidebar-menu__link"
+            :class="item.icon"
             :key="i"
             clickable
             :to="item"
           >
-            <q-item-section avatar>
-              <q-icon :name="item.icon" />
-            </q-item-section>
             <q-item-section>
               <q-item-label>{{item.title}}</q-item-label>
             </q-item-section>
           </q-item>
           <q-item clickable tag="a" v-if="mobileDetect" target="_blank" href="http://aluzswlu.ort.uz/auth/login">
-          <q-item-section avatar>
-            <q-icon name="school" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>S.R.S</q-item-label>
-          </q-item-section>
-        </q-item>
+            <q-item-section>
+              <q-item-label>{{$t('srs_btn')}}</q-item-label>
+            </q-item-section>
+          </q-item>
         </q-scroll-area>
       </q-list>
     </q-drawer>
@@ -100,7 +118,7 @@
         <router-view />
       </transition>
     </q-page-container>
-    <q-page-scroller position="bottom-right" :scroll-offset="600" :offset="[18, 18]">
+    <q-page-scroller @click="refreshScrollIntIndex" position="bottom-right" :scroll-offset="600" :offset="[18, 18]">
       <q-btn fab style="color: #fff;height: 50px; width: 50px; background: linear-gradient(rgba(48, 73, 107, .9), rgba(48, 184, 210, .9));" icon="keyboard_arrow_up"/>
     </q-page-scroller>
   </q-layout>
@@ -148,10 +166,15 @@ export default {
     },
     sidebarPages () {
       return [
-        { title: this.$t('sidebarPages').home, path: '/', icon: 'home' },
+        {
+          title: this.$t('sidebarPages').application,
+          path: 'application',
+          children: [
+            { title: this.$t('sidebarPages').resident, path: '/resident', icon: 'account_circle' },
+            { title: this.$t('sidebarPages').non_resident, path: '/non-resident', icon: 'account_circle' }
+          ]
+        },
         { title: this.$t('sidebarPages').about_us, path: '/about-us', icon: 'pages' },
-        { title: this.$t('sidebarPages').resident, path: '/resident', icon: 'pages' },
-        { title: this.$t('sidebarPages').non_resident, path: '/non-resident', icon: 'pages' },
         { title: this.$t('sidebarPages').teachers, path: '/teachers', icon: 'pages' },
         { title: this.$t('sidebarPages').event, path: '/event', icon: 'pages' },
         { title: this.$t('sidebarPages').blog, path: '/blog', icon: 'pages' },
@@ -191,9 +214,14 @@ export default {
   },
   async beforeMount () {
     let res = await this.$axios.post('get_logo')
-    this.getLogo = res.data
+    this.getLogo = res.data[0]
     this.$axios.defaults.headers.Authorization = 'Bearer ' + this.getToken
-    this.$axios.get('user').then(res => { if (res.data.is_admin === 1) this.isAdmin = true })
+    this.$axios.get('user').then(res => {
+      if (+res.data.is_admin === 1) this.isAdmin = true
+      console.log('res.data.is_admin ' + res.data.is_admin)
+      console.log('res.data.is_admin === 1 ' + (+res.data.is_admin === 1))
+      console.log('isAdmin ' + this.isAdmin)
+    })
   },
   mounted () {
     // START changeLang
@@ -216,6 +244,7 @@ export default {
   },
   methods: {
     ...mapActions([
+      'refreshScrollIntIndex',
       'mainGetData',
       'openUrl',
       'changeLang'
@@ -241,14 +270,14 @@ export default {
       font-size: 14px
     .q-field--standard .q-field__control:before
       border none
-  .q-avatar__content
-    border-radius unset
+    .q-avatar__content
+      border-radius unset
+    .change_lang
+      .q-field__native, .q-field__append
+        color #fff
   .footer
     background $indigo-4
     padding 20px
-  .change_lang
-    .q-field__native, .q-field__append
-      color #fff
   .sidebar
     background: $bg-grey-1
     &-menu__link.home

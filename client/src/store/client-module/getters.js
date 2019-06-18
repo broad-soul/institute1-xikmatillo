@@ -90,12 +90,14 @@ export function getAllColumnsNonResident () {
 export function getMainData (state) {
   return state.mainData
 }
+
 export function getThumbStyle () {
   return {
     right: '2px',
     borderRadius: '5px',
     backgroundColor: 'teal',
-    width: '5px',
-    opacity: 0.75
+    width: '6px',
+    opacity: 0.75,
+    zIndex: 99999
   }
 }

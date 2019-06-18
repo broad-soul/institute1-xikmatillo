@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\AboutUs;
+use App\Model\Events;
 use App\Model\Faq;
 use App\Model\Files;
-use App\Model\MainPage\AboutUs;
+use App\Model\Gallery;
+use App\Model\MainPage\MainPageAboutUs;
+use App\Model\MainPage\MainPageEvent;
 use App\Model\NonResidents;
 use App\Model\Residents;
 use App\Model\Titles\Logo;
@@ -84,8 +88,8 @@ class SpaController extends Controller
     public function main_get()
     {
         return [
-            'about_us' => AboutUs::all()[0],
-            'logo' => Logo::all()[0]
+            'about_us' => MainPageAboutUs::all(),
+            'event' => MainPageEvent::all()
         ];
     }
 
@@ -96,11 +100,36 @@ class SpaController extends Controller
 
     public function get_logo()
     {
-        return Logo::all()[0];
+        return Logo::all();
     }
 
     public function get_questions()
     {
         return Faq::all();
+    }
+
+    public function get_question($id)
+    {
+        return Faq::find($id);
+    }
+
+    public function get_image_gallery()
+    {
+        return Gallery::all();
+    }
+
+    public function get_about_us()
+    {
+        return AboutUs::all();
+    }
+
+    public function get_events()
+    {
+        return Events::all();
+    }
+
+    public function get_event($id)
+    {
+        return Events::find($id);
     }
 }

@@ -11,89 +11,125 @@
           <q-breadcrumbs-el label="Main" />
         </q-breadcrumbs>
       </div>
-      <div class="q-pa-md">
-        <div class="q-gutter-y-md">
-          <div class="row">
-            <q-btn color="secondary" @click="saveMain">save</q-btn>
-          </div>
-          <q-card>
-            <q-tabs
-              v-model="tab"
-              dense
-              class="text-grey"
-              active-color="primary"
-              align="justify"
-              narrow-indicator
-            >
-              <q-tab name="about-us" label="About Us" />
-              <q-tab name="teachers" label="Teachers" />
-              <q-tab name="movies" label="Movies" />
-              <q-tab name="movies" label="Movies" />
-              <q-tab name="movies" label="Movies" />
-              <q-tab name="movies" label="Movies" />
-              <q-tab name="movies" label="Movies" />
-            </q-tabs>
-            <q-separator />
-            <q-tab-panels v-model="tab" animated>
-              <q-tab-panel name="about-us" class="p-0 admin__main-about__us">
-                <div class="row q-pa-md">
-                  <q-toggle
-                    v-model="aboutUsEditor.visible"
-                    checked-icon="check"
-                    label="Visible"
-                    unchecked-icon="clear"
-                    class="ml-auto"
+      <div class="q-pa-md q-gutter-y-md">
+        <q-btn color="secondary" @click="saveMain">save</q-btn>
+        <q-card>
+          <q-tabs
+            v-model="tab"
+            dense
+            class="text-grey"
+            active-color="primary"
+            align="justify"
+            narrow-indicator
+          >
+            <q-tab name="about-us" :label="$t('sidebarPagesAdmin').about_us" />
+            <q-tab name="teachers" :label="$t('sidebarPagesAdmin').teachers" />
+            <q-tab name="event" :label="$t('sidebarPagesAdmin').event" />
+          </q-tabs>
+          <q-separator />
+          <q-tab-panels v-model="tab" animated>
+            <q-tab-panel name="about-us" class="p-0 admin__main-about__us">
+              <div class="row q-pa-md">
+                <q-toggle
+                  v-model="aboutUsEditor.visible"
+                  checked-icon="check"
+                  label="Visible"
+                  unchecked-icon="clear"
+                  class="ml-auto"
+                />
+              </div>
+              <q-separator />
+              <q-tabs
+                v-model="aboutUsTab"
+                dense
+                class="text-grey"
+                active-color="primary"
+                align="justify"
+                narrow-indicator
+              >
+                <q-tab name="lang-en" label="En" />
+                <q-tab name="lang-ru" label="Ru" />
+                <q-tab name="lang-uz" label="Uz" />
+              </q-tabs>
+              <q-separator />
+              <q-tab-panels v-model="aboutUsTab" animated>
+                <q-tab-panel name="lang-en" class="p-0">
+                  <vue-editor
+                    :customModules="customModulesForEditor"
+                    :editorOptions="editorSettings"
+                    v-model="aboutUsEditor.en"
                   />
-                </div>
-                <q-separator />
-                <q-tabs
-                  v-model="aboutUsTab"
-                  dense
-                  class="text-grey"
-                  active-color="primary"
-                  align="justify"
-                  narrow-indicator
-                >
-                  <q-tab name="lang-en" label="En" />
-                  <q-tab name="lang-ru" label="Ru" />
-                  <q-tab name="lang-uz" label="Uz" />
-                </q-tabs>
-                <q-separator />
-                <q-tab-panels v-model="aboutUsTab" animated>
-                  <q-tab-panel name="lang-en" class="p-0">
-                    <vue-editor
-                      :customModules="customModulesForEditor"
-                      :editorOptions="editorSettings"
-                      v-model="aboutUsEditor.en"
-                    />
-                  </q-tab-panel>
-                  <q-tab-panel name="lang-ru" class="p-0">
-                    <vue-editor
-                      :customModules="customModulesForEditor"
-                      :editorOptions="editorSettings"
-                      v-model="aboutUsEditor.ru"
-                    />
-                  </q-tab-panel>
-                  <q-tab-panel name="lang-uz" class="p-0">
-                    <vue-editor
-                      :customModules="customModulesForEditor"
-                      :editorOptions="editorSettings"
-                      v-model="aboutUsEditor.uz"
-                    />
-                  </q-tab-panel>
-                </q-tab-panels>
-              </q-tab-panel>
-              <q-tab-panel name="teachers">
-                <div class="text-h6">teachers</div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </q-tab-panel>
-              <q-tab-panel name="movies">
-                <div class="text-h6">Movies</div>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              </q-tab-panel>
-            </q-tab-panels>
-          </q-card>
-        </div>
+                </q-tab-panel>
+                <q-tab-panel name="lang-ru" class="p-0">
+                  <vue-editor
+                    :customModules="customModulesForEditor"
+                    :editorOptions="editorSettings"
+                    v-model="aboutUsEditor.ru"
+                  />
+                </q-tab-panel>
+                <q-tab-panel name="lang-uz" class="p-0">
+                  <vue-editor
+                    :customModules="customModulesForEditor"
+                    :editorOptions="editorSettings"
+                    v-model="aboutUsEditor.uz"
+                  />
+                </q-tab-panel>
+              </q-tab-panels>
+            </q-tab-panel>
+            <q-tab-panel name="teachers">
+              <div class="text-h6">teachers</div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </q-tab-panel>
+            <q-tab-panel name="event" class="p-0 admin__main-event__us">
+              <div class="row q-pa-md">
+                <q-toggle
+                  v-model="eventEditor.visible"
+                  checked-icon="check"
+                  label="Visible"
+                  unchecked-icon="clear"
+                  class="ml-auto"
+                />
+              </div>
+              <q-separator />
+              <q-tabs
+                v-model="eventTab"
+                dense
+                class="text-grey"
+                active-color="primary"
+                align="justify"
+                narrow-indicator
+              >
+                <q-tab name="lang-en" label="En" />
+                <q-tab name="lang-ru" label="Ru" />
+                <q-tab name="lang-uz" label="Uz" />
+              </q-tabs>
+              <q-separator />
+              <q-tab-panels v-model="eventTab" animated>
+                <q-tab-panel name="lang-en" class="p-0">
+                  <vue-editor
+                    :customModules="customModulesForEditor"
+                    :editorOptions="editorSettings"
+                    v-model="eventEditor.en"
+                  />
+                </q-tab-panel>
+                <q-tab-panel name="lang-ru" class="p-0">
+                  <vue-editor
+                    :customModules="customModulesForEditor"
+                    :editorOptions="editorSettings"
+                    v-model="eventEditor.ru"
+                  />
+                </q-tab-panel>
+                <q-tab-panel name="lang-uz" class="p-0">
+                  <vue-editor
+                    :customModules="customModulesForEditor"
+                    :editorOptions="editorSettings"
+                    v-model="eventEditor.uz"
+                  />
+                </q-tab-panel>
+              </q-tab-panels>
+            </q-tab-panel>
+          </q-tab-panels>
+        </q-card>
       </div>
     </q-page>
   </q-scroll-area>
@@ -106,12 +142,20 @@ import { ImageDrop } from 'quill-image-drop-module'
 import ImageResize from 'quill-image-resize-module'
 
 export default {
-  name: 'PageIndex',
+  name: 'MainPage',
   data () {
     return {
       tab: 'about-us',
       aboutUsTab: 'lang-en',
+      eventTab: 'lang-en',
       aboutUsEditor: {
+        visible: true,
+        bgimage: null,
+        en: '',
+        ru: '',
+        uz: ''
+      },
+      eventEditor: {
         visible: true,
         bgimage: null,
         en: '',
@@ -144,17 +188,23 @@ export default {
   beforeMount () {
     this.$axios.post('main_get')
       .then(res => {
-        let aboutUs = res.data.about_us
+        let [aboutUs] = res.data.about_us
         this.aboutUsEditor.en = aboutUs.en
         this.aboutUsEditor.ru = aboutUs.ru
         this.aboutUsEditor.uz = aboutUs.uz
         this.aboutUsEditor.visible = !!aboutUs.visible
+        // event
+        let [event] = res.data.event
+        this.eventEditor.en = event.en
+        this.eventEditor.ru = event.ru
+        this.eventEditor.uz = event.uz
+        this.eventEditor.visible = !!event.visible
       })
   },
   mounted () {
   },
   methods: {
-    async saveMain () {
+    saveMain () {
       let data = {
         'about_us': {
           'visible': this.aboutUsEditor.visible,
@@ -162,10 +212,16 @@ export default {
           'en': this.aboutUsEditor.en,
           'ru': this.aboutUsEditor.ru,
           'uz': this.aboutUsEditor.uz
+        },
+        'event': {
+          'visible': this.eventEditor.visible,
+          'bgimage': this.eventEditor.bgimage,
+          'en': this.eventEditor.en,
+          'ru': this.eventEditor.ru,
+          'uz': this.eventEditor.uz
         }
       }
-      let res = await this.$axios.post('main_store', data)
-      if (res.data) {
+      this.$axios.post('main_store', data).then(() => {
         this.$q.notify({
           color: 'teal',
           icon: 'check_circle',
@@ -173,15 +229,11 @@ export default {
           position: 'top',
           timeout: 200
         })
-      }
+      })
     }
   }
 }
 </script>
 
-<style lang="stylus" scoped>
-  .admin__main
-    &-about__us
-      .q-panel.scroll
-        overflow: visible
+<style lang="stylus">
 </style>

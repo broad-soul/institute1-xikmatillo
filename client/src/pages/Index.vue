@@ -1,9 +1,15 @@
 <template>
   <q-page class="main smooth" v-touch-swipe.mouse="handleSwipe">
-    <section id="page1" class="main__section about__us" v-if="aboutUs.visible">
+    <section class="main__section about__us" v-if="aboutUs.visible">
       <div class="content" v-html="aboutUs.content"></div>
     </section>
-    <section id="page2" class="main__section partners">
+    <section class="main__section teachers">
+      <div class="content"><h1>teachers</h1></div>
+    </section>
+    <section class="main__section event" v-if="event.visible">
+      <div class="content" v-html="event.content"></div>
+    </section>
+    <section class="main__section partners">
       <div class="row">
         <div class="col-12 col-md-6" v-if="!mobileDetect"><img src="~assets/partners.jpg" alt=""></div>
         <div class="col-12 col-md-6">
@@ -53,7 +59,7 @@
         </div>
       </div>
       <div class="row">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1499.0585282501243!2d69.2538643!3d41.2845568!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8aed1bc42aad%3A0x100df44c6fc28ef8!2z0JDQutCw0LTQtdC80LjRh9C10YHQutC40Lkg0LvQuNGG0LXQuSDihJYyINC_0YDQuCDQo9C30JPQo9Cc0K8!5e0!3m2!1sru!2s!4v1560718949192!5m2!1sru!2s" width="100%" frameborder="0" style="border:0; height: 70vh;" allowfullscreen></iframe>
+        <iframe class="main__map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1499.0585282501243!2d69.2538643!3d41.2845568!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8aed1bc42aad%3A0x100df44c6fc28ef8!2z0JDQutCw0LTQtdC80LjRh9C10YHQutC40Lkg0LvQuNGG0LXQuSDihJYyINC_0YDQuCDQo9C30JPQo9Cc0K8!5e0!3m2!1sru!2s!4v1560718949192!5m2!1sru!2s" width="100%" frameborder="0" style="border:0; height: 70vh;" allowfullscreen></iframe>
       </div>
     </section>
   </q-page>
@@ -72,17 +78,16 @@ export default {
   },
   data () {
     return {
-      slide: 1,
+      scrollInt: 0,
       aboutUs: {
         visible: true,
         content: ''
       },
-      logo: {
-        image: '',
-        title: ''
+      event: {
+        visible: true,
+        content: ''
       },
-      scrollAnimated: true,
-      scrollInt: 0
+      scrollAnimated: true
     }
   },
   computed: {
@@ -95,39 +100,38 @@ export default {
   async beforeMount () {
     await this.mainGetData()
     if (this.getMainData) {
-      let aboutUs = this.getMainData.about_us
-      let logo = this.getMainData.logo
+      let [aboutUs] = this.getMainData.about_us
       this.aboutUs.content = aboutUs[this.$t('prefix')]
-      this.aboutUs.visible = aboutUs[this.$t('prefix')]
-      this.logo.image = logo.bgimage
-      this.logo.title = logo[this.$t('prefix')]
+      this.aboutUs.visible = aboutUs.visible
+      let [event] = this.getMainData.event
+      this.event.content = event[this.$t('prefix')]
+      this.event.visible = event.visible
     }
   },
   mounted () {
     // smooth scroll
     let sections = this.$('.main__section')
-    let scrollInt = 0
     let th = this
     document.querySelector('.smooth').addEventListener('wheel', function (e) {
       let deltaY = e.deltaY || e.detail || e.wheelDelta
       if (deltaY > 0) {
         // вниз
-        if (scrollInt < sections.length - 1 && th.scrollAnimated) {
-          scrollInt++
+        if (th.scrollInt < sections.length - 1 && th.scrollAnimated) {
+          th.scrollInt++
           th.scrollAnimated = false
           th.$('html, body').off().animate({
-            scrollTop: th.$(sections[scrollInt]).offset().top
+            scrollTop: th.$(sections[th.scrollInt]).offset().top
           }, 600, function () {
             th.scrollAnimated = true
           })
         }
       } else {
         // вверх
-        if (scrollInt > 0 && th.scrollAnimated) {
+        if (th.scrollInt > 0 && th.scrollAnimated) {
           th.scrollAnimated = false
-          scrollInt--
+          th.scrollInt--
           th.$('html, body').off().animate({
-            scrollTop: th.$(sections[scrollInt]).offset().top
+            scrollTop: th.$(sections[th.scrollInt]).offset().top
           }, 600, function () {
             th.scrollAnimated = true
           })
@@ -135,11 +139,21 @@ export default {
       }
     })
     // End smooth scroll
+    this.$store.subscribeAction((action, state) => {
+      switch (action.type) {
+        case 'refreshScrollIntIndex':
+          this.scrollInt = 0
+          break
+      }
+    })
     this.$store.subscribe((mutation, state) => {
       switch (mutation.type) {
         case 'CHANGE_LANG':
+          let [aboutUs] = this.getMainData.about_us
+          let [event] = this.getMainData.event
           setTimeout(() => {
-            this.aboutUs.content = this.getMainData.about_us[this.$t('prefix')]
+            this.aboutUs.content = aboutUs[this.$t('prefix')]
+            this.event.content = event[this.$t('prefix')]
           }, 100)
           break
       }
@@ -149,6 +163,7 @@ export default {
   },
   methods: {
     ...mapActions([
+      'refreshScrollIntIndex',
       'mainGetData'
     ]),
     handleSwipe ({ evt, ...info }) {
@@ -173,56 +188,56 @@ export default {
 </script>
 
 <style lang='stylus'>
-  .main__section
-    height: 100vh
-    overflow: hidden
-    &.contact
-      .image_main_contact
-        background-image: url('~assets/contact.jpg')
   .main
     min-height 100vh !important
     .q-carousel
       height 100vh
-  .about__us
-    background $linear_gradient
-    color #fff
-    height: 100vh
-    .content
-      padding: 20px 50px
-      margin: auto
-      h1
-        margin-bottom: 30px
-      @media (max-width: 1200px)
-        padding: 15px
-        h1
-          font-size: 40px
-          line-height: 40px
-          margin-top: 50px
-          margin-bottom: 15px
-        p
-          font-size: 13px
-          margin-bottom: 7px
-    h1
-      text-transform uppercase
-      color #fff
-  .partners
-      background $linear_gradient
-      img
-        height 100%
-    .text
-      padding-top 10px
-      max-width 400px
-      margin auto
-      height 100%
-      color #fff
-      h3
+    .main__section
+      height: 100vh
+      overflow: hidden
+      &.contact
+        .image_main_contact
+          background-image: url('~assets/contact.jpg')
+      &.about__us
+        background $linear_gradient
         color #fff
-      p
-        margin-bottom 30px
-      @media (max-width: 1200px)
-        padding: 30px
-        h3
-          font-size: 30px
-        p
-          font-size: 14px
+        height: 100vh
+        .content
+          padding: 20px 50px
+          margin: auto
+          h1
+            margin-bottom: 30px
+          @media (max-width: 1200px)
+            padding: 15px
+            h1
+              font-size: 40px
+              line-height: 40px
+              margin-top: 50px
+              margin-bottom: 15px
+            p
+              font-size: 13px
+              margin-bottom: 7px
+        h1
+          text-transform uppercase
+          color #fff
+      &.partners
+          background $linear_gradient
+          img
+            height 100%
+        .text
+          padding-top 10px
+          max-width 400px
+          margin auto
+          height 100%
+          color #fff
+          h3
+            color #fff
+          p
+            margin-bottom 30px
+          @media (max-width: 1200px)
+            padding: 30px
+            h3
+              font-size: 30px
+            p
+              font-size: 14px
 </style>

@@ -32,7 +32,7 @@
                   <q-icon name="search" />
                 </template>
               </q-input>
-              <q-btn flat @click="downloadExel">Download exel</q-btn>
+              <q-btn @click="downloadExel" color="green-14" class="mx-3">Download exel</q-btn>
               <q-select
                 v-model="visibleColumns"
                 class="ml-1"

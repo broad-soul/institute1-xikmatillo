@@ -31,9 +31,22 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/download_residents', 'SpaAdminController@download_residents');
     Route::post('/download_non_residents', 'SpaAdminController@download_non_residents');
     Route::post('/new_question', 'SpaAdminController@new_question');
+    Route::post('/update_question', 'SpaAdminController@update_question');
     Route::post('/delete_question/{id}', 'SpaAdminController@delete_question');
+    Route::post('/new_image_gallery', 'SpaAdminController@new_image_gallery');
+    Route::post('/delete_image_gallery', 'SpaAdminController@delete_image_gallery');
+    Route::post('/about_us_store', 'SpaAdminController@about_us_store');
+    Route::post('/event_store', 'SpaAdminController@event_store');
+    Route::post('/delete_event/{id}', 'SpaAdminController@delete_event');
+    Route::post('/update_event', 'SpaAdminController@update_event');
 });
+
 Route::post('/main_get', 'SpaController@main_get');
 Route::post('/get_titles', 'SpaController@get_titles');
 Route::post('/get_logo', 'SpaController@get_logo');
+Route::get('/get_about_us', 'SpaController@get_about_us');
 Route::get('/get_questions', 'SpaController@get_questions');
+Route::get('/get_question/{id}', 'SpaController@get_question');
+Route::get('/get_image_gallery', 'SpaController@get_image_gallery');
+Route::get('/get_events', 'SpaController@get_events');
+Route::get('/get_event/{id}', 'SpaController@get_event');

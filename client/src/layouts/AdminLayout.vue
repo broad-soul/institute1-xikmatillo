@@ -65,46 +65,39 @@
             header-class="text-teal"
             class="expand"
           >
-            <q-item clickable to="/admin/main" active-class="admin__sidebar-menu__link">
-              <q-item-section avatar>
-                <q-icon name="bookmark_border" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label>{{$t('sidebarPagesAdmin')[0]}}</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item clickable to="/admin/about-us" active-class="admin__sidebar-menu__link">
-              <q-item-section avatar>
-                <q-icon name="bookmark_border" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label>About us</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item clickable to="/admin/residents" active-class="admin__sidebar-menu__link">
-              <q-item-section avatar>
-                <q-icon name="bookmark_border" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label>{{$t('sidebarPagesAdmin')[1]}}</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item clickable to="/admin/non-residents" active-class="admin__sidebar-menu__link">
-              <q-item-section avatar>
-                <q-icon name="bookmark_border" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label>{{$t('sidebarPagesAdmin')[2]}}</q-item-label>
-              </q-item-section>
-            </q-item>
-            <q-item clickable to="/admin/faq" active-class="admin__sidebar-menu__link">
-              <q-item-section avatar>
-                <q-icon name="supervisor_account" />
-              </q-item-section>
-              <q-item-section>
-                <q-item-label>Faq</q-item-label>
-              </q-item-section>
-            </q-item>
+            <template v-for="(item, i) in sidebarPagesAdmin">
+              <q-item clickable :to="item.path"
+                active-class="admin__sidebar-menu__link"
+                :key="i"
+                dense
+                v-if="item.path !== 'application'"
+              >
+                <q-item-section>
+                  <q-item-label>{{item.title}}</q-item-label>
+                </q-item-section>
+              </q-item>
+              <q-expansion-item
+                dense-toggle
+                :key="i"
+                v-if="item.path === 'application'"
+                expand-separator
+                :label="item.title"
+                class="expand"
+                dense
+              >
+                <q-item clickable :to="elem.path"
+                  active-class="admin__sidebar-menu__link"
+                  v-for="(elem, i) in item.children"
+                  :key="i"
+                  style="padding-left: 30px;"
+                  dense
+                >
+                  <q-item-section>
+                    <q-item-label>{{elem.title}}</q-item-label>
+                  </q-item-section>
+                </q-item>
+              </q-expansion-item>
+            </template>
           </q-expansion-item>
           <q-item clickable to="/admin/titles" active-class="admin__sidebar-menu__link">
             <q-item-section avatar>
@@ -164,7 +157,7 @@ export default {
       this.$q.notify({
         color: 'teal',
         icon: 'check_circle',
-        message: 'Язык переключен на ' + lang,
+        message: this.$t(lang),
         position: 'top',
         timeout: 200
       })
@@ -188,6 +181,31 @@ export default {
         opacity: 0.75,
         top: '50px'
       }
+    },
+    sidebarPagesAdmin () {
+      return [
+        { title: this.$t('sidebarPagesAdmin').main, path: '/admin/main', icon: 'home' },
+        { title: this.$t('sidebarPagesAdmin').about_us, path: '/admin/about-us', icon: 'bookmark_border' },
+        {
+          title: this.$t('sidebarPagesAdmin').application,
+          path: 'application',
+          children: [
+            { title: this.$t('sidebarPagesAdmin').resident, path: '/admin/residents', icon: 'account_circle' },
+            { title: this.$t('sidebarPagesAdmin').non_resident, path: '/admin/non-residents', icon: 'account_circle' }
+          ]
+        },
+        { title: this.$t('sidebarPagesAdmin').teachers, path: '/admin/teachers', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').event, path: '/admin/event', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').blog, path: '/admin/blog', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').extra_classes, path: '/extra-classes', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').gallery, path: '/admin/gallery', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').statistics, path: '/admin/statistics', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').faq, path: '/admin/faq', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').partners, path: '/admin/partners', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').contests, path: '/admin/contests', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').regulations, path: '/admin/regulations', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').contacts, path: '/admin/contacts', icon: 'bookmark_border' }
+      ]
     }
   },
   beforeMount () {

@@ -2,61 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd8d1744-8893-4cf6-b64b-f7ab28c735c7" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/xikmatillo.loc.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/xikmatillo.loc.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Resident.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SpaAdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SpaAdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SpaAdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SpaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SpaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Faq.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Faq.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/Files.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/Files.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Model/MainPage/AboutUs.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Model/MainPage/MainPageAboutUs.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/quasar.conf.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/quasar.conf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/css/app.styl" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/css/app.styl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/i18n/en-us/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/i18n/en-us/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/i18n/ru/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/i18n/ru/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/i18n/uz/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/i18n/uz/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/layouts/AdminLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/layouts/AdminLayout.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/layouts/MyLayout.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/layouts/MyLayout.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Faq.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Faq.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/AboutUs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/AboutUs.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Login.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/NonResident.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/NonResident.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/Resident.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/Resident.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/Index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/Index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/Faq.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/Faq.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/admin/MainPage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/MainPage.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/admin/NonResidents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/NonResidents.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/admin/Residents.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/Residents.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/ShowNonResident.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/ShowNonResident.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/ShowResident.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/ShowResident.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/admin/Titles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/admin/Titles.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/router/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/store/client-module/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/client-module/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/store/client-module/getters.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/client-module/getters.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/049bf036.3ffe66f5.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/643e1f16.3ffe66f5.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/6a34b3e4.b9e87f9f.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.5f43731a.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/app.86ff9fa4.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/ce290bf4.71135b17.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/ceee605a.32e4613f.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/f36ca846.3533634b.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/049bf036.8a156b86.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/48c5a68a.90af1831.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/48c5adc2.8c68ae63.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/48c6459d.f9d569f4.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/48c81993.1831b114.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/48db03cd.c4d04918.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/5d3edf2e.ae03860c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/643e1f16.591472cb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/6a34b3e4.3f5136f9.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.2534b462.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.2c74de6a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/ce290bf4.4b31f023.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/ce290bf4.57d4180c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/ceee605a.01995309.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/f36ca846.bb9b02cd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/runtime.5962ee6a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/runtime.a1e8422b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_13_071334_create_main_page_event_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_13_071334_create_main_page_event_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_06_13_072216_create_main_page_about_us_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_06_13_072216_create_main_page_about_us_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/1130acbd.df01da97.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/3ec11b98.5c39ea8e.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/5cf5dd03.e768752b.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/63d29433.973d924b.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.7f305699.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/0ba5be38.7db2c52b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/1130acbd.3b77214a.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/3ec11b98.821c40ed.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/4d550254.5b55879d.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/5cf5dd03.5b20e564.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/63d29433.ee0a5fd8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.2daac045.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/runtime.66bb913c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/vendor.0baca92e.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web.zip" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -68,6 +57,9 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <executablePath>composer</executablePath>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="xikmatillo.loc" />
+  </component>
   <component name="FileColors">
     <fileColor scope="Non-Project Files (Material Default)" color="2E3C43" />
     <fileColor scope="Non-Project Files (Material Darker)" color="323232" />
@@ -76,13 +68,79 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/pages/Login.vue">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/pages/admin/EventShow.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-66">
-              <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+            <state relative-caret-position="267">
+              <caret line="83" column="38" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="38" />
               <folding>
-                <element signature="n#script#0;n#!!top" />
+                <element signature="e#2315#2316#0" expanded="true" />
+                <element signature="e#2350#2351#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/pages/admin/EventEdit.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1471">
+              <caret line="142" column="25" selection-start-line="142" selection-start-column="25" selection-end-line="142" selection-end-column="25" />
+              <folding>
+                <element signature="e#1942#1975#0" expanded="true" />
+                <element signature="e#2502#2616#0" expanded="true" />
+                <element signature="e#2812#2863#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/pages/admin/EventCreate.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="209">
+              <caret line="130" column="10" lean-forward="true" selection-start-line="130" selection-start-column="10" selection-end-line="133" selection-end-column="15" />
+              <folding>
+                <element signature="n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/pages/admin/FaqCreate.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="269">
+              <caret line="105" column="39" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
+              <folding>
+                <element signature="n#q-tabs#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+                <element signature="n#q-tab-panel#0;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+                <element signature="n#q-tab-panel#1;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+                <element signature="n#q-tab-panel#2;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+                <element signature="e#3287#3499#0" />
+                <element signature="e#3800#3801#0" expanded="true" />
+                <element signature="e#3854#3855#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/pages/admin/Faq.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/router/routes.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="481">
+              <caret line="35" column="23" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="23" />
+              <folding>
+                <element signature="e#104#762#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,36 +158,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>mainData</find>
-      <find>getMainData</find>
-      <find>getLogo</find>
-      <find>доба</find>
-      <find>education_language</find>
-      <find>father</find>
-      <find>size</find>
-      <find>max</find>
-      <find>xml</find>
-      <find>gd2</find>
-      <find>reside</find>
-      <find>go_to_admin_panel</find>
-      <find>Точные</find>
-      <find>Точн</find>
-      <find>direction</find>
-      <find>Зарубежная</find>
-      <find>394</find>
-      <find>Зарубежная филология</find>
-      <find>3940001</find>
-      <find>Anketa</find>
-      <find>profi</find>
-      <find>Anke</find>
-      <find>profile</find>
-      <find>about</find>
       <find>p-0</find>
       <find>about__us</find>
-      <find>AboutUs</find>
       <find>faq</find>
       <find>ifra</find>
       <find>S.</find>
+      <find>sidebarPages</find>
+      <find>@media</find>
+      <find>@med</find>
+      <find>this.isAdmin</find>
+      <find>Прик</find>
+      <find>added</find>
+      <find>loca</find>
+      <find>baseUrl</find>
+      <find>delete_resident</find>
+      <find>getImages</find>
+      <find>gallery</find>
+      <find>AboutUs</find>
+      <find>main</find>
+      <find>main_get</find>
+      <find>logo</find>
+      <find>get_about_us</find>
+      <find>ql-align-center</find>
+      <find>update</find>
+      <find>this.lo</find>
+      <find>saveMain</find>
+      <find>Download Ex</find>
+      <find>about-us</find>
+      <find>this.isAd</find>
+      <find>aboutUsEditor</find>
+      <find>aboutUs</find>
     </findStrings>
     <replaceStrings>
       <replace>all_files_with_сize</replace>
@@ -145,65 +203,71 @@
       <replace>teal-5</replace>
       <replace>visible</replace>
       <replace>100vh - 56px</replace>
+      <replace>save</replace>
+      <replace>eventEditor</replace>
+      <replace>event</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/client/src/pages/Gallery.vue" root0="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/Model/Zip.php" />
-        <option value="$PROJECT_DIR$/app/Model/MainPage/AboutUs.php" />
-        <option value="$PROJECT_DIR$/client/src/App.vue" />
-        <option value="$PROJECT_DIR$/client/src/store/client-module/state.js" />
-        <option value="$PROJECT_DIR$/client/src/store/client-module/mutations.js" />
-        <option value="$PROJECT_DIR$/client/src/boot/vue-fullpage.js" />
-        <option value="$PROJECT_DIR$/client/quasar.conf.js" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_06_14_111642_create_logo_title_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_06_14_111728_create_logo_table.php" />
-        <option value="$PROJECT_DIR$/app/Model/Titles/Logo.php" />
-        <option value="$PROJECT_DIR$/client/src/css/app.styl" />
-        <option value="$PROJECT_DIR$/client/src/store/client-module/actions.js" />
-        <option value="$PROJECT_DIR$/client/src/store/client-module/getters.js" />
-        <option value="$PROJECT_DIR$/client/src/pages/admin/Titles.vue" />
-        <option value="$PROJECT_DIR$/config/app.php" />
-        <option value="$PROJECT_DIR$/app/Model/Residents.php" />
-        <option value="$PROJECT_DIR$/client/src/boot/swipe.js" />
-        <option value="$PROJECT_DIR$/client/src/boot/jquery.js" />
-        <option value="$PROJECT_DIR$/client/src/index.template.html" />
-        <option value="$PROJECT_DIR$/Resident.vue" />
+        <option value="$PROJECT_DIR$/client/src/pages/Login.vue" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/client/src/pages/Resident.vue" />
-        <option value="$PROJECT_DIR$/app/Model/Exports/NonResidentsExport.php" />
-        <option value="$PROJECT_DIR$/app/Model/Exports/ResidentsExport.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_17_083129_create_gallery_table.php" />
+        <option value="$PROJECT_DIR$/app/Model/Files.php" />
+        <option value="$PROJECT_DIR$/app/Model/Gallery.php" />
+        <option value="$PROJECT_DIR$/client/src/i18n/en-us/index.js" />
+        <option value="$PROJECT_DIR$/client/src/i18n/ru/index.js" />
+        <option value="$PROJECT_DIR$/client/src/i18n/uz/index.js" />
+        <option value="$PROJECT_DIR$/client/quasar.conf.js" />
+        <option value="$PROJECT_DIR$/resources/views/app.blade.php" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/Gallery.vue" />
+        <option value="$PROJECT_DIR$/client/src/pages/Gallery.vue" />
+        <option value="$PROJECT_DIR$/app/Model/MainPage/AboutUs.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_13_071334_create_main_page_event_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_13_072216_create_main_page_about_us_table.php" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/MainPage.vue" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/AbouUs.vue" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_18_072931_create_about_us_table.php" />
+        <option value="$PROJECT_DIR$/app/Model/MainPage/MainPageAboutUs.php" />
+        <option value="$PROJECT_DIR$/app/Model/MainPage/MainPageEvent.php" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/AboutUs.vue" />
+        <option value="$PROJECT_DIR$/client/src/boot/axios.js" />
+        <option value="$PROJECT_DIR$/app/Model/Faq.php" />
+        <option value="$PROJECT_DIR$/client/src/store/client-module/getters.js" />
+        <option value="$PROJECT_DIR$/client/src/store/client-module/actions.js" />
+        <option value="$PROJECT_DIR$/client/src/pages/Index.vue" />
+        <option value="$PROJECT_DIR$/client/src/layouts/AdminLayout.vue" />
+        <option value="$PROJECT_DIR$/client/src/css/app.styl" />
+        <option value="$PROJECT_DIR$/client/src/pages/NonResident.vue" />
         <option value="$PROJECT_DIR$/client/src/pages/admin/Residents.vue" />
         <option value="$PROJECT_DIR$/client/src/pages/admin/NonResidents.vue" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/ProfileController.php" />
-        <option value="$PROJECT_DIR$/client/src/pages/admin/ShowResident.vue" />
-        <option value="$PROJECT_DIR$/client/src/pages/admin/ShowNonResident.vue" />
-        <option value="$PROJECT_DIR$/client/src/pages/admin/Index.vue" />
-        <option value="$PROJECT_DIR$/client/src/pages/admin/MainPage.vue" />
         <option value="$PROJECT_DIR$/client/src/pages/AboutUs.vue" />
-        <option value="$PROJECT_DIR$/client/src/pages/NonResident.vue" />
-        <option value="$PROJECT_DIR$/client/src/pages/Teachers.vue" />
-        <option value="$PROJECT_DIR$/client/src/pages/Event.vue" />
-        <option value="$PROJECT_DIR$/client/src/pages/Blog.vue" />
-        <option value="$PROJECT_DIR$/client/src/router/routes.js" />
-        <option value="$PROJECT_DIR$/client/src/layouts/AdminLayout.vue" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_06_16_102543_create_faq_table.php" />
-        <option value="$PROJECT_DIR$/app/Model/Faq.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SpaController.php" />
-        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/app/Model/Event.php" />
+        <option value="$PROJECT_DIR$/../blog/database/migrations/2017_12_20_112525_create_posts_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_18_132223_create_event_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_06_18_133838_create_events_table.php" />
+        <option value="$PROJECT_DIR$/app/Model/AboutUs.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/SpaAdminController.php" />
-        <option value="$PROJECT_DIR$/client/src/pages/admin/Faq.vue" />
-        <option value="$PROJECT_DIR$/client/src/pages/Faq.vue" />
-        <option value="$PROJECT_DIR$/resources/views/app.blade.php" />
-        <option value="$PROJECT_DIR$/client/src/pages/Index.vue" />
-        <option value="$PROJECT_DIR$/client/src/i18n/uz/index.js" />
-        <option value="$PROJECT_DIR$/client/src/i18n/ru/index.js" />
-        <option value="$PROJECT_DIR$/client/src/i18n/en-us/index.js" />
+        <option value="$PROJECT_DIR$/app/Model/Events.php" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/EventShow.vue" />
         <option value="$PROJECT_DIR$/client/src/layouts/MyLayout.vue" />
-        <option value="$PROJECT_DIR$/client/src/pages/Login.vue" />
+        <option value="$PROJECT_DIR$/routes/api.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SpaController.php" />
+        <option value="$PROJECT_DIR$/client/src/router/routes.js" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/Faq.vue" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/EventCreate.vue" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/EventEdit.vue" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/FaqEdit.vue" />
+        <option value="$PROJECT_DIR$/client/src/pages/admin/FaqCreate.vue" />
       </list>
     </option>
   </component>
@@ -321,27 +385,54 @@
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-10" />
-    <option name="y" value="-10" />
-    <option name="width" value="1939" />
-    <option name="height" value="1099" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="253" />
+    <option name="y" value="1080" />
+    <option name="width" value="1242" />
+    <option name="height" value="704" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
+      <showMembers ProjectPane="false" />
+      <autoscrollToSource ProjectPane="false" />
+      <autoscrollFromSource ProjectPane="true" />
+      <sortByType ProjectPane="false" />
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
               <item name="xikmatillo.loc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xikmatillo.loc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xikmatillo.loc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xikmatillo.loc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Http" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xikmatillo.loc" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="Model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
@@ -364,6 +455,21 @@
             <path>
               <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
               <item name="xikmatillo.loc" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xikmatillo.loc" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="router" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xikmatillo.loc" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -372,10 +478,16 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="xikmatillo.loc" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xikmatillo.loc" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -387,22 +499,22 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2018.3.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\OSPanel\domains\xikmatillo.loc\app\Model" />
-      <recent name="C:\OSPanel\domains\xikmatillo.loc\client\src" />
-      <recent name="C:\OSPanel\domains\xikmatillo.loc\client\node_modules\quill\modules" />
-      <recent name="C:\OSPanel\domains\xikmatillo.loc\client\src\pages" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\OSPanel\domains\xikmatillo.loc\client\src\pages\admin" />
       <recent name="C:\OSPanel\domains\xikmatillo.loc\client\src\pages" />
       <recent name="C:\OSPanel\domains\xikmatillo.loc\client\src\assets" />
       <recent name="C:\OSPanel\domains\xikmatillo.loc\client\node_modules\quasar\lang" />
       <recent name="C:\OSPanel\domains\xikmatillo.loc\client\node_modules\quill-image-resize-module" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\OSPanel\domains\xikmatillo.loc\app\Model" />
+      <recent name="C:\OSPanel\domains\xikmatillo.loc\client\src" />
+      <recent name="C:\OSPanel\domains\xikmatillo.loc\client\node_modules\quill\modules" />
+      <recent name="C:\OSPanel\domains\xikmatillo.loc\client\src\pages" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -439,20 +551,31 @@
       <workItem from="1560137980230" duration="46065000" />
       <workItem from="1560258755956" duration="11157000" />
       <workItem from="1560331981440" duration="68726000" />
-      <workItem from="1560530451034" duration="61054000" />
+      <workItem from="1560530451034" duration="62951000" />
+      <workItem from="1560742747732" duration="63668000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="369740000" />
+    <option name="totallyTimeSpent" value="435305000" />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1551" height="879" extended-state="0" />
+    <frame x="-7" y="1073" width="1550" height="878" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Structure" order="0" side_tool="true" weight="0.25" />
-      <window_info id="npm" order="1" side_tool="true" weight="0.32950708" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="3" weight="0.20729236" />
+      <window_info id="Structure" order="0" sideWeight="0.5006605" side_tool="true" weight="0.21081081" />
+      <window_info id="npm" order="1" sideWeight="0.5006605" side_tool="true" weight="0.21081081" />
+      <window_info id="Favorites" order="2" sideWeight="0.5006605" side_tool="true" weight="0.21081081" />
+      <window_info content_ui="combo" x="611" y="1133" width="313" height="757" id="Project" order="3" sideWeight="0.4993395" weight="0.21554054" />
       <window_info anchor="bottom" id="TypeScript" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.3294423" />
@@ -460,12 +583,12 @@
       <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" />
+      <window_info anchor="bottom" id="TODO" order="7" show_stripe_button="false" weight="0.32893" />
       <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32880434" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" weight="0.32760897" />
       <window_info anchor="bottom" id="Database Changes" order="10" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.42255434" />
+      <window_info anchor="bottom" id="Event Log" order="11" show_stripe_button="false" sideWeight="0.5006757" side_tool="true" weight="0.42140028" />
+      <window_info anchor="bottom" id="Terminal" order="12" sideWeight="0.49932432" weight="0.4015852" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -477,470 +600,486 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/.quasar-ide-helper/QScrollArea.js">
+    <entry file="file://$PROJECT_DIR$/client/dist/spa/js/48c5e7fe.8eddf4dd.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="13" column="4" selection-start-line="13" selection-start-column="4" selection-end-line="13" selection-end-column="4" />
+        <state relative-caret-position="237">
+          <caret column="1148" selection-start-column="1148" selection-end-column="1148" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/store/client-module/state.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/store/client-module/mutations.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="7" column="29" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="29" />
-          <folding>
-            <element signature="e#41#42#0" expanded="true" />
-            <element signature="e#64#65#0" expanded="true" />
-            <element signature="e#175#176#0" expanded="true" />
-            <element signature="e#200#201#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Titles/Logo.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="19" column="58" selection-start-line="19" selection-start-column="58" selection-end-line="19" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/MainPage/AboutUs.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-          <folding>
-            <element signature="e#356#560#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/css/app.styl">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="15" lean-forward="true" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/store/client-module/getters.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="428">
-          <caret line="98" column="17" lean-forward="true" selection-start-line="98" selection-start-column="17" selection-end-line="98" selection-end-column="17" />
-          <folding>
-            <element signature="e#32#33#0" expanded="true" />
-            <element signature="e#172#173#0" expanded="true" />
-            <element signature="e#463#464#0" expanded="true" />
-            <element signature="e#487#488#0" expanded="true" />
-            <element signature="e#1752#1753#0" expanded="true" />
-            <element signature="e#1778#1779#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../../userdata/config/PHP_7.3-x64_php.ini">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="163" column="17" selection-start-line="163" selection-start-column="14" selection-end-line="163" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/excel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5645" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="229" column="58" selection-start-line="229" selection-start-column="58" selection-end-line="229" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/store/client-module/actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="29" column="59" lean-forward="true" selection-start-line="29" selection-start-column="59" selection-end-line="29" selection-end-column="92" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/maatwebsite/excel/src/Excel.php">
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_13_071334_create_main_page_event_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
-          <caret line="190" column="98" lean-forward="true" selection-start-line="190" selection-start-column="98" selection-end-line="190" selection-end-column="98" />
-          <folding>
-            <element signature="e#2884#3124#0#PHP" expanded="true" />
-            <element signature="e#4614#4859#0#PHP" expanded="true" />
-          </folding>
+          <caret line="17" column="46" lean-forward="true" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Residents.php">
+    <entry file="file://$PROJECT_DIR$/client/src/i18n/en-us/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="330">
+          <caret line="10" column="9" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/Gallery.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="87" column="72" selection-start-line="87" selection-start-column="72" selection-end-line="87" selection-end-column="72" />
           <folding>
-            <element signature="e#166#642#0#PHP" />
-            <element signature="e#649#815#0#PHP" expanded="true" />
+            <element signature="n#q-uploader#0;n#div#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#q-uploader#0;n#div#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/boot/jquery.js">
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/MainPage.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="144" column="13" selection-start-line="144" selection-start-column="13" selection-end-line="144" selection-end-column="13" />
+          <folding>
+            <element signature="n#div#0;n#q-tab-panel#0;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="n#q-tabs#0;n#q-tab-panel#0;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="n#q-tab-panels#0;n#q-tab-panel#0;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="n#q-tab-panel#1;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_13_072216_create_main_page_about_us_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="22" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_18_072931_create_about_us_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="32" />
+          <folding>
+            <element signature="e#316#430#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/MainPage/MainPageAboutUs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="24" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/MainPage/MainPageEvent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
+          <folding>
+            <element signature="e#191#395#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/.quasar/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/node_modules/quill/dist/quill.bubble.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="379" column="27" selection-start-line="379" selection-start-column="12" selection-end-line="379" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/node_modules/quill/dist/quill.core.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="312" column="36" selection-start-line="312" selection-start-column="21" selection-end-line="312" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/node_modules/quill/dist/quill.core.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-594">
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/node_modules/vue2-editor/dist/vue2-editor.esm.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3273">
+          <caret line="879" column="6" selection-start-line="879" selection-start-column="6" selection-end-line="879" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/node_modules/quill/dist/quill.snow.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="372" column="26" lean-forward="true" selection-start-line="372" selection-start-column="26" selection-end-line="372" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/boot/axios.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="33">
           <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/boot/swipe.js">
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/AboutUs.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="50" column="27" lean-forward="true" selection-end-line="65" />
+        <state relative-caret-position="54">
+          <caret line="60" column="13" selection-start-line="60" selection-start-column="13" selection-end-line="60" selection-end-column="13" />
           <folding>
-            <element signature="e#1892#1893#0" expanded="true" />
-            <element signature="e#1939#1940#0" expanded="true" />
+            <element signature="n#q-tabs#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="e#5299#5895#0" />
+            <element signature="e#5658#5772#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/index.template.html">
+    <entry file="file://$PROJECT_DIR$/../blog/app/Post.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Resident.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="33" column="27" lean-forward="true" selection-start-line="33" selection-start-column="27" selection-end-line="35" selection-end-column="68" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Exports/NonResidentsExport.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="63" column="34" lean-forward="true" selection-start-line="63" selection-start-column="34" selection-end-line="63" selection-end-column="34" />
+        <state relative-caret-position="330">
+          <caret line="75" selection-start-line="75" selection-end-line="80" selection-end-column="5" />
           <folding>
-            <element signature="e#37#64#0#PHP" expanded="true" />
-            <element signature="e#332#1863#0#PHP" expanded="true" />
-            <element signature="e#386#1817#0#PHP" />
-            <element signature="e#1460#1580#0#PHP" />
+            <element signature="e#23#41#0#PHP" expanded="true" />
+            <element signature="e#1601#1723#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Exports/ResidentsExport.php">
+    <entry file="file://$PROJECT_DIR$/../blog/app/Http/Controllers/Admin/PostsController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="55" column="27" selection-start-line="55" selection-start-column="27" selection-end-line="55" selection-end-column="27" />
+        <state relative-caret-position="33">
+          <caret line="65" column="49" lean-forward="true" selection-start-line="65" selection-start-column="49" selection-end-line="65" selection-end-column="49" />
           <folding>
-            <element signature="e#37#61#0#PHP" expanded="true" />
-            <element signature="e#384#425#0#PHP" expanded="true" />
-            <element signature="e#385#1689#0#PHP" expanded="true" />
-            <element signature="e#2146#2472#0#PHP" />
+            <element signature="e#1201#1593#0#PHP" expanded="true" />
+            <element signature="e#1599#2245#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/NonResidents.vue">
+    <entry file="file://$PROJECT_DIR$/client/src/store/client-module/getters.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="111">
-          <caret line="50" column="23" lean-forward="true" selection-start-line="50" selection-start-column="23" selection-end-line="50" selection-end-column="23" />
+        <state relative-caret-position="501">
+          <caret line="97" column="26" selection-start-line="97" selection-start-column="22" selection-end-line="97" selection-end-column="26" />
           <folding>
-            <element signature="n#style#0;n#q-scroll-area#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#32#33#0" expanded="true" />
+            <element signature="e#172#173#0" expanded="true" />
+            <element signature="e#1752#1753#0" expanded="true" />
+            <element signature="e#1778#1779#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/ShowNonResident.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="35" column="109" selection-start-line="35" selection-start-column="109" selection-end-line="35" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/ShowResident.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="41" column="109" selection-start-line="41" selection-start-column="109" selection-end-line="41" selection-end-column="109" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/admin/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="726">
           <caret line="22" column="6" selection-start-line="22" selection-start-column="6" selection-end-line="22" selection-end-column="6" />
           <folding>
             <element signature="n#style#0;n#q-scroll-area#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#q-page#0;n#template#0;n#!!top" />
-            <element signature="e#719#742#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/Error404.vue">
+    <entry file="file://$PROJECT_DIR$/client/src/store/client-module/actions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-893" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/NonResident.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="398" column="26" lean-forward="true" selection-start-line="398" selection-start-column="26" selection-end-line="398" selection-end-column="26" />
+        <state relative-caret-position="514">
+          <caret line="61" column="43" selection-start-line="61" selection-start-column="22" selection-end-line="61" selection-end-column="43" />
           <folding>
-            <element signature="n#template#0;n#!!top" />
-            <element signature="n#style#0;n#q-scroll-area#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#script#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/AboutUs.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1254">
-          <caret line="41" column="28" lean-forward="true" selection-start-line="41" selection-start-column="28" selection-end-line="41" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/Teachers.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="24" column="54" selection-start-line="24" selection-start-column="54" selection-end-line="24" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/Event.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/Blog.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-          <caret line="21" column="44" selection-start-line="21" selection-start-column="44" selection-end-line="21" selection-end-column="44" />
-          <caret line="23" column="56" selection-start-line="23" selection-start-column="56" selection-end-line="23" selection-end-column="56" />
-          <caret line="24" column="50" selection-start-line="24" selection-start-column="50" selection-end-line="24" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/MainPage.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/router/routes.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="28" column="61" selection-start-line="28" selection-start-column="61" selection-end-line="28" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/layouts/AdminLayout.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="72" column="75" selection-start-line="72" selection-start-column="75" selection-end-line="72" selection-end-column="75" />
-          <folding>
-            <element signature="n#q-btn#0;n#q-toolbar#0;n#q-header#0;n#q-layout#0;n#template#0;n#!!top" />
-            <element signature="n#q-toolbar-title#0;n#q-toolbar#0;n#q-header#0;n#q-layout#0;n#template#0;n#!!top" />
-            <element signature="n#q-btn#1;n#q-toolbar#0;n#q-header#0;n#q-layout#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#q-scroll-area#0;n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#q-page-container#0;n#q-layout#0;n#template#0;n#!!top" />
-            <element signature="n#q-page-scroller#0;n#q-layout#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#q-btn#0;n#q-page-scroller#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_16_102543_create_faq_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/Resident.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="16" column="34" lean-forward="true" selection-start-line="16" selection-start-column="34" selection-end-line="17" selection-end-column="32" />
-          <folding>
-            <element signature="n#style#0;n#q-scroll-area#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/UserController.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SpaController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="101" column="33" selection-start-line="101" selection-start-column="20" selection-end-line="101" selection-end-column="33" />
-          <folding>
-            <element signature="e#40#58#0#PHP" expanded="true" />
-            <element signature="e#2842#2881#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/Residents.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="455">
-          <caret line="205" column="8" lean-forward="true" selection-start-line="186" selection-start-column="6" selection-end-line="205" selection-end-column="8" />
-          <folding>
-            <element signature="n#style#0;n#q-select#0;n#template#0;n#q-table#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/api.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="33" column="33" selection-start-line="33" selection-start-column="18" selection-end-line="33" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Model/Faq.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SpaAdminController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret line="119" selection-start-line="119" selection-end-line="119" />
-          <folding>
-            <element signature="e#41#82#0#PHP" expanded="true" />
-            <element signature="e#2743#2866#0#PHP" expanded="true" />
-            <element signature="e#2872#2954#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/app.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="592">
-          <caret column="5825" selection-start-column="5825" selection-end-column="5825" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/dist/spa/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret column="4259" selection-start-column="4259" selection-end-column="4259" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/Titles.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2606">
-          <caret line="141" column="5" selection-start-line="141" selection-start-column="5" selection-end-line="141" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/i18n/uz/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="60" column="43" lean-forward="true" selection-start-line="60" selection-start-column="43" selection-end-line="61" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/i18n/ru/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/i18n/en-us/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="559">
-          <caret line="61" column="9" selection-start-line="61" selection-start-column="2" selection-end-line="61" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/layouts/MyLayout.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#q-scroll-area#0;n#q-list#0;n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#q-page-scroller#0;n#q-layout#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#q-btn#0;n#q-page-scroller#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#refreshScrollIntIndex#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/Index.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="36" column="12" lean-forward="true" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="12" />
+        <state relative-caret-position="297">
+          <caret line="9" column="56" lean-forward="true" selection-start-line="9" selection-start-column="56" selection-end-line="9" selection-end-column="56" />
           <folding>
-            <element signature="n#div#0;n#div#1;n#div#0;n#section#1;n#q-page#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#section#2;n#q-page#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#section#2;n#q-page#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#div#0;n#section#2;n#q-page#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#section#2;n#q-page#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#iframe#0;n#div#1;n#section#2;n#q-page#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#5867#5894#0" expanded="true" />
+            <element signature="e#5932#6566#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/css/app.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="514">
+          <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/layouts/AdminLayout.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="33">
+          <caret line="27" column="28" lean-forward="true" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+          <folding>
+            <element signature="n#q-btn#0;n#q-toolbar#0;n#q-header#0;n#q-layout#0;n#template#0;n#!!top" />
+            <element signature="n#q-toolbar-title#0;n#q-toolbar#0;n#q-header#0;n#q-layout#0;n#template#0;n#!!top" />
+            <element signature="n#q-btn#1;n#q-toolbar#0;n#q-header#0;n#q-layout#0;n#template#0;n#!!top" />
+            <element signature="n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#q-scroll-area#0;n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#q-item#0;n#q-expansion-item#0;n#template#0;n#q-expansion-item#0;n#q-list#0;n#q-scroll-area#0;n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#q-page-container#0;n#q-layout#0;n#template#0;n#!!top" />
+            <element signature="n#q-page-scroller#0;n#q-layout#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#q-btn#0;n#q-page-scroller#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#5202#6959#0" expanded="true" />
+            <element signature="e#5521#5765#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/Resident.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="30" column="64" lean-forward="true" selection-start-line="30" selection-start-column="43" selection-end-line="30" selection-end-column="64" />
+          <folding>
+            <element signature="n#style#0;n#q-scroll-area#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="e#13785#15230#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/NonResident.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="32" column="55" selection-start-line="32" selection-start-column="55" selection-end-line="32" selection-end-column="55" />
+          <caret line="44" column="57" selection-start-line="44" selection-start-column="57" selection-end-line="44" selection-end-column="57" />
+          <caret line="57" column="57" selection-start-line="57" selection-start-column="57" selection-end-line="57" selection-end-column="57" />
+          <caret line="78" column="64" selection-start-line="78" selection-start-column="64" selection-end-line="78" selection-end-column="64" />
+          <caret line="102" column="57" selection-start-line="102" selection-start-column="57" selection-end-line="102" selection-end-column="57" />
+          <caret line="115" column="57" selection-start-line="115" selection-start-column="57" selection-end-line="115" selection-end-column="57" />
+          <caret line="128" column="57" selection-start-line="128" selection-start-column="57" selection-end-line="128" selection-end-column="57" />
+          <caret line="149" column="57" selection-start-line="149" selection-start-column="57" selection-end-line="149" selection-end-column="57" />
+          <folding>
+            <element signature="n#style#0;n#q-scroll-area#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
             <element signature="n#script#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/NonResidents.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/Residents.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="12" selection-end-column="12" />
+          <folding>
+            <element signature="n#style#0;n#q-select#0;n#template#0;n#q-table#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../blog/database/migrations/2017_12_25_054840_create_posts_tags_table.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../blog/database/migrations/2018_01_03_101638_add_date_to_posts.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../blog/database/migrations/2018_01_03_130518_add_image_to_posts.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../blog/database/migrations/2017_12_20_112525_create_posts_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="19" column="36" lean-forward="true" selection-start-line="19" selection-start-column="36" selection-end-line="24" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_18_132223_create_event_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="26" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="9" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_06_18_133838_create_events_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="23" column="36" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/AboutUs.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="7" column="34" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/AboutUs.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
+          <folding>
+            <element signature="e#169#335#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Faq.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="11" selection-start-line="11" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="e#160#254#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Model/Events.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="e#133#287#0#PHP" expanded="true" />
+            <element signature="e#293#332#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/layouts/MyLayout.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="221" column="36" selection-start-line="221" selection-start-column="36" selection-end-line="221" selection-end-column="36" />
+          <folding>
+            <element signature="n#style#0;n#q-scroll-area#0;n#q-list#0;n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#q-avatar#0;n#q-btn#0;n#q-scroll-area#0;n#q-list#0;n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#q-item-section#0;n#q-item#0;n#q-scroll-area#0;n#q-list#0;n#q-drawer#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#q-page-container#0;n#q-layout#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#q-btn#0;n#q-page-scroller#0;n#q-layout#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="e#7737#7832#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/EventShow.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="267">
+          <caret line="83" column="38" selection-start-line="83" selection-start-column="26" selection-end-line="83" selection-end-column="38" />
+          <folding>
+            <element signature="e#2315#2316#0" expanded="true" />
+            <element signature="e#2350#2351#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="51" column="54" selection-start-line="51" selection-start-column="54" selection-end-line="51" selection-end-column="54" />
+          <folding>
+            <element signature="e#183#365#1#PHP" expanded="true" />
+            <element signature="e#706#2243#1#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SpaController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="132" column="33" lean-forward="true" selection-start-line="132" selection-start-column="33" selection-end-line="132" selection-end-column="33" />
+          <folding>
+            <element signature="e#40#62#0#PHP" expanded="true" />
+            <element signature="e#3060#3136#0#PHP" expanded="true" />
+            <element signature="e#3305#3375#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SpaAdminController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="172" column="37" lean-forward="true" selection-start-line="172" selection-start-column="37" selection-end-line="172" selection-end-column="37" />
+          <folding>
+            <element signature="e#41#63#0#PHP" expanded="true" />
+            <element signature="e#4472#4554#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/router/routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="481">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="23" />
+          <folding>
+            <element signature="e#104#762#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/pages/admin/Faq.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2105">
-          <caret line="172" column="4" selection-start-line="172" selection-start-column="4" selection-end-line="177" selection-end-column="4" />
+        <state relative-caret-position="300">
+          <caret line="112" column="32" selection-start-line="112" selection-start-column="32" selection-end-line="112" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/FaqEdit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="44" column="106" selection-start-line="44" selection-start-column="106" selection-end-line="44" selection-end-column="106" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/EventEdit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1471">
+          <caret line="142" column="25" selection-start-line="142" selection-start-column="25" selection-end-line="142" selection-end-column="25" />
           <folding>
-            <element signature="n#q-card#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
-            <element signature="n#q-tabs#0;n#div#0;n#q-slide-transition#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
-            <element signature="n#q-tabs#0;n#q-card#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
-            <element signature="n#q-expansion-item#0;n#q-tab-panel#0;n#q-tab-panels#0;n#q-card#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
-            <element signature="n#q-tab-panel#1;n#q-tab-panels#0;n#q-card#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
-            <element signature="n#q-tab-panel#2;n#q-tab-panels#0;n#q-card#0;n#div#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
-            <element signature="e#6350#6351#0" expanded="true" />
-            <element signature="e#6391#6392#0" expanded="true" />
-            <element signature="e#8252#8253#0" expanded="true" />
-            <element signature="e#8334#8335#0" expanded="true" />
+            <element signature="e#1942#1975#0" expanded="true" />
+            <element signature="e#2502#2616#0" expanded="true" />
+            <element signature="e#2812#2863#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/Faq.vue">
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/EventCreate.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="12" column="35" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        <state relative-caret-position="209">
+          <caret line="130" column="10" lean-forward="true" selection-start-line="130" selection-start-column="10" selection-end-line="133" selection-end-column="15" />
           <folding>
-            <element signature="e#1185#1186#0" expanded="true" />
-            <element signature="e#1226#1227#0" expanded="true" />
+            <element signature="n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/Login.vue">
+    <entry file="file://$PROJECT_DIR$/client/src/pages/admin/FaqCreate.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-66">
-          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        <state relative-caret-position="269">
+          <caret line="105" column="39" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
           <folding>
-            <element signature="n#script#0;n#!!top" />
+            <element signature="n#q-tabs#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="n#q-tab-panel#0;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="n#q-tab-panel#1;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="n#q-tab-panel#2;n#q-tab-panels#0;n#q-card#0;n#div#1;n#q-page#0;n#q-scroll-area#0;n#template#0;n#!!top" />
+            <element signature="e#3287#3499#0" />
+            <element signature="e#3800#3801#0" expanded="true" />
+            <element signature="e#3854#3855#0" expanded="true" />
           </folding>
         </state>
       </provider>

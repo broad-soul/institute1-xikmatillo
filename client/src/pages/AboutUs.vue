@@ -5,9 +5,7 @@
   >
     <q-page class="">
       <div class="row">
-        <div class="col-12">
-          About us
-        </div>
+        <div class="col-12 q-pa-md" v-html="aboutUs[this.$t('prefix')]"></div>
       </div>
     </q-page>
   </q-scroll-area>
@@ -27,7 +25,7 @@ export default {
   },
   data () {
     return {
-      slide: 1
+      aboutUs: {}
     }
   },
   computed: {
@@ -35,6 +33,14 @@ export default {
       'getThumbStyle',
       'mobileDetect'
     ])
+  },
+  beforeMount () {
+    this.$axios.get('get_about_us').then(res => {
+      let [aboutUs] = res.data
+      this.aboutUs = aboutUs
+    })
+  },
+  mounted () {
   }
 }
 </script>

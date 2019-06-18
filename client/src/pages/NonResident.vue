@@ -3,15 +3,14 @@
     :thumb-style="getThumbStyle"
     style="height: calc(100vh - 56px)"
   >
-    <q-page class="ssss">
+    <q-page class="client__non_resident">
       <div class="text-center">
         <h3>{{$t('regTextOpen')}}</h3>
         <p>{{$t('registrationWillTakePlace')}}</p>
       </div>
-      <div class="row justify-center profile">
-        <div class="col-lg-5">
-          <h3>{{$t('profileText')}}</h3>
-          <p>Академический лицей узбекского государственного университета мировых языков</p>
+      <div class="row justify-center application">
+        <div class="col-lg-5 col-12">
+          <h3 class="pl-3 p-md-0 my-0 my-md-4 title">{{$t('profileText')}}</h3>
           <q-card class="my-card" style="margin-bottom: 50px;">
             <q-card-section>
               <q-form
@@ -31,7 +30,7 @@
                   lazy-rules
                   :disable="loading"
                   :rules="[
-                    val => val || 'Please type something'
+                    val => val || $t('required_fields')
                   ]"
                 />
                 <q-input
@@ -43,7 +42,7 @@
                   lazy-rules
                   :disable="loading"
                   :rules="[
-                    val => !!val || 'Please type something',
+                    val => !!val || $t('required_fields'),
                     val => val.length > 1 || 'Please use min 2',
                   ]"
                 />
@@ -56,7 +55,7 @@
                   lazy-rules
                   :disable="loading"
                   :rules="[
-                    val => !!val || 'Please type something',
+                    val => !!val || $t('required_fields'),
                     val => val.length > 1 || 'Please use min 2',
                   ]"
                 />
@@ -77,7 +76,7 @@
                   clearable
                   :disable="loading"
                   mask="##/##/####"
-                  :rules="[val => !!val || 'Please type something']"
+                  :rules="[val => !!val || $t('required_fields')]"
                 >
                   <template v-slot:append>
                     <q-icon name="event" class="cursor-pointer">
@@ -101,7 +100,7 @@
                   lazy-rules
                   :disable="loading"
                   :rules="[
-                    val => !!val || 'Please type something',
+                    val => !!val || $t('required_fields'),
                     val => val.length > 1 || 'Please use min 2',
                   ]"
                 />
@@ -114,7 +113,7 @@
                   lazy-rules
                   :disable="loading"
                   :rules="[
-                    val => !!val || 'Please type something',
+                    val => !!val || $t('required_fields'),
                     val => val.length > 1 || 'Please use min 2',
                   ]"
                 />
@@ -127,7 +126,7 @@
                   lazy-rules
                   :disable="loading"
                   :rules="[
-                    val => !!val || 'Please type something',
+                    val => !!val || $t('required_fields'),
                     val => val.length > 1 || 'Please use min 2',
                   ]"
                 />
@@ -148,13 +147,13 @@
                   lazy-rules
                   :disable="loading"
                   :rules="[
-                    val => !!val || 'Please type something',
+                    val => !!val || $t('required_fields'),
                     val => val.length > 1 || 'Please use min 2',
                   ]"
                 />
                 <q-uploader
                   extensions=".jpg,.jpeg,.png,.doc,.exel"
-                  accept=".jpg, .jpeg, .pdf, image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
+                  accept=".jpg, .jpeg, .pdf, .png image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
                   :max-file-size="3048576"
                   :max-total-size="10248576"
                   @added="addFile"
@@ -250,8 +249,7 @@
           </q-card>
         </div>
       </div>
-      <div>
-      </div>
+      <footer>footer</footer>
     </q-page>
   </q-scroll-area>
 </template>
@@ -395,6 +393,22 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  footer
+    margin-top: auto
+    padding: 20px
+    background-color: #ccc
   .resident_client_q_uploader
     width: auto !important
+  .client__non_resident
+    display: flex
+    flex-direction: column
+    @media (max-width: 992px)
+      p
+        font-size: 16px
+      h3
+        font-size 26px
+        line-height: 26px
+      .application
+        .q-card
+          box-shadow none
 </style>

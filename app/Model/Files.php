@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Storage;
 
 class Files
 {
+    protected $table = 'files';
+
     public static function add($files)
     {
         $temporaryUrl = storage_path() . '/app/public/temporary/';

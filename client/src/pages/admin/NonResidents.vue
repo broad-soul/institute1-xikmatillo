@@ -3,7 +3,14 @@
     :thumb-style="getThumbStyle"
     style="height: calc(100vh - 56px)"
   >
-    <q-page class="page__residents">
+    <q-page class="page__non__residents">
+      <div class="q-pa-md">
+        <q-breadcrumbs>
+          <q-breadcrumbs-el icon="home" label="Home" to="/" />
+          <q-breadcrumbs-el label="Dashboard" to="/admin" />
+          <q-breadcrumbs-el label="Non Residents" />
+        </q-breadcrumbs>
+      </div>
       <div class="row justify-center profile">
         <div class="col-12 q-pa-md">
           <q-table
@@ -25,7 +32,7 @@
                   <q-icon name="search" />
                 </template>
               </q-input>
-              <q-btn flat @click="downloadExel">Download exel</q-btn>
+              <q-btn @click="downloadExel" color="green-14" class="mx-3">Download exel</q-btn>
               <q-select
                 v-model="visibleColumns"
                 class="ml-1"

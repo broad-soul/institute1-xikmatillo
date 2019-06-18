@@ -8,9 +8,9 @@
         <h3>{{$t('regTextOpen')}}</h3>
         <p>{{$t('registrationWillTakePlace')}}</p>
       </div>
-      <div class="row justify-center resident_client">
-        <div class="col-lg-5">
-          <h3>{{$t('profileText')}}</h3>
+      <div class="row justify-center application">
+        <div class="col-lg-5 col-12">
+          <h3 class="pl-3 p-md-0 my-0 my-md-4 title">{{$t('profileText')}}</h3>
           <q-card class="my-card" style="margin-bottom: 50px;">
             <q-card-section>
               <q-form
@@ -203,7 +203,7 @@
                 <q-uploader
                   :disable="loading"
                   extensions=".jpg,.jpeg,.png,.doc,.exel"
-                  accept=".jpg, .jpeg, .pdf, image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
+                  accept=".jpg, .jpeg, .png .pdf, image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
                   :max-file-size="3048576"
                   :max-total-size="10248576"
                   @added="addFile"
@@ -445,6 +445,13 @@ export default {
   .client__resident
     display: flex
     flex-direction: column
+    @media (max-width: 992px)
+      h3
+        font-size 26px
+        line-height: 26px
+      .application
+        .q-card
+          box-shadow none
     footer
       margin-top: auto
       padding: 20px

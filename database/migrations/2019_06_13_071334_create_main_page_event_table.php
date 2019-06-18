@@ -15,7 +15,7 @@ class CreateMainPageEventTable extends Migration
     {
         Schema::create('main_page_event', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title');
+            $table->string('title')->nullable();
             $table->integer('visible')->default(1);
             $table->string('bgimage')->nullable();
             $table->longText('en');

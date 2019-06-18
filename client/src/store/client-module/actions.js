@@ -59,3 +59,5 @@ export async function mainGetData (context) {
   context.commit('SET_MAIN_DATA', res.data)
   return context.getters.getMainData
 }
+export async function refreshScrollIntIndex (context) {
+}

@@ -11,47 +11,9 @@
           <q-breadcrumbs-el label="Faq" />
         </q-breadcrumbs>
       </div>
-      <div class="q-pa-md">
-        <div class="q-gutter-y-md">
-          <q-btn v-if="!visible_add_new_question" class="mb-3" @click="openAddNewQuestion">Add new question</q-btn>
-          <q-card>
-            <q-slide-transition>
-              <div v-if="visible_add_new_question">
-                <q-tabs
-                  v-model="faqTab"
-                  dense
-                  class="text-grey p-1"
-                  active-color="primary"
-                  align="justify"
-                  narrow-indicator
-                >
-                  <q-tab name="lang-en" label="En" />
-                  <q-tab name="lang-ru" label="Ru" />
-                  <q-tab name="lang-uz" label="Uz" />
-                </q-tabs>
-                <q-separator />
-                <q-tab-panels v-model="faqTab" animated>
-                  <q-tab-panel name="lang-en" class="pb-2">
-                    <q-input :error="false" clearable lazy-rules :rules="[val => !!val || '* Fields should be filled obligatory!']" filled type="textarea" v-model="faq.question_en" label="Question" class="mb-2"></q-input>
-                    <q-input clearable lazy-rules :rules="[val => !!val || '* Fields should be filled obligatory!']" filled type="textarea" v-model="faq.answer_en" label="Answer"></q-input>
-                  </q-tab-panel>
-                  <q-tab-panel name="lang-ru" class="pb-2">
-                    <q-input clearable lazy-rules :rules="[val => !!val || '* Поля - обязательны для заполнения!']" filled type="textarea" v-model="faq.question_ru" label="Вопрос" class="mb-2"></q-input>
-                    <q-input clearable lazy-rules :rules="[val => !!val || '* Поля - обязательны для заполнения!']" filled type="textarea" v-model="faq.answer_ru" label="Ответ"></q-input>
-                  </q-tab-panel>
-                  <q-tab-panel name="lang-uz" class="pb-2">
-                    <q-input clearable lazy-rules :rules="[val => !!val || '* Maydonlar - to\'ldirilishi shart!']" filled type="textarea" v-model="faq.question_uz" label="Savol" class="mb-2"></q-input>
-                    <q-input clearable lazy-rules :rules="[val => !!val || '* Maydonlar - to\'ldirilishi shart!']" filled type="textarea" v-model="faq.answer_uz" label="Javob"></q-input>
-                  </q-tab-panel>
-                </q-tab-panels>
-                <div class="pl-3 pb-3">
-                  <q-btn color="teal mr-3" @click="save" :loading="loading" :disable="loading" v-if="!validateErrors">Ok</q-btn>
-                  <q-btn @click="onReset">Cancel</q-btn>
-                </div>
-              </div>
-            </q-slide-transition>
-          </q-card>
-          <template v-if="allQuestions.length > 0">
+      <div class="q-pa-md q-gutter-y-md">
+        <q-btn class="mb-3" color="teal" to="/admin/faq/create">Add question</q-btn>
+        <template v-if="allQuestions.length > 0">
             <q-separator />
             <h5 class="mb-2">Quantity questions - {{allQuestions.length}}</h5>
             <q-card>
@@ -81,10 +43,18 @@
                     <q-card>
                       <q-card-section>
                         <div class="row">
-                          <div class="col-11">{{item.answer_en}}</div>
-                          <div class="col-1">
+                          <div class="col-10">{{item.answer_en}}</div>
+                          <div class="col-2">
                             <div class="row">
-                              <q-btn class="ml-auto" flat color="negative" @click="deletQuestion(item.id)"><q-icon name="delete_forever" /></q-btn>
+                              <q-btn class="ml-auto" size="12px" dense round flat color="info" to="/faq"><q-icon name="remove_red_eye" />
+                                <q-tooltip>Views</q-tooltip>
+                              </q-btn>
+                              <q-btn class="mx-2" size="12px" dense round flat color="warning" :to="'/admin/faq/edit/' + item.id"><q-icon name="edit" />
+                                <q-tooltip>Edit question</q-tooltip>
+                              </q-btn>
+                              <q-btn class="" size="12px" dense round flat color="negative" @click="deletQuestion(item.id)"><q-icon name="delete_forever" />
+                                <q-tooltip>Delete question</q-tooltip>
+                              </q-btn>
                             </div>
                           </div>
                         </div>
@@ -127,7 +97,6 @@
               </q-tab-panels>
             </q-card>
           </template>
-        </div>
       </div>
     </q-page>
   </q-scroll-area>
@@ -140,19 +109,8 @@ export default {
   name: 'Faq',
   data () {
     return {
-      visible_add_new_question: false,
       allQuestions: [],
-      allQuestionsTab: 'lang-en',
-      faqTab: 'lang-en',
-      loading: false,
-      faq: {
-        question_en: '',
-        answer_en: '',
-        question_ru: '',
-        answer_ru: '',
-        question_uz: '',
-        answer_uz: ''
-      }
+      allQuestionsTab: 'lang-en'
     }
   },
   components: {
@@ -161,13 +119,7 @@ export default {
     ...mapGetters([
       'mobileDetect',
       'getThumbStyle'
-    ]),
-    validateErrors () {
-      for (let [, value] of Object.entries(this.faq)) {
-        if (!value) return true
-      }
-      return false
-    }
+    ])
   },
   watch: {
   },
@@ -179,36 +131,6 @@ export default {
   mounted () {
   },
   methods: {
-    openAddNewQuestion () {
-      this.visible_add_new_question = true
-    },
-    save () {
-      this.loading = true
-      this.$axios.post('new_question', this.faq).then(res => {
-        this.allQuestions = res.data
-        this.onReset()
-        setTimeout(() => {
-          this.$q.notify({
-            color: 'teal',
-            icon: 'check_circle',
-            message: 'Success',
-            position: 'top',
-            timeout: 200
-          })
-        }, 300)
-      }).finally(() => { this.loading = false })
-    },
-    onReset () {
-      this.visible_add_new_question = false
-      this.faq = {
-        question_en: '',
-        answer_en: '',
-        question_ru: '',
-        answer_ru: '',
-        question_uz: '',
-        answer_uz: ''
-      }
-    },
     deletQuestion (id) {
       this.$q.dialog({
         title: 'Подтвердите',
@@ -216,7 +138,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        this.$axios.post('delete_question/' + id, this.faq).then(() => {
+        this.$axios.post('delete_question/' + id).then(() => {
           this.allQuestions.forEach((elem, i) => {
             if (elem.id === id) return this.allQuestions.splice(i, 1)
           })
