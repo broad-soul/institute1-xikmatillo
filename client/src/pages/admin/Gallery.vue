@@ -5,7 +5,7 @@
   >
     <q-page class="">
       <div class="q-pa-md">
-        <q-breadcrumbs>
+         <q-breadcrumbs  active-color="teal">
           <q-breadcrumbs-el icon="home" label="Home" to="/" />
           <q-breadcrumbs-el label="Dashboard" to="/admin" />
           <q-breadcrumbs-el label="Gallery" />
@@ -24,6 +24,7 @@
               multiple
               :max-file-size="500048"
               class="mb-3 uploader_image_gallery"
+              color="teal"
               ref="uploader_image_gallery"
               style="width: 100%"
               @uploaded="getImages"
@@ -94,7 +95,7 @@
               @dblclick="deleteImage(item)"
             >
               <template v-slot:error>
-                <div class="absolute-full flex flex-center bg-cyan text-white">
+                <div class="absolute-full flex flex-center bg-warning text-white">
                   Cannot load image
                 </div>
               </template>
@@ -152,7 +153,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        this.$axios.post('delete_image_gallery', { id: file.id, namr: file.name }).then(() => {
+        this.$axios.post('delete_image_gallery', { id: file.id, name: file.name }).then(() => {
           this.$q.notify({
             color: 'teal',
             icon: 'home',

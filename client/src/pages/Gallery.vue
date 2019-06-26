@@ -12,7 +12,6 @@
             transition="fade"
             :ratio="4/3"
             :src="getPath(item)"
-            @dblclick="deleteImage(item)"
           >
             <template v-slot:error>
               <div class="absolute-full flex flex-center bg-cyan text-white">

@@ -9,10 +9,13 @@ const routes = [
       { path: '/non-resident', component: () => import('pages/NonResident.vue') },
       { path: '/about-us', component: () => import('pages/AboutUs.vue') },
       { path: '/teachers', component: () => import('pages/Teachers.vue') },
-      { path: '/event', component: () => import('pages/Event.vue') },
+      { path: '/events', component: () => import('pages/Events.vue') },
+      { path: '/event/show/:id', component: () => import('pages/EventShow.vue') },
       { path: '/blog', component: () => import('pages/Blog.vue') },
       { path: '/faq', component: () => import('pages/Faq.vue') },
-      { path: '/gallery', component: () => import('pages/Gallery.vue') }
+      { path: '/gallery', component: () => import('pages/Gallery.vue') },
+      { path: '/partners', component: () => import('pages/Partners.vue') },
+      { path: '/partners/show/:id', component: () => import('pages/PartnersShow.vue') }
     ]
   },
   {
@@ -27,14 +30,22 @@ const routes = [
       { path: 'event/create', component: () => import('pages/admin/EventCreate.vue') },
       { path: 'event/edit/:id', component: () => import('pages/admin/EventEdit.vue') },
       { path: 'residents', component: () => import('pages/admin/Residents.vue') },
+      { path: 'residents/instruction', component: () => import('pages/admin/InstructionResidents.vue') },
       { path: 'residents/show/:id', component: () => import('pages/admin/ShowResident.vue') },
       { path: 'non-residents', component: () => import('pages/admin/NonResidents.vue') },
+      { path: 'non-residents/instruction', component: () => import('pages/admin/InstructionNonResidents.vue') },
       { path: 'non-residents/show/:id', component: () => import('pages/admin/ShowNonResident.vue') },
       { path: 'titles', component: () => import('pages/admin/Titles.vue') },
       { path: 'faq', component: () => import('pages/admin/Faq.vue') },
       { path: 'faq/create', component: () => import('pages/admin/FaqCreate.vue') },
       { path: 'faq/edit/:id', component: () => import('pages/admin/FaqEdit.vue') },
-      { path: 'gallery', component: () => import('pages/admin/Gallery.vue') }
+      { path: 'gallery', component: () => import('pages/admin/Gallery.vue') },
+      { path: 'teachers', component: () => import('pages/admin/TeachersShow.vue') },
+      { path: 'teachers/create', component: () => import('pages/admin/TeachersCreate.vue') },
+      { path: 'teachers/edit/:id', component: () => import('pages/admin/TeachersEdit.vue') },
+      { path: 'partners', component: () => import('pages/admin/PartnersShow.vue') },
+      { path: 'partners/create', component: () => import('pages/admin/PartnersCreate.vue') },
+      { path: 'partners/edit/:id', component: () => import('pages/admin/PartnersEdit.vue') }
     ]
   },
   {

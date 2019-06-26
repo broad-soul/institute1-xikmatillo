@@ -23,7 +23,8 @@ class NonResidentsExport implements FromCollection, WithHeadings, ShouldAutoSize
             'en' => [
                 'Name', 'Surname',
                 'Direction', 'Date of Birth', 'Citizenship',
-                'Passport number', 'Phone number', 'Date of creation'
+                'Passport number', 'Residential address',
+                'Language of instruction','Phone number', 'Date of creation'
             ],
             'ru' => [
                 'Имя', 'Фамилия',

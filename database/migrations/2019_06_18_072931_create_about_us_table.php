@@ -15,7 +15,9 @@ class CreateAboutUsTable extends Migration
     {
         Schema::create('about_us', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title')->nullable();
+            $table->text('title_en')->nullable();
+            $table->text('title_ru')->nullable();
+            $table->text('title_uz')->nullable();
             $table->integer('visible')->default(1);
             $table->string('bgimage')->nullable();
             $table->longText('en');

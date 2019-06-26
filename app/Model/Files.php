@@ -21,7 +21,7 @@ class Files
         foreach ($files as $file) {
             $ext = $file->getClientOriginalExtension();
             $fileName = str_random(10) . '.' . $ext;
-            $file->storeAs('public/temporary/', $fileName);
+            $file->storeAs('public/temporary', $fileName);
             $temporaryFilesUrl[] = $temporaryUrl . $fileName;
             $filesName[] = $fileName;
         }
@@ -31,7 +31,7 @@ class Files
         ];
     }
 
-    public static function removeFiles($files, $path = '')
+    public static function remove($files, $path = '')
     {
         if (!$files) return false;
 

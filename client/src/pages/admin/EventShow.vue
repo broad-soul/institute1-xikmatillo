@@ -5,7 +5,7 @@
   >
     <q-page class="admin__main">
       <div class="q-pa-md">
-        <q-breadcrumbs>
+        <q-breadcrumbs  active-color="teal">
           <q-breadcrumbs-el icon="home" label="Home" to="/" />
           <q-breadcrumbs-el label="Dashboard" to="/admin" />
           <q-breadcrumbs-el label="Events" />
@@ -21,7 +21,7 @@
                 <q-icon name="mdi-calendar" color="black" size="34px" />
               </q-item-section>
               <q-item-section top class="col-2 gt-sm">
-                <q-item-label class="q-mt-sm">Event - {{i + 1}}</q-item-label>
+                <q-item-label class="q-mt-sm">Event - {{event.created_at}}</q-item-label>
               </q-item-section>
               <q-space/>
               <q-item-section top side>
@@ -30,10 +30,10 @@
                     <q-tooltip>Views</q-tooltip>
                   </q-btn>
                   <q-btn class="mx-2" size="12px" dense round flat color="warning" :to="'/admin/event/edit/' + event.id"><q-icon name="edit" />
-                    <q-tooltip>Edit event</q-tooltip>
+                    <q-tooltip>Edit</q-tooltip>
                   </q-btn>
-                  <q-btn class="" size="12px" dense round flat color="negative" @click="deletEvent(event.id)"><q-icon name="delete_forever" />
-                    <q-tooltip>Delete event</q-tooltip>
+                  <q-btn class="" size="12px" dense round flat color="negative" @click="deleteEvent(event.id)"><q-icon name="delete_forever" />
+                    <q-tooltip>Delete</q-tooltip>
                   </q-btn>
                 </div>
               </q-item-section>
@@ -50,7 +50,7 @@
 import { mapGetters } from 'vuex'
 
 export default {
-  name: 'event',
+  name: 'EventShow',
   data () {
     return {
       events: []
@@ -74,7 +74,7 @@ export default {
   mounted () {
   },
   methods: {
-    deletEvent (id) {
+    deleteEvent (id) {
       this.$q.dialog({
         title: 'Подтвердите',
         message: 'Вы точно хотите удалить?',

@@ -1,5 +1,6 @@
 import axios from 'axios'
 import saveAs from 'file-saver'
+import $ from 'jquery'
 
 export function openUrl (context, val) {
   window.open(val)
@@ -60,4 +61,12 @@ export async function mainGetData (context) {
   return context.getters.getMainData
 }
 export async function refreshScrollIntIndex (context) {
+}
+
+export function setWidthImages () {
+  setTimeout(() => {
+    $('img').map((i, el) => {
+      $(el).css('max-width', $(el).attr('width') + 'px')
+    })
+  })
 }

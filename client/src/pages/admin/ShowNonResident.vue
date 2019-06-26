@@ -5,12 +5,17 @@
   >
     <q-page class="page__residents">
       <div class="q-pa-md">
-        <q-btn label="Назад" to="/admin/non-residents" />
+         <q-breadcrumbs  active-color="teal">
+          <q-breadcrumbs-el icon="home" label="Home" to="/" />
+          <q-breadcrumbs-el label="Dashboard" to="/admin" />
+          <q-breadcrumbs-el label="Non Residents" to="/admin/non-residents" />
+          <q-breadcrumbs-el label="Show" />
+        </q-breadcrumbs>
       </div>
-      <h3 class="text-center">Информация о студенте</h3>
+      <h4 class="text-center my-0">Информация о студенте</h4>
       <div class="row justify-center profile">
         <div class="col-12 q-pa-md">
-          <q-list bordered separator v-if="showResidentData">
+          <q-list class="bg-white" bordered separator v-if="showResidentData">
             <q-item clickable>
               <q-item-section>
                 <q-item-label caption>Имя</q-item-label>

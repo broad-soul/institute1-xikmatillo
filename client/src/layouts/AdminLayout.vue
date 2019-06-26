@@ -112,7 +112,7 @@
     </q-drawer>
     <q-page-container>
       <transition name="fade">
-        <keep-alive :include="['AdminResidents', 'AdminShowResident']">
+        <keep-alive :include="[]">
           <router-view />
         </keep-alive>
       </transition>
@@ -196,20 +196,21 @@ export default {
         },
         { title: this.$t('sidebarPagesAdmin').teachers, path: '/admin/teachers', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').event, path: '/admin/event', icon: 'bookmark_border' },
-        { title: this.$t('sidebarPagesAdmin').blog, path: '/admin/blog', icon: 'bookmark_border' },
-        { title: this.$t('sidebarPagesAdmin').extra_classes, path: '/extra-classes', icon: 'bookmark_border' },
+        // { title: this.$t('sidebarPagesAdmin').blog, path: '/admin/blog', icon: 'bookmark_border' },
+        // { title: this.$t('sidebarPagesAdmin').extra_classes, path: '/extra-classes', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').gallery, path: '/admin/gallery', icon: 'bookmark_border' },
-        { title: this.$t('sidebarPagesAdmin').statistics, path: '/admin/statistics', icon: 'bookmark_border' },
+        // { title: this.$t('sidebarPagesAdmin').statistics, path: '/admin/statistics', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').faq, path: '/admin/faq', icon: 'bookmark_border' },
-        { title: this.$t('sidebarPagesAdmin').partners, path: '/admin/partners', icon: 'bookmark_border' },
-        { title: this.$t('sidebarPagesAdmin').contests, path: '/admin/contests', icon: 'bookmark_border' },
-        { title: this.$t('sidebarPagesAdmin').regulations, path: '/admin/regulations', icon: 'bookmark_border' },
-        { title: this.$t('sidebarPagesAdmin').contacts, path: '/admin/contacts', icon: 'bookmark_border' }
+        { title: this.$t('sidebarPagesAdmin').partners, path: '/admin/partners', icon: 'bookmark_border' }
+        // { title: this.$t('sidebarPagesAdmin').contests, path: '/admin/contests', icon: 'bookmark_border' },
+        // { title: this.$t('sidebarPagesAdmin').regulations, path: '/admin/regulations', icon: 'bookmark_border' },
+        // { title: this.$t('sidebarPagesAdmin').contacts, path: '/admin/contacts', icon: 'bookmark_border' }
       ]
     }
   },
   beforeMount () {
     this.$axios.defaults.headers.Authorization = 'Bearer ' + this.getToken
+    this.$('body').addClass('admin')
   },
   mounted () {
     // START changeLang

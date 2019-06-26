@@ -5,9 +5,19 @@ body
   font-size 16px
   height: 100vh
   overflow: hidden
+  background: $blue-grey-1
+  &:not(.admin)
+    img
+      width 100%
 
-h1, h2, h3, h4, h5, h6
-  color #555
+.q-carousel__navigation-inner
+  img
+    width: auto !important
+
+.wrap
+  max-width: 1270px
+  margin: auto
+  width: 100%
 
 .q-avatar
   overflow: hidden

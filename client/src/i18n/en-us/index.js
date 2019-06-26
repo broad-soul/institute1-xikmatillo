@@ -77,5 +77,7 @@ export default {
   question: 'Question',
   answer: 'Answer',
   faq_title: 'Frequently asked Questions',
-  srs_btn: 'S.R.S'
+  srs_btn: 'S.R.S',
+  send: 'Send',
+  instruction_app: 'instruction'
 }

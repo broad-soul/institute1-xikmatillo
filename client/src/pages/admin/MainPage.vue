@@ -5,7 +5,7 @@
   >
     <q-page class="admin__main">
       <div class="q-pa-md">
-        <q-breadcrumbs>
+         <q-breadcrumbs  active-color="teal">
           <q-breadcrumbs-el icon="home" label="Home" to="/" />
           <q-breadcrumbs-el label="Dashboard" to="/admin" />
           <q-breadcrumbs-el label="Main" />
@@ -13,18 +13,18 @@
       </div>
       <div class="q-pa-md q-gutter-y-md">
         <q-btn color="secondary" @click="saveMain">save</q-btn>
-        <q-card>
+        <q-card class="q-pa-md q-gutter-y-md">
           <q-tabs
             v-model="tab"
             dense
             class="text-grey"
-            active-color="primary"
+            active-color="teal"
             align="justify"
             narrow-indicator
           >
             <q-tab name="about-us" :label="$t('sidebarPagesAdmin').about_us" />
-            <q-tab name="teachers" :label="$t('sidebarPagesAdmin').teachers" />
             <q-tab name="event" :label="$t('sidebarPagesAdmin').event" />
+            <q-tab name="partners" :label="$t('sidebarPagesAdmin').partners" />
           </q-tabs>
           <q-separator />
           <q-tab-panels v-model="tab" animated>
@@ -36,6 +36,7 @@
                   label="Visible"
                   unchecked-icon="clear"
                   class="ml-auto"
+                  color="teal"
                 />
               </div>
               <q-separator />
@@ -43,7 +44,7 @@
                 v-model="aboutUsTab"
                 dense
                 class="text-grey"
-                active-color="primary"
+                active-color="teal"
                 align="justify"
                 narrow-indicator
               >
@@ -76,10 +77,6 @@
                 </q-tab-panel>
               </q-tab-panels>
             </q-tab-panel>
-            <q-tab-panel name="teachers">
-              <div class="text-h6">teachers</div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            </q-tab-panel>
             <q-tab-panel name="event" class="p-0 admin__main-event__us">
               <div class="row q-pa-md">
                 <q-toggle
@@ -88,6 +85,7 @@
                   label="Visible"
                   unchecked-icon="clear"
                   class="ml-auto"
+                  color="teal"
                 />
               </div>
               <q-separator />
@@ -95,7 +93,7 @@
                 v-model="eventTab"
                 dense
                 class="text-grey"
-                active-color="primary"
+                active-color="teal"
                 align="justify"
                 narrow-indicator
               >
@@ -128,6 +126,55 @@
                 </q-tab-panel>
               </q-tab-panels>
             </q-tab-panel>
+            <q-tab-panel name="partners">
+              <div class="row q-pa-md">
+                <q-toggle
+                  v-model="partnersEditor.visible"
+                  checked-icon="check"
+                  label="Visible"
+                  unchecked-icon="clear"
+                  class="ml-auto"
+                  color="teal"
+                />
+              </div>
+              <q-separator />
+              <q-tabs
+                v-model="partnersTab"
+                dense
+                class="text-grey"
+                active-color="teal"
+                align="justify"
+                narrow-indicator
+              >
+                <q-tab name="lang-en" label="En" />
+                <q-tab name="lang-ru" label="Ru" />
+                <q-tab name="lang-uz" label="Uz" />
+              </q-tabs>
+              <q-separator />
+              <q-tab-panels v-model="partnersTab" animated>
+                <q-tab-panel name="lang-en" class="p-0">
+                  <vue-editor
+                    :customModules="customModulesForEditor"
+                    :editorOptions="editorSettings"
+                    v-model="partnersEditor.content_en"
+                  />
+                </q-tab-panel>
+                <q-tab-panel name="lang-ru" class="p-0">
+                  <vue-editor
+                    :customModules="customModulesForEditor"
+                    :editorOptions="editorSettings"
+                    v-model="partnersEditor.content_ru"
+                  />
+                </q-tab-panel>
+                <q-tab-panel name="lang-uz" class="p-0">
+                  <vue-editor
+                    :customModules="customModulesForEditor"
+                    :editorOptions="editorSettings"
+                    v-model="partnersEditor.content_uz"
+                  />
+                </q-tab-panel>
+              </q-tab-panels>
+            </q-tab-panel>
           </q-tab-panels>
         </q-card>
       </div>
@@ -148,7 +195,17 @@ export default {
       tab: 'about-us',
       aboutUsTab: 'lang-en',
       eventTab: 'lang-en',
+      partnersTab: 'lang-en',
+      partnersEditor: {
+        id: null,
+        visible: true,
+        bgimage: null,
+        content_en: '',
+        content_ru: '',
+        content_uz: ''
+      },
       aboutUsEditor: {
+        id: null,
         visible: true,
         bgimage: null,
         en: '',
@@ -156,6 +213,7 @@ export default {
         uz: ''
       },
       eventEditor: {
+        id: null,
         visible: true,
         bgimage: null,
         en: '',
@@ -186,42 +244,33 @@ export default {
   watch: {
   },
   beforeMount () {
-    this.$axios.post('main_get')
-      .then(res => {
-        let [aboutUs] = res.data.about_us
-        this.aboutUsEditor.en = aboutUs.en
-        this.aboutUsEditor.ru = aboutUs.ru
-        this.aboutUsEditor.uz = aboutUs.uz
-        this.aboutUsEditor.visible = !!aboutUs.visible
-        // event
-        let [event] = res.data.event
-        this.eventEditor.en = event.en
-        this.eventEditor.ru = event.ru
-        this.eventEditor.uz = event.uz
-        this.eventEditor.visible = !!event.visible
-      })
+    this.$axios.post('get_main_page_admin').then(res => {
+      let { about_us: aboutUs, event, partners } = res.data
+      this.aboutUsEditor = aboutUs[0] || this.aboutUsEditor
+      this.eventEditor = event[0] || this.eventEditor
+      this.partnersEditor = partners[0] || this.partnersEditor
+      this.aboutUsEditor.visible = !!this.aboutUsEditor.visible
+      this.eventEditor.visible = !!this.eventEditor.visible
+      this.partnersEditor.visible = !!this.partnersEditor.visible
+    })
   },
   mounted () {
   },
   methods: {
     saveMain () {
       let data = {
-        'about_us': {
-          'visible': this.aboutUsEditor.visible,
-          'bgimage': this.aboutUsEditor.bgimage,
-          'en': this.aboutUsEditor.en,
-          'ru': this.aboutUsEditor.ru,
-          'uz': this.aboutUsEditor.uz
-        },
-        'event': {
-          'visible': this.eventEditor.visible,
-          'bgimage': this.eventEditor.bgimage,
-          'en': this.eventEditor.en,
-          'ru': this.eventEditor.ru,
-          'uz': this.eventEditor.uz
-        }
+        'about_us': this.aboutUsEditor,
+        'event': this.eventEditor,
+        'partners': this.partnersEditor
       }
-      this.$axios.post('main_store', data).then(() => {
+      this.$axios.post('main_store', data).then(res => {
+        let { about_us: aboutUs, event, partners } = res.data
+        this.aboutUsEditor = aboutUs[0] || this.aboutUsEditor
+        this.eventEditor = event[0] || this.eventEditor
+        this.partnersEditor = partners[0] || this.partnersEditor
+        this.aboutUsEditor.visible = !!this.aboutUsEditor.visible
+        this.eventEditor.visible = !!this.eventEditor.visible
+        this.partnersEditor.visible = !!this.partnersEditor.visible
         this.$q.notify({
           color: 'teal',
           icon: 'check_circle',

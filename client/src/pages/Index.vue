@@ -1,50 +1,79 @@
 <template>
   <q-page class="main smooth" v-touch-swipe.mouse="handleSwipe">
-    <section class="main__section about__us" v-if="aboutUs.visible">
-      <div class="content" v-html="aboutUs.content"></div>
+    <section class="main__section main__about__us cursor-pointer" v-if="aboutUs.visible" @click="$router.push('/about-us')">
+      <div class="wrap">
+        <div class="content" v-html="aboutUs.content"></div>
+      </div>
     </section>
-    <section class="main__section teachers">
-      <div class="content"><h1>teachers</h1></div>
-    </section>
-    <section class="main__section event" v-if="event.visible">
-      <div class="content" v-html="event.content"></div>
-    </section>
-    <section class="main__section partners">
-      <div class="row">
-        <div class="col-12 col-md-6" v-if="!mobileDetect"><img src="~assets/partners.jpg" alt=""></div>
-        <div class="col-12 col-md-6">
-          <div class="text">
-            <template v-if="$t('prefix') === 'ru'">
-              <h3>ПАРТНЕРЫ</h3>
-              <p>НАЦИОНАЛЬНЫЙ УНИВЕРСИТЕТ ИМЕНИ МИРЗО УЛУГБЕКА</p>
-              <p>ТАШКЕНТСКИЙ ГОСУДАРСТВЕННЫЙ ПЕДАГОГИЧЕСКИЙ УНИВЕРСИТЕТ ИМЕНИ НИЗАМИ</p>
-              <p>ГЕРМАНСКИЙ ЦЕНТР ZFA “ SCHULMANAGEMENT WELWEIT. ZENTRALSTELLE FUR DAS AUSLANDSSCHULWESEN”</p>
-              <p>ЦЕНТРЫ КУЛЬТУРЫ ГЕРМАНИИ И ФРАНЦИИ</p>
-              <p>АССОЦИАЦИЯ ПРЕПОДАВАТЕЛЕЙ АНГЛИЙСКОГО ЯЗЫКА УЗБЕКИСТАНА</p>
-            </template>
-            <template v-else-if="$t('prefix') === 'en'">
-              <h3>PARTNERS</h3>
-              <p>NATIONAL UNIVERSITY NAMED AFTER MIRZO ULUGBEK</p>
-              <p>TASHKENT STATE PEDAGOGICAL UNIVERSITY NAMED AFTER NIZAMI</p>
-              <p>GERMAN CENTER ZFA “SCHULMANAGEMENT WELWEIT. ZENTRALSTELLE FUR DAS AUSLANDSSCHULWESEN”</p>
-              <p>CENTERS OF CULTURE OF GERMANY AND FRANCE</p>
-              <p>ASSOCIATION OF ENGLISH LANGUAGE TEACHERS OF UZBEKISTAN</p>
-            </template>
-            <template v-else-if="$t('prefix') === 'uz'">
-              <h3>Hamkorlar</h3>
-              <p>MIRZO ULUGBEK NOMIDAGI MILLIY UNIVERSITETI</p>
-              <p>NIZAMI NOMIDAGI TOSHKENT DAVLAT PEDAGOGICAL UNIVERSITETI</p>
-              <p>Germaniyaning ZFA markazi "SCHULMANAGEMENT WELWEIT. ZENTRALSTELLE FUR DAS AUSLANDSSCHULWESEN"</p>
-              <p>GERMANIYA VA FRANSA MADANIYAT MARKAZLARI</p>
-              <p>O'ZBEKISTON ENGLISH TILI O'QITUVCHILARI UYUSHMASI</p>
-            </template>
+    <section class="main__section main__teachers cursor-pointer flex items-center" @click="$router.push('/teachers')">
+      <div class="wrap">
+        <div class="content row q-col-gutter-md q-pa-md">
+          <div class="col-12"><h3 class="text-center mb-2 mt-5">Our teachers</h3></div>
+          <div class="col-10 col-sm-4 col-md-3 m-auto m-sm-0" v-for="teacher in teachers" :key="teacher.id">
+            <q-card class="my-card">
+              <q-img class="cursor-pointer" @click="$router.push('/teacher/show/' + teacher.id)" placeholder-src="/statics/avatar04.png" contain :src="'/storage/' + teacher.photo" :ratio="1" transition="fade" spinner-color="cyan"></q-img>
+              <q-card-section>
+                <div class="text-h6">{{teacher.name}}</div>
+                <div class="text-h6">{{teacher.surname}}</div>
+                <div class="text-subtitle2">Age: {{teacher.age}}</div>
+                <div class="text-subtitle2">{{teacher['subject_' + $t('prefix')]}}</div>
+              </q-card-section>
+              <q-card-section>
+                {{teacher['about_me_' + $t('prefix')]}}
+              </q-card-section>
+            </q-card>
           </div>
         </div>
       </div>
     </section>
-    <section class="main__section contact">
+    <section class="main__section main__events cursor-pointer" @click="$router.push('/events')" v-if="event.visible">
+      <div class="wrap">
+        <div class="content" v-html="event.content"></div>
+      </div>
+    </section>
+    <section class="main__section main__gallery flex items-center">
+      <div class="content w-100p">
+        <h3 class="text-center mt-5">Gallery</h3>
+        <carousel-3d :height="500" :width="800">
+          <slide v-for="(image, i) in galleryImages" :key="i" :index="i">
+            <img :src="'/storage/' + image.name" alt="">
+          </slide>
+        </carousel-3d>
+      </div>
+    </section>
+    <section class="main__section main__faq">
+      <div class="wrap">
+        <h3 class="text-center mt-5 cursor-pointer" @click="$router.push('/faq')">FAQ</h3>
+        <div class="content w-100p">
+          <q-expansion-item
+            expand-separator
+            icon="question_answer"
+            :label="(i + 1) + ' - ' + item['question_' + $t('prefix')]"
+            header-class="text-white"
+            expand-icon-class="text-white"
+            v-for="(item, i) in questions"
+            :key="item.id"
+          >
+            <q-card>
+              <q-card-section>
+                {{item['answer_' + $t('prefix')]}}
+              </q-card-section>
+            </q-card>
+          </q-expansion-item>
+        </div>
+      </div>
+    </section>
+    <section class="main__section main__partners cursor-pointer" @click="$router.push('/partners')">
       <div class="row">
-        <div class="col-12 col-md-8" style="display: flex; height: 30vh;background: #eaf5f7;">
+        <div class="col-12 col-md-6" v-if="!mobileDetect"><img width="100%" src="~assets/partners.jpg" alt=""></div>
+        <div class="col-12 col-md-6">
+          <div class="content" v-html="partners.content"></div>
+        </div>
+      </div>
+    </section>
+    <section class="main__section main__contact">
+      <div class="row">
+        <div class="col-12 col-md-8 contact__text">
           <div class="contact__info m-auto text-center" style="max-width: 400px;">
             <h5 class="my-3">АДРЕС</h5>
             ул. Бобура 55, Ташкент, 100100 Узбекистан
@@ -67,7 +96,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-
+import { Carousel3d, Slide } from 'vue-carousel-3d'
 export default {
   name: 'PageIndex',
   meta: {
@@ -76,14 +105,26 @@ export default {
       keywords: { name: 'keywords', content: 'Home website' }
     }
   },
+  components: {
+    Carousel3d,
+    Slide
+  },
   data () {
     return {
+      slide: 1,
       scrollInt: 0,
+      teachers: [],
+      galleryImages: [],
+      questions: [],
       aboutUs: {
         visible: true,
         content: ''
       },
       event: {
+        visible: true,
+        content: ''
+      },
+      partners: {
         visible: true,
         content: ''
       },
@@ -106,6 +147,13 @@ export default {
       let [event] = this.getMainData.event
       this.event.content = event[this.$t('prefix')]
       this.event.visible = event.visible
+      this.teachers = this.getMainData.teachers
+      let [partners] = this.getMainData.partners
+      this.partners.content = partners['content_' + this.$t('prefix')]
+      this.partners.visible = partners.visible
+      this.galleryImages = this.getMainData.gallery
+      this.questions = this.getMainData.questions
+      this.setWidthImages()
     }
   },
   mounted () {
@@ -151,9 +199,11 @@ export default {
         case 'CHANGE_LANG':
           let [aboutUs] = this.getMainData.about_us
           let [event] = this.getMainData.event
+          let [partners] = this.getMainData.partners
           setTimeout(() => {
             this.aboutUs.content = aboutUs[this.$t('prefix')]
             this.event.content = event[this.$t('prefix')]
+            this.partners.content = partners['content_' + this.$t('prefix')]
           }, 100)
           break
       }
@@ -163,6 +213,7 @@ export default {
   },
   methods: {
     ...mapActions([
+      'setWidthImages',
       'refreshScrollIntIndex',
       'mainGetData'
     ]),
@@ -195,16 +246,40 @@ export default {
     .main__section
       height: 100vh
       overflow: hidden
-      &.contact
+      &.main__teachers
+        background $linear_gradient
+        h3
+          color: #fff
+          margin-top: 100px
+      &.main__events
+        background $linear_gradient
+        color: #fff
+        h3
+          color: #fff
+          margin-top: 100px
+      &.main__gallery
+        background $linear_gradient
+        h3
+          color: #fff
+          margin-top: 100px
+      &.main__faq
+        background $linear_gradient
+        h3
+          color: #fff
+          margin-top: 100px
+      .contact__text
+        background $cyan-1
+        display flex
+        height 30vh
+      &.main__contact
         .image_main_contact
           background-image: url('~assets/contact.jpg')
-      &.about__us
+      &.main__about__us
         background $linear_gradient
         color #fff
         height: 100vh
         .content
-          padding: 20px 50px
-          margin: auto
+          padding: 20px 0
           h1
             margin-bottom: 30px
           @media (max-width: 1200px)
@@ -220,11 +295,11 @@ export default {
         h1
           text-transform uppercase
           color #fff
-      &.partners
-          background $linear_gradient
-          img
-            height 100%
-        .text
+      &.main__partners
+        background $linear_gradient
+        img
+          height 100%
+        .content
           padding-top 10px
           max-width 400px
           margin auto

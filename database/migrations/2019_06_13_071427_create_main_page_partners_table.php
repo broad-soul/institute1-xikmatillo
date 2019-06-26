@@ -15,9 +15,14 @@ class CreateMainPagePartnersTable extends Migration
     {
         Schema::create('main_page_partners', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->longText('en');
-            $table->longText('ru');
-            $table->longText('uz');
+            $table->text('title_en')->nullable();
+            $table->text('title_ru')->nullable();
+            $table->text('title_uz')->nullable();
+            $table->text('bgimage')->nullable();
+            $table->string('visible')->default(0);
+            $table->longText('content_en');
+            $table->longText('content_ru');
+            $table->longText('content_uz');
             $table->timestamps();
         });
     }

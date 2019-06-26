@@ -9,7 +9,21 @@
         <p>{{$t('registrationWillTakePlace')}}</p>
       </div>
       <div class="row justify-center application">
-        <div class="col-lg-5 col-12">
+        <div class="col-12 col-sm-9 col-md-7 col-lg-5 q-pa-sm">
+          <q-expansion-item
+            expand-separator
+            icon="mdi-file-document"
+            :label="instruction_app['title_' + $t('prefix')]"
+            header-class="text-cyan"
+          >
+            <q-card>
+              <q-card-section v-html="instruction_app['content_' + $t('prefix')]"></q-card-section>
+            </q-card>
+          </q-expansion-item>
+        </div>
+      </div>
+      <div class="row justify-center application">
+        <div class="col col-sm-9 col-md-7 col-lg-5 q-pa-sm q-gutter-xs">
           <h3 class="pl-3 p-md-0 my-0 my-md-4 title">{{$t('profileText')}}</h3>
           <q-card class="my-card" style="margin-bottom: 50px;">
             <q-card-section>
@@ -153,7 +167,7 @@
                 />
                 <q-uploader
                   extensions=".jpg,.jpeg,.png,.doc,.exel"
-                  accept=".jpg, .jpeg, .pdf, .png image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
+                  accept=".jpg, .jpeg, .pdf, .png, image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
                   :max-file-size="3048576"
                   :max-total-size="10248576"
                   @added="addFile"
@@ -175,9 +189,8 @@
                         <div class="q-uploader__title">{{$t('documents_graduate_9_grade')}} *</div>
                         <div class="q-uploader__subtitle">{{ scope.uploadSizeLabel }}</div>
                       </div>
-                      <q-btn v-if="scope.canAddFiles" type="a" flat>
+                      <q-btn v-if="scope.canAddFiles" type="a" icon="add_box" round dense flat>
                         <q-uploader-add-trigger />
-                        <q-icon name="add_box" class="ml-2" />
                         <q-tooltip>{{$t('attach_documents')}}</q-tooltip>
                       </q-btn>
                       <q-btn v-if="scope.isUploading" icon="clear" @click="scope.abort" round dense flat >
@@ -226,22 +239,21 @@
                   :keep-color="true"/>
                 <div class="action__btn">
                   <q-btn
-                    color="secondary"
+                    color="cyan"
                     class="upload pl-2"
                     :loading="loading"
                     type="submit"
                   >
-                    <q-icon name="home" class="icon mr-2" />
-                    Загрузить
+                    {{$t('send')}}
                   </q-btn>
                   <q-btn
                     outline
                     type="reset"
                     class="clear ml-3"
-                    color="secondary"
+                    color="grey"
                     :disable="loading"
                   >
-                    Очистить
+                    {{$q.lang.label.clear}}
                   </q-btn>
                 </div>
               </q-form>
@@ -251,11 +263,13 @@
       </div>
       <footer>footer</footer>
     </q-page>
+    <PageScroller />
   </q-scroll-area>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import PageScroller from './../components/PageScroller'
 
 export default {
   name: 'NonResident',
@@ -266,14 +280,18 @@ export default {
       keywords: { name: 'keywords', content: 'NonResident website' }
     }
   },
+  components: {
+    PageScroller
+  },
   data () {
     return {
+      instruction_app: [],
       colorCheckbox: 'negative',
       checkboxNotRobot: false,
       showCheckboxNotRobot: false,
       documentsMultiple: [],
       files: [],
-      uploader_color: 'secondary',
+      uploader_color: 'cyan',
       errors: false,
       loading: false,
       form: {
@@ -310,14 +328,23 @@ export default {
       this.colorCheckbox = val ? 'teal' : 'negative'
     }
   },
+  beforeMount () {
+    this.$axios.get('get_non_resident_instruction').then(res => {
+      if (res.data.length > 0) {
+        [this.instruction_app] = res.data
+        this.setWidthImages()
+      }
+    })
+  },
   mounted () {
   },
   methods: {
     ...mapActions([
+      'setWidthImages',
       'recaptchaToken'
     ]),
     addFile () {
-      this.uploader_color = 'secondary'
+      this.uploader_color = 'cyan'
     },
     onButtonClick () {
       this.$refs.fupload.click()
@@ -326,7 +353,7 @@ export default {
     async onSubmit () {
       let files = this.$refs['uploader'].files
       if (files.length > 0) {
-        this.uploader_color = 'secondary'
+        this.uploader_color = 'cyan'
         this.loading = true
         let token = await this.recaptchaToken()
         this.$axios.post('check_recaptcha', {
@@ -342,16 +369,17 @@ export default {
             })
             this.$axios.post('new_non_resident', formData).then(res => {
               this.loading = false
-              this.$axios.post('remove_files', res.data.files)
-              this.$refs['uploader'].files = []
-              this.$refs.form.reset()
-              this.$('.scroll').animate({ scrollTop: 0 }, 400)
-              this.$q.notify({
-                color: 'teal',
-                icon: 'home',
-                message: 'Success',
-                position: 'center',
-                timeout: 1500
+              this.$axios.post('remove_files', res.data.files).then(() => {
+                this.$refs['uploader'].files = []
+                this.$refs.form.reset()
+                this.$('.scroll').animate({ scrollTop: 0 }, 400)
+                this.$q.notify({
+                  color: 'teal',
+                  icon: 'home',
+                  message: 'Success',
+                  position: 'center',
+                  timeout: 1500
+                })
               })
             })
               .finally(() => { this.loading = false })
@@ -379,7 +407,7 @@ export default {
       this.form.files = []
       this.$refs['uploader'].files = []
       this.files = []
-      this.uploader_color = 'secondary'
+      this.uploader_color = 'cyan'
       this.showCheckboxNotRobot = false
       this.checkboxNotRobot = false
     },

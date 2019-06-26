@@ -77,5 +77,7 @@ export default {
   question: 'Savol',
   answer: 'Javob',
   faq_title: 'Ko\'p so\'raladigan savollar',
-  srs_btn: 'O.R.T'
+  srs_btn: 'O.R.T',
+  send: 'Yuborish',
+  instruction_app: 'ko\'rsatma'
 }

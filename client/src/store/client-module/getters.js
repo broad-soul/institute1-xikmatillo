@@ -95,7 +95,7 @@ export function getThumbStyle () {
   return {
     right: '2px',
     borderRadius: '5px',
-    backgroundColor: 'teal',
+    backgroundColor: '#42a6c0',
     width: '6px',
     opacity: 0.75,
     zIndex: 99999

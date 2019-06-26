@@ -5,7 +5,7 @@
   >
     <q-page class="admin__main">
       <div class="q-pa-md">
-        <q-breadcrumbs>
+         <q-breadcrumbs  active-color="teal">
           <q-breadcrumbs-el icon="home" label="Home" to="/" />
           <q-breadcrumbs-el label="Dashboard" to="/admin" />
           <q-breadcrumbs-el label="Faq" to="/admin/faq" />
@@ -94,7 +94,6 @@ export default {
       }
       this.loading = true
       this.$axios.post('new_question', this.faq).then(res => {
-        this.allQuestions = res.data
         this.$q.notify({
           color: 'teal',
           icon: 'check_circle',
@@ -102,42 +101,8 @@ export default {
           position: 'top',
           timeout: 200
         })
-        setTimeout(() => {
-          this.$router.push('/admin/faq')
-        }, 300)
+        this.$router.push('/admin/faq')
       }).finally(() => { this.loading = false })
-    },
-    onReset () {
-      this.visible_add_new_question = false
-      this.faq = {
-        question_en: '',
-        answer_en: '',
-        question_ru: '',
-        answer_ru: '',
-        question_uz: '',
-        answer_uz: ''
-      }
-    },
-    deletQuestion (id) {
-      this.$q.dialog({
-        title: 'Подтвердите',
-        message: 'Вы точно хотите удалить?',
-        cancel: true,
-        persistent: true
-      }).onOk(() => {
-        this.$axios.post('delete_question/' + id).then(() => {
-          this.allQuestions.forEach((elem, i) => {
-            if (elem.id === id) return this.allQuestions.splice(i, 1)
-          })
-          this.$q.notify({
-            color: 'teal',
-            icon: 'check_circle',
-            message: 'Deleted',
-            position: 'top',
-            timeout: 200
-          })
-        })
-      })
     }
   }
 }

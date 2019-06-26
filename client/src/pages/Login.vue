@@ -1,22 +1,22 @@
 <template>
-  <div class="row h-100vh login_page">
-    <div class="col-sm-6 col-xs-6 col-12" style="margin: auto;max-width: 550px;">
+  <div class="row h-100vh login__page q-pa-md">
+    <div class="col-sm-8 col-md-6 col-lg-4 col-12" style="margin: auto;">
       <q-card
-        class="my_card text-grey-10"
+        class="login__page-card text-grey-10"
       >
-        <q-card-section class="header">
-          <span>Site name</span>
+        <q-card-section class="login__page-card__header">
+          <span>aluzswlu.uz</span>
         </q-card-section>
         <q-card-section>
           <q-form
             @submit="onSubmit"
             @reset="onReset"
-            class="login_form"
+            class="login__page-card__form q-gutter-y-xs"
           >
             <q-input
               :disable="loading"
               filled
-              v-model="form.email"
+              v-model.trim="form.email"
               label="Your email *"
               lazy-rules
               color="grey-10"
@@ -24,16 +24,18 @@
               type="email"
               clearable
               :rules="[ val => val && val.length > 0 || 'Email is required']"
+              :error-message="email_error_message"
+              :error="email_error"
             >
               <template v-slot:prepend>
-                <q-icon name="event" />
+                <q-icon name="mdi-email" />
               </template>
             </q-input>
             <q-input
               :disable="loading"
               filled
               type="password"
-              v-model="form.password"
+              v-model.trim="form.password"
               label="Your password *"
               lazy-rules
               color="grey-10"
@@ -44,15 +46,16 @@
                 val => val !== null && val !== '' || 'Password is required',
                 val => val.length > 5 || 'Password must be less than 6 characters'
               ]"
+              :error="password_error"
             >
               <template v-slot:prepend>
-                <q-icon name="event" />
+                <q-icon name="mdi-textbox-password" />
               </template>
             </q-input>
-            <q-toggle v-model="form.remember_me" color="light-blue" label="Remember me" :loading="loading" />
-            <div class="btn__actions">
-              <q-btn label="Log in" class="btn__actions-login mt-1" type="submit" color="light-blue" :loading="loading"/>
-              <q-btn label="Reset" type="reset" class="mt-1 ml-2 btn__actions-reset" color="light-blue" outline :disable="loading" />
+            <q-toggle v-model="form.remember_me" color="cyan" label="Remember me" :loading="loading" />
+            <div class="btn__actions  q-gutter-x-sm">
+              <q-btn label="Log in" class="btn__actions-login" type="submit" color="cyan" :loading="loading"/>
+              <q-btn label="Cancel" to="/" class="btn__actions-reset" color="amber" outline :disable="loading" />
             </div>
           </q-form>
         </q-card-section>
@@ -74,6 +77,9 @@ export default {
   },
   data () {
     return {
+      email_error_message: '',
+      email_error: false,
+      password_error: false,
       loading: false,
       form: {
         email: null,
@@ -94,14 +100,18 @@ export default {
     ]),
     onSubmit () {
       this.loading = true
-      this.login(this.form)
-        .then(token => {
-          this.$axios.defaults.headers.Authorization = 'Bearer ' + token
-          this.$router.push('/admin')
-        })
-        .finally(() => {
-          setTimeout(() => { this.loading = false }, 500)
-        })
+      this.email_error_message = ''
+      this.email_error = false
+      this.password_error_message = ''
+      this.password_error = false
+      this.login(this.form).then(token => {
+        this.$axios.defaults.headers.Authorization = 'Bearer ' + token
+        this.$router.push('/admin')
+      }).finally(() => { setTimeout(() => { this.loading = false }, 500) }).catch(() => {
+        this.email_error_message = 'Email or password is wrong'
+        this.email_error = true
+        this.password_error = true
+      })
     },
     onReset () {
       this.form.email = null
@@ -113,23 +123,16 @@ export default {
 </script>
 
 <style lang="stylus">
-  .login_page {
-    .my_card {
-      .header {
-        background: linear-gradient(#239FE9,#44D5F3)
+  .login__page {
+    &-card {
+      &__header {
+        background: $linear_gradient
         color: #fff
         text-transform: lowercase
         font-size: 30px
       }
-      .login_form {
+      &__form {
         padding-top: 20px
-      }
-      .btn__actions {
-        &-login {
-          .q-btn__content {
-          }
-        }
-        &-reset {}
       }
     }
   }

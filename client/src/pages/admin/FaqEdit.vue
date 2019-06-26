@@ -5,7 +5,7 @@
   >
     <q-page class="admin__main">
       <div class="q-pa-md">
-        <q-breadcrumbs>
+         <q-breadcrumbs  active-color="teal">
           <q-breadcrumbs-el icon="home" label="Home" to="/" />
           <q-breadcrumbs-el label="Dashboard" to="/admin" />
           <q-breadcrumbs-el label="Faq" to="/admin/faq" />
@@ -98,9 +98,6 @@ export default {
   mounted () {
   },
   methods: {
-    openAddNewQuestion () {
-      this.visible_add_new_question = true
-    },
     updateQuestion () {
       this.loading = true
       this.$axios.post('update_question', { id: this.edit_question_id, faq: this.faq }).then(() => {

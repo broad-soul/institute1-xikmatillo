@@ -5,7 +5,7 @@
   >
     <q-page class="admin__main">
       <div class="q-pa-md">
-        <q-breadcrumbs>
+         <q-breadcrumbs  active-color="teal">
           <q-breadcrumbs-el icon="home" label="Home" to="/" />
           <q-breadcrumbs-el label="Dashboard" to="/admin" />
           <q-breadcrumbs-el label="Events" to="/admin/event" />
@@ -13,47 +13,165 @@
         </q-breadcrumbs>
       </div>
       <div class="q-pa-md q-gutter-y-md">
-        <q-card>
-          <q-tabs
-            v-model="eventTab"
-            dense
-            class="text-grey"
-            active-color="primary"
-            align="justify"
-            narrow-indicator
+        <q-card class="q-pa-md q-gutter-y-md">
+          <q-form
+            @submit="createEvent"
+            ref="form"
+            class="q-gutter-y-md"
           >
-            <q-tab name="lang-en" label="En" />
-            <q-tab name="lang-ru" label="Ru" />
-            <q-tab name="lang-uz" label="Uz" />
-          </q-tabs>
-          <q-separator />
-          <q-tab-panels v-model="eventTab" animated>
-            <q-tab-panel name="lang-en" class="p-0">
-              <vue-editor
-                :customModules="customModulesForEditor"
-                :editorOptions="editorSettings"
-                v-model="eventEditor.content_en"
-              />
-            </q-tab-panel>
-            <q-tab-panel name="lang-ru" class="p-0">
-              <vue-editor
-                :customModules="customModulesForEditor"
-                :editorOptions="editorSettings"
-                v-model="eventEditor.content_ru"
-              />
-            </q-tab-panel>
-            <q-tab-panel name="lang-uz" class="p-0">
-              <vue-editor
-                :customModules="customModulesForEditor"
-                :editorOptions="editorSettings"
-                v-model="eventEditor.content_uz"
-              />
-            </q-tab-panel>
-          </q-tab-panels>
-          <div class="p-3">
-            <q-btn color="teal mr-3" @click="createEvent" :loading="loading" :disable="loading">Create</q-btn>
-            <q-btn to="/admin/event">Cancel</q-btn>
-          </div>
+            <q-uploader
+              :disable="loading"
+              extensions=".jpg,.jpeg,.png"
+              accept=".jpg, .jpeg, .pdf, image/jpeg, .png"
+              :max-file-size="3048576"
+              :max-total-size="10248576"
+              @added="addFile"
+              :color="uploader_color"
+              ref="uploader"
+              style="width: 100%;"
+            >
+              <template v-slot:header="scope">
+                <div class="row no-wrap items-center q-pa-sm q-gutter-xs">
+                  <q-btn v-if="scope.uploadedFiles.length > 0" icon="done_all" @click="scope.removeUploadedFiles" round dense flat >
+                    <q-tooltip>Remove Uploaded Files</q-tooltip>
+                  </q-btn>
+                  <q-spinner v-if="scope.isUploading" class="q-uploader__spinner" />
+                  <div class="col">
+                    <div class="q-uploader__title">Image</div>
+                    <div class="q-uploader__subtitle">{{ scope.uploadSizeLabel }}</div>
+                  </div>
+                  <q-btn v-if="scope.canAddFiles" type="a" icon="add_box" round dense flat>
+                    <q-uploader-add-trigger />
+                    <q-tooltip>{{$t('attach_documents')}}</q-tooltip>
+                  </q-btn>
+                  <q-btn v-if="scope.isUploading" icon="clear" @click="scope.abort" round dense flat >
+                    <q-tooltip>Abort Upload</q-tooltip>
+                  </q-btn>
+                </div>
+              </template>
+              <template v-slot:list="scope">
+                <q-list separator>
+                  <q-item v-for="file in scope.files" :key="file.name">
+                    <q-item-section>
+                      <q-item-label class="full-width ellipsis">
+                        {{ file.name }}
+                      </q-item-label>
+                    </q-item-section>
+                    <q-item-section
+                      v-if="file.__img"
+                      thumbnail
+                      class="gt-xs"
+                    >
+                      <img :src="file.__img.src">
+                    </q-item-section>
+                    <q-item-section top side>
+                      <q-btn
+                        class="gt-xs"
+                        size="12px"
+                        flat
+                        dense
+                        round
+                        icon="delete"
+                        @click="scope.removeFile(file)"
+                      />
+                    </q-item-section>
+                  </q-item>
+                </q-list>
+              </template>
+            </q-uploader>
+            <q-tabs
+              v-model="eventTab"
+              dense
+              class="text-grey"
+              active-color="teal"
+              align="justify"
+              narrow-indicator
+            >
+              <q-tab name="lang-en" label="En" />
+              <q-tab name="lang-ru" label="Ru" />
+              <q-tab name="lang-uz" label="Uz" />
+            </q-tabs>
+            <q-separator />
+            <q-tab-panels v-model="eventTab" animated>
+              <q-tab-panel name="lang-en" class="p-0">
+                <q-input
+                  color="teal"
+                  filled
+                  label="Title"
+                  v-model.lazy.trim="events.title_en"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || '* Fields should be filled obligatory!']"
+                />
+                <div class="text-subtitle1 text-grey-8 mt-3">Description</div>
+                <vue-editor
+                  :customModules="customModulesForEditor"
+                  :editorOptions="editorSettings"
+                  v-model="events.description_en"
+                />
+                <div class="text-subtitle1 text-grey-8 mt-3">Content</div>
+                <vue-editor
+                  :customModules="customModulesForEditor"
+                  :editorOptions="editorSettings"
+                  v-model="events.content_en"
+                />
+              </q-tab-panel>
+              <q-tab-panel name="lang-ru" class="p-0">
+                <q-input
+                  color="teal"
+                  filled
+                  label="Название"
+                  v-model.lazy.trim="events.title_ru"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || '* Поля - обязательны для заполнения!']"
+                />
+                <div class="text-subtitle1 text-grey-8 mt-3">Описание</div>
+                <vue-editor
+                  :customModules="customModulesForEditor"
+                  :editorOptions="editorSettings"
+                  v-model="events.description_ru"
+                />
+                <div class="text-subtitle1 text-grey-8 mt-3">Контент</div>
+                <vue-editor
+                  :customModules="customModulesForEditor"
+                  :editorOptions="editorSettings"
+                  v-model="events.content_ru"
+                />
+              </q-tab-panel>
+              <q-tab-panel name="lang-uz" class="p-0">
+                <q-input
+                  color="teal"
+                  filled
+                  label="Nomi"
+                  v-model.lazy.trim="events.title_uz"
+                  type="text"
+                  clearable
+                  lazy-rules
+                  :disable="loading"
+                  :rules="[val => !!val || '* Maydonlar - to\'ldirilishi shart!']"
+                />
+                <div class="text-subtitle1 text-grey-8 mt-3">Ta'rifi</div>
+                <vue-editor
+                  :customModules="customModulesForEditor"
+                  :editorOptions="editorSettings"
+                  v-model="events.description_uz"
+                />
+                <div class="text-subtitle1 text-grey-8 mt-3">Kontent</div>
+                <vue-editor
+                  :customModules="customModulesForEditor"
+                  :editorOptions="editorSettings"
+                  v-model="events.content_uz"
+                />
+              </q-tab-panel>
+            </q-tab-panels>
+            <q-btn color="teal mr-3" type="submit" :loading="loading" :disable="loading">Create</q-btn>
+            <q-btn :disable="loading" to="/admin/event">Cancel</q-btn>
+          </q-form>
         </q-card>
       </div>
     </q-page>
@@ -72,7 +190,14 @@ export default {
     return {
       eventTab: 'lang-en',
       loading: false,
-      eventEditor: {
+      uploader_color: 'teal',
+      events: {
+        title_en: '',
+        title_ru: '',
+        title_uz: '',
+        description_en: '',
+        description_ru: '',
+        description_uz: '',
         content_en: '',
         content_ru: '',
         content_uz: ''
@@ -106,8 +231,20 @@ export default {
   },
   methods: {
     createEvent () {
+      if (this.$refs.uploader.files.length === 0) {
+        this.$('.q-scrollarea .scroll').animate({ scrollTop: 0 }, 100)
+        this.uploader_color = 'negative'
+        this.$q.notify({
+          color: 'negative',
+          icon: 'mdi-alert-circle',
+          message: 'Select photo!',
+          position: 'top',
+          timeout: 800
+        })
+        return
+      }
       let error = false
-      for (let [, value] of Object.entries(this.eventEditor)) {
+      for (let [, value] of Object.entries(this.events)) {
         if (!value) error = true
       }
       if (error) {
@@ -121,7 +258,11 @@ export default {
         return
       }
       this.loading = true
-      this.$axios.post('event_store', this.eventEditor).then(() => {
+      let formData = new FormData()
+      let file = this.$refs['uploader'].files[0]
+      formData.append('image', file)
+      Object.keys(this.events).forEach(key => { formData.append(key, this.events[key]) })
+      this.$axios.post('create_event', formData).then(() => {
         this.$q.notify({
           color: 'teal',
           icon: 'check_circle',
@@ -129,10 +270,11 @@ export default {
           position: 'top',
           timeout: 200
         })
-        setTimeout(() => {
-          this.$router.push('/admin/event')
-        }, 300)
-      }).finally(() => { this.loading = true })
+        this.$router.push('/admin/event')
+      }).finally(() => { this.loading = false })
+    },
+    addFile () {
+      this.uploader_color = 'secondary'
     }
   }
 }

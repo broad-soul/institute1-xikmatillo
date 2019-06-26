@@ -9,7 +9,21 @@
         <p>{{$t('registrationWillTakePlace')}}</p>
       </div>
       <div class="row justify-center application">
-        <div class="col-lg-5 col-12">
+        <div class="col-12 col-sm-9 col-md-7 col-lg-5 q-pa-sm">
+          <q-expansion-item
+            expand-separator
+            icon="mdi-file-document"
+            :label="instruction_app['title_' + $t('prefix')]"
+            header-class="text-cyan"
+          >
+            <q-card>
+              <q-card-section v-html="instruction_app['content_' + $t('prefix')]"></q-card-section>
+            </q-card>
+          </q-expansion-item>
+        </div>
+      </div>
+      <div class="row justify-center application">
+        <div class="col-12 col-sm-9 col-md-7 col-lg-5 q-pa-sm q-gutter-xs">
           <h3 class="pl-3 p-md-0 my-0 my-md-4 title">{{$t('profileText')}}</h3>
           <q-card class="my-card" style="margin-bottom: 50px;">
             <q-card-section>
@@ -203,7 +217,7 @@
                 <q-uploader
                   :disable="loading"
                   extensions=".jpg,.jpeg,.png,.doc,.exel"
-                  accept=".jpg, .jpeg, .png .pdf, image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
+                  accept=".jpg, .jpeg, .png, .pdf, image/jpeg, .pdf, .doc, .docx, .xls, .xlsx, .txt"
                   :max-file-size="3048576"
                   :max-total-size="10248576"
                   @added="addFile"
@@ -276,18 +290,18 @@
                   :keep-color="true"/>
                 <div class="action__btn">
                   <q-btn
-                    color="secondary"
+                    color="cyan"
                     class="upload pl-2"
                     :loading="loading"
                     type="submit"
                   >
-                    {{$q.lang.label.create}}
+                    {{$t('send')}}
                   </q-btn>
                   <q-btn
                     outline
                     type="reset"
                     class="clear ml-3"
-                    color="secondary"
+                    color="grey"
                     :disable="loading"
                   >
                     {{$q.lang.label.clear}}
@@ -300,12 +314,13 @@
       </div>
       <footer>footer</footer>
     </q-page>
+    <PageScroller />
   </q-scroll-area>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
-// :rules="[ val => val && val.length > 0 || 'Please type something']"
+import PageScroller from './../components/PageScroller'
 export default {
   name: 'Resident',
   meta: {
@@ -315,14 +330,18 @@ export default {
       keywords: { name: 'keywords', content: 'Resident website' }
     }
   },
+  components: {
+    PageScroller
+  },
   data () {
     return {
+      instruction_app: [],
       colorCheckbox: 'negative',
       checkboxNotRobot: false,
       showCheckboxNotRobot: false,
       documentsMultiple: [],
       files: [],
-      uploader_color: 'secondary',
+      uploader_color: 'cyan',
       errors: false,
       loading: false,
       form: {
@@ -367,22 +386,29 @@ export default {
       this.colorCheckbox = val ? 'teal' : 'negative'
     }
   },
-  async beforeMount () {
+  beforeMount () {
+    this.$axios.get('get_resident_instruction').then(res => {
+      if (res.data.length > 0) {
+        [this.instruction_app] = res.data
+        this.setWidthImages()
+      }
+    })
   },
   mounted () {
   },
   methods: {
     ...mapActions([
+      'setWidthImages',
       'recaptchaToken',
       'mainGetData'
     ]),
     addFile () {
-      this.uploader_color = 'secondary'
+      this.uploader_color = 'cyan'
     },
     async onSubmit () {
       let files = this.$refs['uploader'].files
       if (files.length > 0) {
-        this.uploader_color = 'secondary'
+        this.uploader_color = 'cyan'
         this.loading = true
         let token = await this.recaptchaToken()
         this.$axios.post('check_recaptcha', {
@@ -434,7 +460,7 @@ export default {
       this.form.files = []
       this.$refs['uploader'].files = []
       this.files = []
-      this.uploader_color = 'secondary'
+      this.uploader_color = 'cyan'
       this.showCheckboxNotRobot = false
     }
   }

@@ -5,7 +5,7 @@
   >
     <q-page class="admin__main">
       <div class="q-pa-md">
-        <q-breadcrumbs>
+         <q-breadcrumbs  active-color="teal">
           <q-breadcrumbs-el icon="home" label="Home" to="/" />
           <q-breadcrumbs-el label="Dashboard" to="/admin" />
           <q-breadcrumbs-el label="Main" />
@@ -13,12 +13,12 @@
       </div>
       <div class="q-pa-md q-gutter-y-md">
         <q-btn color="secondary" @click="saveMain">save</q-btn>
-        <q-card>
+        <q-card class="q-pa-md q-gutter-y-md">
           <q-tabs
             v-model="aboutUsTab"
             dense
             class="text-grey"
-            active-color="primary"
+            active-color="teal"
             align="justify"
             narrow-indicator
           >
@@ -112,7 +112,7 @@ export default {
   },
   methods: {
     saveMain () {
-      this.$axios.post('about_us_store', this.aboutUsEditor).then(() => {
+      this.$axios.post('about_us_create', this.aboutUsEditor).then(() => {
         this.$q.notify({
           color: 'teal',
           icon: 'check_circle',

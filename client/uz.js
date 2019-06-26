@@ -1,4 +1,4 @@
-function plurals(n, opts) {
+function plurals (n, opts) {
   return opts[n % 10 === 1 && n % 100 !== 11 ? 0 : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20) ? 1 : 2]
 }
 
@@ -10,15 +10,15 @@ export default {
     ok: 'OK',
     cancel: 'Bekor',
     close: 'Yopish',
-    set: 'Установить',
+    set: 'O\'rnatish',
     select: 'Tanlash',
-    reset: 'Сбросить',
-    remove: 'Удалить',
+    reset: 'Qayta tiklash',
+    remove: 'O\'chirish',
     update: 'Обновить',
-    create: 'Создать',
-    search: 'Поиск',
-    filter: 'Фильтр',
-    refresh: 'Обновить'
+    create: 'Yangilash',
+    search: 'Qidiruv',
+    filter: 'Filtr',
+    refresh: 'Yangilash'
   },
   date: {
     days: 'Воскресенье_Понедельник_Вторник_Среда_Четверг_Пятница_Суббота'.split('_'),
@@ -33,9 +33,9 @@ export default {
     noResults: 'Topilmadi! Совпадений не найдено',
     loading: 'Загрузка...',
     selectedRecords: function (rows) {
-      return rows > 0 ?
-        rows + ' ' + plurals(rows, ['строка выбрана', 'строки выбраны', 'строк выбрано']) + '.' :
-        'Ни одна строка не выбрана.'
+      return rows > 0
+        ? rows + ' ' + plurals(rows, ['строка выбрана', 'строки выбраны', 'строк выбрано']) + '.'
+        : 'Ни одна строка не выбрана.'
     },
     recordsPerPage: 'Qatorlar sahifada:',
     allRows: 'Все',

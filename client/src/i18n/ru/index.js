@@ -77,5 +77,7 @@ export default {
   question: 'Вопрос',
   answer: 'Ответ',
   faq_title: 'Часто задаваемые вопросы',
-  srs_btn: 'С.У.С'
+  srs_btn: 'С.У.С',
+  send: 'Отправить',
+  instruction_app: 'инструкция'
 }

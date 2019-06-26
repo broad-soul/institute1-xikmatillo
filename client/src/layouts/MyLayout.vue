@@ -20,14 +20,14 @@
             :label="$t('go_to_admin_panel')"
             class="ml-3"
             icon="airplay" :tabindex="0"/>
-          <q-btn color="light-green-13" outline class="mx-2" @click="openUrl('http://aluzswlu.ort.uz/auth/login')">
+          <q-btn color="light-green-13" outline class="mx-2 glossy" @click="openUrl('http://aluzswlu.ort.uz/auth/login')">
             {{$t('srs_btn')}}
           </q-btn>
         </template>
-        <q-btn-dropdown color="yellow-12" :label="sidebarPages[0].title" class="text-black">
+        <q-btn-dropdown color="yellow-12" :label="sidebarApplication.title" class="text-black">
           <q-list>
             <q-item clickable v-close-popup
-              v-for="(elem, i) in sidebarPages[0].children"
+              v-for="(elem, i) in sidebarApplication.children"
               :key="i"
               :to="elem.path"
               active-class="bg-cyan-6 text-white"
@@ -64,6 +64,8 @@
       side="right"
       behavior="mobile"
       :width="230"
+      show-if-above
+      @click.capture="rightDrawerOpen = false"
     >
       <q-list>
         <q-scroll-area
@@ -108,6 +110,16 @@
           </q-item>
         </q-scroll-area>
       </q-list>
+      <div class="absolute" v-if="rightDrawerOpen" style="top: 55px; right: 218px; z-index: 9999;">
+        <q-btn
+          dense
+          round
+          class="glossy"
+          color="deep-orange-6"
+          icon="chevron_right"
+          @click="rightDrawerOpen = false"
+        />
+      </div>
     </q-drawer>
     <q-page-container>
       <transition
@@ -118,8 +130,8 @@
         <router-view />
       </transition>
     </q-page-container>
-    <q-page-scroller @click="refreshScrollIntIndex" position="bottom-right" :scroll-offset="600" :offset="[18, 18]">
-      <q-btn fab style="color: #fff;height: 50px; width: 50px; background: linear-gradient(rgba(48, 73, 107, .9), rgba(48, 184, 210, .9));" icon="keyboard_arrow_up"/>
+    <q-page-scroller @click="refreshScrollIntIndex" position="bottom-right" :scroll-offset="100" :offset="[18, 18]">
+      <q-btn fab style="color: #fff;height: 40px; width: 40px; background: linear-gradient(rgba(48, 73, 107, .9), rgba(48, 184, 210, .9));" icon="keyboard_arrow_up"/>
     </q-page-scroller>
   </q-layout>
 </template>
@@ -164,28 +176,30 @@ export default {
         opacity: 0.75
       }
     },
+    sidebarApplication () {
+      return {
+        title: this.$t('sidebarPages').application,
+        path: 'application',
+        children: [
+          { title: this.$t('sidebarPages').resident, path: '/resident', icon: 'account_circle' },
+          { title: this.$t('sidebarPages').non_resident, path: '/non-resident', icon: 'account_circle' }
+        ]
+      }
+    },
     sidebarPages () {
       return [
-        {
-          title: this.$t('sidebarPages').application,
-          path: 'application',
-          children: [
-            { title: this.$t('sidebarPages').resident, path: '/resident', icon: 'account_circle' },
-            { title: this.$t('sidebarPages').non_resident, path: '/non-resident', icon: 'account_circle' }
-          ]
-        },
         { title: this.$t('sidebarPages').about_us, path: '/about-us', icon: 'pages' },
         { title: this.$t('sidebarPages').teachers, path: '/teachers', icon: 'pages' },
-        { title: this.$t('sidebarPages').event, path: '/event', icon: 'pages' },
-        { title: this.$t('sidebarPages').blog, path: '/blog', icon: 'pages' },
-        { title: this.$t('sidebarPages').extra_classes, path: '/extra-classes', icon: 'pages' },
+        { title: this.$t('sidebarPages').event, path: '/events', icon: 'pages' },
+        // { title: this.$t('sidebarPages').blog, path: '/blog', icon: 'pages' },
+        // { title: this.$t('sidebarPages').extra_classes, path: '/extra-classes', icon: 'pages' },
         { title: this.$t('sidebarPages').gallery, path: '/gallery', icon: 'pages' },
-        { title: this.$t('sidebarPages').statistics, path: '/statistics', icon: 'pages' },
+        // { title: this.$t('sidebarPages').statistics, path: '/statistics', icon: 'pages' },
         { title: this.$t('sidebarPages').faq, path: '/faq', icon: 'pages' },
-        { title: this.$t('sidebarPages').partners, path: '/partners', icon: 'pages' },
-        { title: this.$t('sidebarPages').contests, path: '/contests', icon: 'pages' },
-        { title: this.$t('sidebarPages').regulations, path: '/regulations', icon: 'pages' },
-        { title: this.$t('sidebarPages').contacts, path: '/contacts', icon: 'pages' }
+        { title: this.$t('sidebarPages').partners, path: '/partners', icon: 'pages' }
+        // { title: this.$t('sidebarPages').contests, path: '/contests', icon: 'pages' },
+        // { title: this.$t('sidebarPages').regulations, path: '/regulations', icon: 'pages' },
+        // { title: this.$t('sidebarPages').contacts, path: '/contacts', icon: 'pages' }
       ]
     },
     logoTitle () {
@@ -218,9 +232,6 @@ export default {
     this.$axios.defaults.headers.Authorization = 'Bearer ' + this.getToken
     this.$axios.get('user').then(res => {
       if (+res.data.is_admin === 1) this.isAdmin = true
-      console.log('res.data.is_admin ' + res.data.is_admin)
-      console.log('res.data.is_admin === 1 ' + (+res.data.is_admin === 1))
-      console.log('isAdmin ' + this.isAdmin)
     })
   },
   mounted () {

@@ -84,10 +84,12 @@ module.exports = function (ctx) {
     },
 
     devServer: {
+      historyApiFallback: true,
       // https: true,
       proxy: {
         '/api': {
           target: 'http://xikmatillo.loc/api',
+          secure: false,
           changeOrigin: true,
           credentials: true,
           pathRewrite: {
