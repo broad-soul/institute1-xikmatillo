@@ -31,14 +31,14 @@
         <div class="content" v-html="event.content"></div>
       </div>
     </section>
-    <section class="main__section main__gallery flex items-center">
+    <section class="main__section main__gallery flex items-center relative-position">
+        <h3 class="text-center mt-0 absolute" style="top: 50px;z-index: 9999;left: 50%;transform:translate(-50%)">Gallery</h3>
       <div class="content w-100p">
-        <h3 class="text-center mt-5">Gallery</h3>
-        <carousel-3d :height="500" :width="800">
-          <slide v-for="(image, i) in galleryImages" :key="i" :index="i">
-            <img :src="'/storage/' + image.name" alt="">
+        <carousel :per-page="1" :perPageCustom="[[768, 2], [992, 3], [1200, 4]]">
+          <slide v-for="(image, i) in galleryImages" :key="i">
+            <img width="100%" :src="'/storage' + image.name" alt="">
           </slide>
-        </carousel-3d>
+        </carousel>
       </div>
     </section>
     <section class="main__section main__faq">
@@ -95,8 +95,8 @@
 </template>
 
 <script>
+import { Carousel, Slide } from 'vue-carousel'
 import { mapGetters, mapActions } from 'vuex'
-import { Carousel3d, Slide } from 'vue-carousel-3d'
 export default {
   name: 'PageIndex',
   meta: {
@@ -106,7 +106,7 @@ export default {
     }
   },
   components: {
-    Carousel3d,
+    Carousel,
     Slide
   },
   data () {

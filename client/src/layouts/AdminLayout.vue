@@ -197,7 +197,7 @@ export default {
         { title: this.$t('sidebarPagesAdmin').teachers, path: '/admin/teachers', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').event, path: '/admin/event', icon: 'bookmark_border' },
         // { title: this.$t('sidebarPagesAdmin').blog, path: '/admin/blog', icon: 'bookmark_border' },
-        // { title: this.$t('sidebarPagesAdmin').extra_classes, path: '/extra-classes', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').extra_classes, path: '/admin/extra-classes', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').gallery, path: '/admin/gallery', icon: 'bookmark_border' },
         // { title: this.$t('sidebarPagesAdmin').statistics, path: '/admin/statistics', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').faq, path: '/admin/faq', icon: 'bookmark_border' },

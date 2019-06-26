@@ -22,7 +22,7 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  name: 'Event',
+  name: 'PartnersShow',
   meta: {
     titleTemplate: title => `${title} - Event`,
     meta: {

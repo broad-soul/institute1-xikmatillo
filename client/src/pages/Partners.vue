@@ -60,7 +60,7 @@ export default {
     ])
   },
   beforeMount () {
-    this.$axios.get('get_partners').then(res => {
+    this.$axios.get('extra-classes/all').then(res => {
       if (res.data.length > 0) {
         this.partners = res.data
         this.setWidthImages()

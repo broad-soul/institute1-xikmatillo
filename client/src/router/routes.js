@@ -15,7 +15,9 @@ const routes = [
       { path: '/faq', component: () => import('pages/Faq.vue') },
       { path: '/gallery', component: () => import('pages/Gallery.vue') },
       { path: '/partners', component: () => import('pages/Partners.vue') },
-      { path: '/partners/show/:id', component: () => import('pages/PartnersShow.vue') }
+      { path: '/partners/show/:id', component: () => import('pages/PartnersShow.vue') },
+      { path: '/extra-classes', component: () => import('pages/ExtraClasses.vue') },
+      { path: '/extra-сlasses/show/:id', component: () => import('pages/ExtraClassesShow.vue') }
     ]
   },
   {
@@ -45,7 +47,10 @@ const routes = [
       { path: 'teachers/edit/:id', component: () => import('pages/admin/TeachersEdit.vue') },
       { path: 'partners', component: () => import('pages/admin/PartnersShow.vue') },
       { path: 'partners/create', component: () => import('pages/admin/PartnersCreate.vue') },
-      { path: 'partners/edit/:id', component: () => import('pages/admin/PartnersEdit.vue') }
+      { path: 'partners/edit/:id', component: () => import('pages/admin/PartnersEdit.vue') },
+      { path: 'extra-classes', component: () => import('pages/admin/ExtraClassesShow.vue') },
+      { path: 'extra-classes/create', component: () => import('pages/admin/ExtraClassesCreate.vue') },
+      { path: 'extra-classes/edit/:id', component: () => import('pages/admin/ExtraClassesEdit.vue') }
     ]
   },
   {

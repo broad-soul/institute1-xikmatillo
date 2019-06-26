@@ -25,7 +25,6 @@ class CreatePartnersTable extends Migration
             $table->longText('content_en');
             $table->longText('content_ru');
             $table->longText('content_uz');
-            $table->integer('event_category_id')->nullable();
             $table->integer('user_id')->nullable();
             $table->integer('status')->default(0);
             $table->integer('views')->default(0);

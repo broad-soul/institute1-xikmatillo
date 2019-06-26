@@ -49,6 +49,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/create_partner', 'PartnersController@create');
     Route::post('/update_partner', 'PartnersController@update');
     Route::post('/delete_partner/{id}', 'PartnersController@destroy');
+    Route::post('/create_extra-classes', 'ExtraClassesController@create');
+    Route::post('/update_extra-classes', 'ExtraClassesController@update');
+    Route::post('/delete_extra-classes/{id}', 'ExtraClassesController@destroy');
 });
 
 Route::post('/get_main_page_admin', 'SpaAdminController@get_main');
@@ -66,3 +69,5 @@ Route::get('/get_resident_instruction', 'ResidentsController@get_instruction');
 Route::get('/get_non_resident_instruction', 'NonResidentsController@get_instruction');
 Route::get('/partners/all', 'PartnersController@get_all');
 Route::get('/partners/show/{id}', 'PartnersController@get_one');
+Route::get('/extra-classes/all', 'ExtraClassesController@get_all');
+Route::get('/extra-classes/show/{id}', 'ExtraClassesController@get_one');
