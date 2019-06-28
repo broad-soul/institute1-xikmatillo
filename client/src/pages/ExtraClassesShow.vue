@@ -3,7 +3,7 @@
     :thumb-style="getThumbStyle"
     style="height: calc(100vh - 56px)"
   >
-    <q-page class="partner__show__page">
+    <q-page class="extraClasses__show__page">
       <div class="row q-pa-md q-col-gutter-md justify-center">
         <div class="col-11">
           <q-img placeholder-src="/statics/photo2.png" :ratio="16/9" :src="'/storage/' + extraClasses.image"></q-img>

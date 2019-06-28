@@ -14,11 +14,11 @@
         <div class="col-12 col-lg-10 m-auto">
           <div class="row q-pa-md q-col-gutter-md" v-for="item in extraClasses" :key="item.id">
             <div class="col-md-4 col-sm-6 col-12">
-              <q-img @click="$router.push('/item/show/' + item.id)" placeholder-src="/statics/photo2.png" contain :ratio="16/11" position="top" :src="'/storage/' + item.image" class="cursor-pointer"></q-img>
+              <q-img @click="$router.push('/extra-classes/show/' + item.id)" placeholder-src="/statics/photo2.png" contain :ratio="16/11" position="top" :src="'/storage/' + item.image" class="cursor-pointer"></q-img>
             </div>
             <div class="col-md-8 col-sm-6 col-12">
               <div class="content" v-html="item['description_' + $t('prefix')]"></div>
-              <q-btn :to="'/extra-сlasses/show/' + item.id" flat label="Show more"/>
+              <q-btn :to="'/extra-classes/show/' + item.id" flat label="Show more"/>
             </div>
             <div class="col-12">
               <hr>

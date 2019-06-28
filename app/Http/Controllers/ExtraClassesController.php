@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Model\ExtraClasses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ExtraClassesController extends Controller
 {
@@ -22,7 +23,7 @@ class ExtraClassesController extends Controller
 
     public function edit($id)
     {
-        return Partners::find($id);
+        return ExtraClasses::find($id);
     }
 
     public function update(Request $request)

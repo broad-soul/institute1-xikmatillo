@@ -52,6 +52,15 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::post('/create_extra-classes', 'ExtraClassesController@create');
     Route::post('/update_extra-classes', 'ExtraClassesController@update');
     Route::post('/delete_extra-classes/{id}', 'ExtraClassesController@destroy');
+    Route::post('/create_contests', 'ContestsController@create');
+    Route::post('/update_contests', 'ContestsController@update');
+    Route::post('/delete_contests/{id}', 'ContestsController@destroy');
+    Route::post('/create_statistics', 'StatisticsController@create');
+    Route::post('/update_statistics', 'StatisticsController@update');
+    Route::post('/delete_statistics/{id}', 'StatisticsController@destroy');
+    Route::post('/create_regulations', 'RegulationsController@create');
+    Route::post('/update_regulations', 'RegulationsController@update');
+    Route::post('/delete_regulations/{id}', 'RegulationsController@destroy');
 });
 
 Route::post('/get_main_page_admin', 'SpaAdminController@get_main');
@@ -71,3 +80,9 @@ Route::get('/partners/all', 'PartnersController@get_all');
 Route::get('/partners/show/{id}', 'PartnersController@get_one');
 Route::get('/extra-classes/all', 'ExtraClassesController@get_all');
 Route::get('/extra-classes/show/{id}', 'ExtraClassesController@get_one');
+Route::get('/contests/all', 'ContestsController@get_all');
+Route::get('/contests/show/{id}', 'ContestsController@get_one');
+Route::get('/statistics/all', 'StatisticsController@get_all');
+Route::get('/statistics/show/{id}', 'StatisticsController@get_one');
+Route::get('/regulations/all', 'RegulationsController@get_all');
+Route::get('/regulations/show/{id}', 'RegulationsController@get_one');

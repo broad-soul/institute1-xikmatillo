@@ -17,7 +17,13 @@ const routes = [
       { path: '/partners', component: () => import('pages/Partners.vue') },
       { path: '/partners/show/:id', component: () => import('pages/PartnersShow.vue') },
       { path: '/extra-classes', component: () => import('pages/ExtraClasses.vue') },
-      { path: '/extra-сlasses/show/:id', component: () => import('pages/ExtraClassesShow.vue') }
+      { path: '/extra-classes/show/:id', component: () => import('pages/ExtraClassesShow.vue') },
+      { path: '/contests', component: () => import('pages/Contests.vue') },
+      { path: '/contests/show/:id', component: () => import('pages/ContestsShow.vue') },
+      { path: '/statistics', component: () => import('pages/Statistics.vue') },
+      { path: '/statistics/show/:id', component: () => import('pages/StatisticsShow.vue') },
+      { path: '/regulations', component: () => import('pages/Regulations.vue') },
+      { path: '/regulations/show/:id', component: () => import('pages/RegulationsShow.vue') }
     ]
   },
   {
@@ -50,7 +56,16 @@ const routes = [
       { path: 'partners/edit/:id', component: () => import('pages/admin/PartnersEdit.vue') },
       { path: 'extra-classes', component: () => import('pages/admin/ExtraClassesShow.vue') },
       { path: 'extra-classes/create', component: () => import('pages/admin/ExtraClassesCreate.vue') },
-      { path: 'extra-classes/edit/:id', component: () => import('pages/admin/ExtraClassesEdit.vue') }
+      { path: 'extra-classes/edit/:id', component: () => import('pages/admin/ExtraClassesEdit.vue') },
+      { path: 'contests', component: () => import('pages/admin/ContestsShow.vue') },
+      { path: 'contests/create', component: () => import('pages/admin/ContestsCreate.vue') },
+      { path: 'contests/edit/:id', component: () => import('pages/admin/ContestsEdit.vue') },
+      { path: 'statistics', component: () => import('pages/admin/StatisticsShow.vue') },
+      { path: 'statistics/create', component: () => import('pages/admin/StatisticsCreate.vue') },
+      { path: 'statistics/edit/:id', component: () => import('pages/admin/StatisticsEdit.vue') },
+      { path: 'regulations', component: () => import('pages/admin/RegulationsShow.vue') },
+      { path: 'regulations/create', component: () => import('pages/admin/RegulationsCreate.vue') },
+      { path: 'regulations/edit/:id', component: () => import('pages/admin/RegulationsEdit.vue') }
     ]
   },
   {

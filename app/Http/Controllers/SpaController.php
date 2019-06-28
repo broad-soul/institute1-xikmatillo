@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\ExtraClasses;
 use App\Model\Faq;
 use App\Model\Files;
 use App\Model\Gallery;
@@ -23,8 +24,9 @@ class SpaController extends Controller
     {
         return [
             'about_us' => MainPageAboutUs::all(),
-            'event' => MainPageEvent::all(),
             'teachers' => Teachers::where('is_visible', 'true')->take(4)->orderBy('created_at', 'asc')->get(),
+            'event' => MainPageEvent::all(),
+            'extra_classes' => ExtraClasses::all()->take(10),
             'partners' => MainPagePartners::all(),
             'gallery' => Gallery::all('name')->take(6),
             'questions' => Faq::all()->take(10),

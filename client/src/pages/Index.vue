@@ -31,12 +31,25 @@
         <div class="content" v-html="event.content"></div>
       </div>
     </section>
+    <section class="main__section main__extra__classes flex items-center relative-position">
+      <div class="wrap">
+        <h3 class="text-center mt-0 absolute" style="top: 50px;z-index: 9999;left: 50%;transform:translate(-50%)">Extra classes</h3>
+        <div class="content">
+          <carousel :paginationEnabled="false" :per-page="1" :perPageCustom="[[768, 1], [992, 2], [1200, 3]]">
+            <slide v-for="(item, i) in extraClasses" :key="i" class="p-3">
+              <q-img class="cursor-pointer" placeholder-src="/statics/avatar04.png" contain :src="'/storage/' + item.image" :ratio="1" transition="fade" spinner-color="cyan" @click="$router.push('/extra-classes')"></q-img>
+              <div class="desc" v-html="item['description_' + $t('prefix')]"></div>
+            </slide>
+          </carousel>
+        </div>
+      </div>
+    </section>
     <section class="main__section main__gallery flex items-center relative-position">
-        <h3 class="text-center mt-0 absolute" style="top: 50px;z-index: 9999;left: 50%;transform:translate(-50%)">Gallery</h3>
+      <h3 class="text-center mt-0 absolute" style="top: 50px;z-index: 9999;left: 50%;transform:translate(-50%)">Gallery</h3>
       <div class="content w-100p">
-        <carousel :per-page="1" :perPageCustom="[[768, 2], [992, 3], [1200, 4]]">
+        <carousel :paginationEnabled="false" :per-page="1" :perPageCustom="[[768, 2], [992, 3], [1200, 4]]">
           <slide v-for="(image, i) in galleryImages" :key="i">
-            <img width="100%" :src="'/storage' + image.name" alt="">
+            <q-img class="cursor-pointer" placeholder-src="/statics/avatar04.png" contain :src="'/storage/' + image.name" :ratio="1" transition="fade" spinner-color="cyan"></q-img>
           </slide>
         </carousel>
       </div>
@@ -111,7 +124,7 @@ export default {
   },
   data () {
     return {
-      slide: 1,
+      extraClasses: [],
       scrollInt: 0,
       teachers: [],
       galleryImages: [],
@@ -153,6 +166,7 @@ export default {
       this.partners.visible = partners.visible
       this.galleryImages = this.getMainData.gallery
       this.questions = this.getMainData.questions
+      this.extraClasses = this.getMainData.extra_classes
       this.setWidthImages()
     }
   },
@@ -246,73 +260,80 @@ export default {
     .main__section
       height: 100vh
       overflow: hidden
-      &.main__teachers
-        background $linear_gradient
-        h3
-          color: #fff
-          margin-top: 100px
-      &.main__events
-        background $linear_gradient
-        color: #fff
-        h3
-          color: #fff
-          margin-top: 100px
-      &.main__gallery
-        background $linear_gradient
-        h3
-          color: #fff
-          margin-top: 100px
-      &.main__faq
-        background $linear_gradient
-        h3
-          color: #fff
-          margin-top: 100px
       .contact__text
         background $cyan-1
         display flex
         height 30vh
-      &.main__contact
-        .image_main_contact
-          background-image: url('~assets/contact.jpg')
-      &.main__about__us
-        background $linear_gradient
-        color #fff
-        height: 100vh
-        .content
-          padding: 20px 0
-          h1
-            margin-bottom: 30px
-          @media (max-width: 1200px)
-            padding: 15px
-            h1
-              font-size: 40px
-              line-height: 40px
-              margin-top: 50px
-              margin-bottom: 15px
-            p
-              font-size: 13px
-              margin-bottom: 7px
-        h1
-          text-transform uppercase
-          color #fff
-      &.main__partners
-        background $linear_gradient
-        img
-          height 100%
-        .content
-          padding-top 10px
-          max-width 400px
-          margin auto
-          height 100%
-          color #fff
+      &.main
+        &__teachers
+          background $linear_gradient
           h3
+            color: #fff
+            margin-top: 100px
+        &__events
+          background $linear_gradient
+          color: #fff
+          h3
+            color: #fff
+            margin-top: 100px
+        &__extra__classes
+          background $linear_gradient
+          color: #fff
+          h3
+            color: #fff
+            margin-top: 100px
+        &__gallery
+          background $linear_gradient
+          h3
+            color: #fff
+            margin-top: 100px
+        &__faq
+          background $linear_gradient
+          h3
+            color: #fff
+            margin-top: 100px
+        &__contact
+          .image_main_contact
+            background-image: url('~assets/contact.jpg')
+        &__about__us
+          background $linear_gradient
+          color #fff
+          height: 100vh
+          .content
+            padding: 20px 0
+            h1
+              margin-bottom: 30px
+            @media (max-width: 1200px)
+              padding: 15px
+              h1
+                font-size: 40px
+                line-height: 40px
+                margin-top: 50px
+                margin-bottom: 15px
+              p
+                font-size: 13px
+                margin-bottom: 7px
+          h1
+            text-transform uppercase
             color #fff
-          p
-            margin-bottom 30px
-          @media (max-width: 1200px)
-            padding: 30px
+        &__partners
+          background $linear_gradient
+          img
+            height 100%
+          .content
+            padding-top 10px
+            max-width 400px
+            margin auto
+            height 100%
+            color #fff
             h3
-              font-size: 30px
+              color #fff
             p
-              font-size: 14px
+              margin-bottom 30px
+            @media (max-width: 1200px)
+              padding: 30px
+              h3
+                font-size: 30px
+              p
+                font-size: 14px
 </style>

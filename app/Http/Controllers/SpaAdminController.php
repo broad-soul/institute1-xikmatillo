@@ -29,6 +29,7 @@ class SpaAdminController extends Controller
             'partners' => MainPagePartners::get()
         ];
     }
+
     public function main_store(Request $request)
     {
         $aboutUs = MainPageAboutUs::find($request->about_us['id']);

@@ -199,11 +199,11 @@ export default {
         // { title: this.$t('sidebarPagesAdmin').blog, path: '/admin/blog', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').extra_classes, path: '/admin/extra-classes', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').gallery, path: '/admin/gallery', icon: 'bookmark_border' },
-        // { title: this.$t('sidebarPagesAdmin').statistics, path: '/admin/statistics', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').statistics, path: '/admin/statistics', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').faq, path: '/admin/faq', icon: 'bookmark_border' },
-        { title: this.$t('sidebarPagesAdmin').partners, path: '/admin/partners', icon: 'bookmark_border' }
-        // { title: this.$t('sidebarPagesAdmin').contests, path: '/admin/contests', icon: 'bookmark_border' },
-        // { title: this.$t('sidebarPagesAdmin').regulations, path: '/admin/regulations', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').partners, path: '/admin/partners', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').contests, path: '/admin/contests', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').regulations, path: '/admin/regulations', icon: 'bookmark_border' }
         // { title: this.$t('sidebarPagesAdmin').contacts, path: '/admin/contacts', icon: 'bookmark_border' }
       ]
     }

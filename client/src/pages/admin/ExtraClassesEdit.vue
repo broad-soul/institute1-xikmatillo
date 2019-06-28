@@ -8,7 +8,7 @@
          <q-breadcrumbs  active-color="teal">
           <q-breadcrumbs-el icon="home" label="Home" to="/" />
           <q-breadcrumbs-el label="Dashboard" to="/admin" />
-          <q-breadcrumbs-el label="Events" to="/admin/partner" />
+          <q-breadcrumbs-el label="Events" to="/admin/extra-classes" />
           <q-breadcrumbs-el label="Edit" />
         </q-breadcrumbs>
       </div>
@@ -80,7 +80,7 @@
               </template>
             </q-uploader>
             <q-tabs
-              v-model="partnerTab"
+              v-model="extraClassesTab"
               dense
               class="text-grey"
               active-color="teal"
@@ -92,13 +92,13 @@
               <q-tab name="lang-uz" label="Uz" />
             </q-tabs>
             <q-separator />
-            <q-tab-panels v-model="partnerTab" animated>
+            <q-tab-panels v-model="extraClassesTab" animated>
               <q-tab-panel name="lang-en" class="p-0">
                 <q-input
                   color="teal"
                   filled
                   label="Title"
-                  v-model.lazy.trim="partner.title_en"
+                  v-model.lazy.trim="extraClasses.title_en"
                   type="text"
                   clearable
                   lazy-rules
@@ -108,13 +108,13 @@
                 <vue-editor
                   :customModules="customModulesForEditor"
                   :editorOptions="editorSettings"
-                  v-model="partner.description_en"
+                  v-model="extraClasses.description_en"
                 />
                 <div class="text-subtitle1 text-grey-8 mt-3">Content</div>
                 <vue-editor
                   :customModules="customModulesForEditor"
                   :editorOptions="editorSettings"
-                  v-model="partner.content_en"
+                  v-model="extraClasses.content_en"
                 />
               </q-tab-panel>
               <q-tab-panel name="lang-ru" class="p-0">
@@ -122,7 +122,7 @@
                   color="teal"
                   filled
                   label="Название"
-                  v-model.lazy.trim="partner.title_ru"
+                  v-model.lazy.trim="extraClasses.title_ru"
                   type="text"
                   clearable
                   lazy-rules
@@ -132,13 +132,13 @@
                 <vue-editor
                   :customModules="customModulesForEditor"
                   :editorOptions="editorSettings"
-                  v-model="partner.description_ru"
+                  v-model="extraClasses.description_ru"
                 />
                 <div class="text-subtitle1 text-grey-8 mt-3">Контент</div>
                 <vue-editor
                   :customModules="customModulesForEditor"
                   :editorOptions="editorSettings"
-                  v-model="partner.content_ru"
+                  v-model="extraClasses.content_ru"
                 />
               </q-tab-panel>
               <q-tab-panel name="lang-uz" class="p-0">
@@ -146,7 +146,7 @@
                   color="teal"
                   filled
                   label="Nomi"
-                  v-model.lazy.trim="partner.title_uz"
+                  v-model.lazy.trim="extraClasses.title_uz"
                   type="text"
                   clearable
                   lazy-rules
@@ -156,18 +156,18 @@
                 <vue-editor
                   :customModules="customModulesForEditor"
                   :editorOptions="editorSettings"
-                  v-model="partner.description_uz"
+                  v-model="extraClasses.description_uz"
                 />
                 <div class="text-subtitle1 text-grey-8 mt-3">Kontent</div>
                 <vue-editor
                   :customModules="customModulesForEditor"
                   :editorOptions="editorSettings"
-                  v-model="partner.content_uz"
+                  v-model="extraClasses.content_uz"
                 />
               </q-tab-panel>
             </q-tab-panels>
             <q-btn color="teal mr-3" type="submit" :loading="loading" :disable="loading">Update</q-btn>
-            <q-btn :disable="loading" to="/admin/partner">Cancel</q-btn>
+            <q-btn :disable="loading" to="/admin/extra-classes">Cancel</q-btn>
           </q-form>
         </q-card>
       </div>
@@ -185,11 +185,11 @@ export default {
   name: 'ExtraClassesEditAdmin',
   data () {
     return {
-      partnerTab: 'lang-en',
+      extraClassesTab: 'lang-en',
       loading: false,
       uploader_color: 'teal',
       image: '',
-      partner: {
+      extraClasses: {
         title_en: '',
         title_ru: '',
         title_uz: '',
@@ -224,20 +224,20 @@ export default {
   watch: {
   },
   beforeMount () {
-    this.partner_id = this.$route.params.id
-    this.$axios.get('partners/show/' + this.partner_id).then(res => {
-      let partner = res.data
-      this.image = partner.image
-      this.partner.id = this.partner_id
-      this.partner.title_en = partner.title_en
-      this.partner.title_ru = partner.title_ru
-      this.partner.title_uz = partner.title_uz
-      this.partner.description_en = partner.description_en
-      this.partner.description_ru = partner.description_ru
-      this.partner.description_uz = partner.description_uz
-      this.partner.content_en = partner.content_en
-      this.partner.content_ru = partner.content_ru
-      this.partner.content_uz = partner.content_uz
+    this.extraClasses_id = this.$route.params.id
+    this.$axios.get('extra-classes/show/' + this.extraClasses_id).then(res => {
+      let extraClasses = res.data
+      this.image = extraClasses.image
+      this.extraClasses.id = this.extraClasses_id
+      this.extraClasses.title_en = extraClasses.title_en
+      this.extraClasses.title_ru = extraClasses.title_ru
+      this.extraClasses.title_uz = extraClasses.title_uz
+      this.extraClasses.description_en = extraClasses.description_en
+      this.extraClasses.description_ru = extraClasses.description_ru
+      this.extraClasses.description_uz = extraClasses.description_uz
+      this.extraClasses.content_en = extraClasses.content_en
+      this.extraClasses.content_ru = extraClasses.content_ru
+      this.extraClasses.content_uz = extraClasses.content_uz
     })
   },
   mounted () {
@@ -245,7 +245,7 @@ export default {
   methods: {
     updateEvent () {
       let error = false
-      for (let [, value] of Object.entries(this.partner)) {
+      for (let [, value] of Object.entries(this.extraClasses)) {
         if (!value) error = true
       }
       if (error) {
@@ -262,8 +262,8 @@ export default {
       let formData = new FormData()
       let file = this.$refs['uploader'].files[0]
       formData.append('image', file)
-      Object.keys(this.partner).forEach(key => { formData.append(key, this.partner[key]) })
-      this.$axios.post('update_partner', formData).then(() => {
+      Object.keys(this.extraClasses).forEach(key => { formData.append(key, this.extraClasses[key]) })
+      this.$axios.post('update_extra-classes', formData).then(() => {
         this.$q.notify({
           color: 'teal',
           icon: 'check_circle',
@@ -271,7 +271,7 @@ export default {
           position: 'top',
           timeout: 200
         })
-        this.$router.push('/admin/partners')
+        this.$router.push('/admin/extra-classes')
       }).finally(() => { this.loading = false })
     }
   }

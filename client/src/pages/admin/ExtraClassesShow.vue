@@ -16,7 +16,7 @@
         <q-card>
           <q-list bordered class="rounded-borders">
             <q-item-label header>Extra-Classes</q-item-label>
-            <q-item v-for="(item, i) in ExtraClasses" :key="i">
+            <q-item v-for="(item, i) in extraClasses" :key="i">
               <q-item-section avatar top>
                 <q-icon name="mdi-account-tie" color="black" size="34px" />
               </q-item-section>
@@ -53,7 +53,7 @@ export default {
   name: 'ExtraClassesShowAdmin',
   data () {
     return {
-      ExtraClasses: []
+      extraClasses: []
     }
   },
   components: {
@@ -68,7 +68,8 @@ export default {
   },
   beforeMount () {
     this.$axios.get('extra-classes/all').then(res => {
-      this.ExtraClasses = res.data
+      this.extraClasses = res.data
+      console.log(this.extraClasses)
     })
   },
   mounted () {
@@ -82,8 +83,8 @@ export default {
         persistent: true
       }).onOk(() => {
         this.$axios.post('delete_extra-classes/' + id).then(() => {
-          this.ExtraClasses.forEach((elem, i) => {
-            if (elem.id === id) return this.ExtraClasses.splice(i, 1)
+          this.extraClasses.forEach((elem, i) => {
+            if (elem.id === id) return this.extraClasses.splice(i, 1)
           })
           this.$q.notify({
             color: 'teal',
