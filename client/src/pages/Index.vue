@@ -88,12 +88,11 @@
       <div class="row">
         <div class="col-12 col-md-8 contact__text">
           <div class="contact__info m-auto text-center" style="max-width: 400px;">
-            <h5 class="my-3">АДРЕС</h5>
-            ул. Бобура 55, Ташкент, 100100 Узбекистан
-            <br>
-            Aluswlu@gmail.com
-            <br>
-            <a href="tel:+998712527752" style="text-decoration: none;color: #333;"><q-icon name="phone" />+ 998 71 2527752</a>
+            <h5 class="my-3">{{contacts['title_' + $t('prefix')]}}</h5>
+            <div v-html="contacts['content_' + $t('prefix')]"></div>
+            <a :href="'tel:' + contacts.phone1" style="text-decoration: none;color: #333;">
+              <q-icon name="phone" /> {{contacts.phone1}}
+            </a>
           </div>
         </div>
         <div class="col-12 col-md-4">
@@ -101,7 +100,7 @@
         </div>
       </div>
       <div class="row">
-        <iframe class="main__map" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1499.0585282501243!2d69.2538643!3d41.2845568!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8aed1bc42aad%3A0x100df44c6fc28ef8!2z0JDQutCw0LTQtdC80LjRh9C10YHQutC40Lkg0LvQuNGG0LXQuSDihJYyINC_0YDQuCDQo9C30JPQo9Cc0K8!5e0!3m2!1sru!2s!4v1560718949192!5m2!1sru!2s" width="100%" frameborder="0" style="border:0; height: 70vh;" allowfullscreen></iframe>
+        <div class="main__map" v-html="contacts.map_iframe"></div>
       </div>
     </section>
   </q-page>
@@ -124,6 +123,7 @@ export default {
   },
   data () {
     return {
+      contacts: [],
       extraClasses: [],
       scrollInt: 0,
       teachers: [],
@@ -154,6 +154,7 @@ export default {
   async beforeMount () {
     await this.mainGetData()
     if (this.getMainData) {
+      [this.contacts] = this.getMainData.contacts
       let [aboutUs] = this.getMainData.about_us
       this.aboutUs.content = aboutUs[this.$t('prefix')]
       this.aboutUs.visible = aboutUs.visible
@@ -295,6 +296,12 @@ export default {
         &__contact
           .image_main_contact
             background-image: url('~assets/contact.jpg')
+          .main__map
+            width: 100%
+            iframe
+              width: 100%
+              height: 70vh
+              padding: 0
         &__about__us
           background $linear_gradient
           color #fff

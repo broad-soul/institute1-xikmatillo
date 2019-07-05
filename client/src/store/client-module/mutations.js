@@ -8,3 +8,6 @@ export function LOGIN (state, val) {
 export function SET_MAIN_DATA (state, val) {
   state.mainData = val
 }
+export function SET_INFO_USER (state, val) {
+  state.user = val
+}

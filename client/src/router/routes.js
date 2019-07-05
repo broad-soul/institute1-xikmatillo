@@ -12,6 +12,9 @@ const routes = [
       { path: '/events', component: () => import('pages/Events.vue') },
       { path: '/event/show/:id', component: () => import('pages/EventShow.vue') },
       { path: '/blog', component: () => import('pages/Blog.vue') },
+      { path: '/blog/post/:id', component: () => import('pages/Post.vue') },
+      { path: '/blog/category/:id', component: () => import('pages/CategoryPosts.vue') },
+      { path: '/blog/tag/:id', component: () => import('pages/TagPosts.vue') },
       { path: '/faq', component: () => import('pages/Faq.vue') },
       { path: '/gallery', component: () => import('pages/Gallery.vue') },
       { path: '/partners', component: () => import('pages/Partners.vue') },
@@ -23,7 +26,9 @@ const routes = [
       { path: '/statistics', component: () => import('pages/Statistics.vue') },
       { path: '/statistics/show/:id', component: () => import('pages/StatisticsShow.vue') },
       { path: '/regulations', component: () => import('pages/Regulations.vue') },
-      { path: '/regulations/show/:id', component: () => import('pages/RegulationsShow.vue') }
+      { path: '/regulations/show/:id', component: () => import('pages/RegulationsShow.vue') },
+      { path: '/contacts', component: () => import('pages/Contacts.vue') },
+      { path: '/email/confirmation/:token', component: () => import('pages/EmailVerify.vue') }
     ]
   },
   {
@@ -51,6 +56,15 @@ const routes = [
       { path: 'teachers', component: () => import('pages/admin/TeachersShow.vue') },
       { path: 'teachers/create', component: () => import('pages/admin/TeachersCreate.vue') },
       { path: 'teachers/edit/:id', component: () => import('pages/admin/TeachersEdit.vue') },
+      { path: 'posts', component: () => import('pages/admin/Posts/Show.vue') },
+      { path: 'posts/create', component: () => import('pages/admin/Posts/Create.vue') },
+      { path: 'posts/edit/:id', component: () => import('pages/admin/Posts/Edit.vue') },
+      { path: 'categories', component: () => import('pages/admin/Posts/Category/Show.vue') },
+      { path: 'categories/create', component: () => import('pages/admin/Posts/Category/Create.vue') },
+      { path: 'categories/edit/:id', component: () => import('pages/admin/Posts/Category/Edit.vue') },
+      { path: 'tags', component: () => import('pages/admin/Posts/Tag/Show.vue') },
+      { path: 'tags/create', component: () => import('pages/admin/Posts/Tag/Create.vue') },
+      { path: 'tags/edit/:id', component: () => import('pages/admin/Posts/Tag/Edit.vue') },
       { path: 'partners', component: () => import('pages/admin/PartnersShow.vue') },
       { path: 'partners/create', component: () => import('pages/admin/PartnersCreate.vue') },
       { path: 'partners/edit/:id', component: () => import('pages/admin/PartnersEdit.vue') },
@@ -65,13 +79,14 @@ const routes = [
       { path: 'statistics/edit/:id', component: () => import('pages/admin/StatisticsEdit.vue') },
       { path: 'regulations', component: () => import('pages/admin/RegulationsShow.vue') },
       { path: 'regulations/create', component: () => import('pages/admin/RegulationsCreate.vue') },
-      { path: 'regulations/edit/:id', component: () => import('pages/admin/RegulationsEdit.vue') }
+      { path: 'regulations/edit/:id', component: () => import('pages/admin/RegulationsEdit.vue') },
+      { path: 'contacts', component: () => import('pages/admin/Contacts.vue') },
+      { path: 'settings', component: () => import('pages/admin/Settings.vue') }
     ]
   },
-  {
-    path: '/login',
-    component: () => import('pages/Login.vue')
-  }
+  { path: '/login', component: () => import('pages/Login.vue') },
+  { path: '/password/reset', component: () => import('pages/PasswordResetEmail.vue') },
+  { path: '/password/reset/:token', component: () => import('pages/PasswordReset.vue') }
 ]
 
 // Always leave this as last one

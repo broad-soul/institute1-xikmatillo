@@ -9,7 +9,7 @@ export default {
     non_resident: 'Не резиденты',
     teachers: 'Учителя',
     event: 'События',
-    blog: 'Блог',
+    posts: 'Посты',
     extra_classes: 'Дополнительные услуги',
     gallery: 'Галерея',
     statistics: 'Статистика',
@@ -79,5 +79,13 @@ export default {
   faq_title: 'Часто задаваемые вопросы',
   srs_btn: 'С.У.С',
   send: 'Отправить',
-  instruction_app: 'инструкция'
+  instruction_app: 'инструкция',
+  text_categories: 'категории',
+  text_featured_posts: 'рекомендованные посты',
+  text_recent_posts: 'недавние посты',
+  text_popular_posts: 'популярные посты',
+  continue_reading_post: 'продолжить чтение',
+  email_must_be_valid: 'Email должен быть действительным',
+  forgot_password: 'Забыли пароль?',
+  email_is_not_found: 'Электронная почта не найдена'
 }

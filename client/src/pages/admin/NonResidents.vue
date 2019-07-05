@@ -55,7 +55,7 @@
               class="q-ml-md"
             />
           </template>
-          <q-tr :id="props.id" slot="body" slot-scope="props" :props="props" class="cursor-pointer">
+          <q-tr :id="props.id" slot="body" slot-scope="props" :props="props">
             <q-td key="id" :props="props">{{props.row.id}}</q-td>
             <q-td key="direction_code" :props="props">{{+props.row.direction_code === 3940001 ? $t('foreign_philology') : $t('exact_sciences')}}</q-td>
             <q-td key="name" :props="props">{{props.row.name}}</q-td>

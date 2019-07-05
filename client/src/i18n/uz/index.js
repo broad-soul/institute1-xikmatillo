@@ -9,7 +9,7 @@ export default {
     non_resident: 'Rezident emaslar',
     teachers: 'O\'qituvchilar',
     event: 'Xodisalar',
-    blog: 'Blog',
+    posts: 'Xabarlar',
     extra_classes: 'Qo\'shimcha xizmatlar',
     gallery: 'Galereya',
     statistics: 'Statistika',
@@ -79,5 +79,13 @@ export default {
   faq_title: 'Ko\'p so\'raladigan savollar',
   srs_btn: 'O.R.T',
   send: 'Yuborish',
-  instruction_app: 'ko\'rsatma'
+  instruction_app: 'ko\'rsatma',
+  text_categories: 'kategoriyalar',
+  text_featured_posts: 'tavsiya etilgan xabarlar',
+  text_recent_posts: 'so\'nggi xabarlar',
+  text_popular_posts: 'mashhur postlar',
+  continue_reading_post: 'o\'qishni davom ettirish',
+  email_must_be_valid: 'Email to\'g\'ri bo\'lishi kerak',
+  forgot_password: 'Parolingizni esdan chiqardingizmi?',
+  email_is_not_found: 'Email topilmadi'
 }

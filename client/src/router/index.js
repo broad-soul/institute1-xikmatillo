@@ -24,7 +24,9 @@ export default function (/* { store, ssrContext } */) {
   })
   Router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.needsAuthorization)) {
-      store.dispatch('isAuthorized').then(() => {
+      store.dispatch('isAuthorized').then(res => {
+        store.dispatch('setInfoUser', res.data)
+        if (res.data.is_admin !== 1) next('/')
         next()
       }).catch(error => {
         next('/login')

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Model\Contacts;
 use App\Model\ExtraClasses;
 use App\Model\Faq;
 use App\Model\Files;
@@ -30,6 +31,7 @@ class SpaController extends Controller
             'partners' => MainPagePartners::all(),
             'gallery' => Gallery::all('name')->take(6),
             'questions' => Faq::all()->take(10),
+            'contacts' => Contacts::all(),
         ];
     }
 

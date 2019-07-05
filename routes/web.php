@@ -21,4 +21,6 @@ Route::get('storage/{filename}', function ($filename)
     return $response;
 });
 
+Route::get('/email/confirmation/{token}', 'VerificationController@email_confirmation');
+
 Route::get('/{any}', 'SpaController@index')->where('any', '.*');

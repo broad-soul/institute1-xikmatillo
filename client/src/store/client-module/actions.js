@@ -70,3 +70,6 @@ export function setWidthImages () {
     })
   })
 }
+export function setInfoUser (context, info) {
+  context.commit('SET_INFO_USER', info)
+}

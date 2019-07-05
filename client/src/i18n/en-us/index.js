@@ -9,7 +9,7 @@ export default {
     non_resident: 'Not a rezidents',
     teachers: 'Teachers',
     event: 'Event',
-    blog: 'Blog',
+    posts: 'Posts',
     extra_classes: 'Extra classes',
     gallery: 'Gallery',
     statistics: 'Statistics',
@@ -79,5 +79,13 @@ export default {
   faq_title: 'Frequently asked Questions',
   srs_btn: 'S.R.S',
   send: 'Send',
-  instruction_app: 'instruction'
+  instruction_app: 'instruction',
+  text_categories: 'categories',
+  text_featured_posts: 'featured posts',
+  text_recent_posts: 'recent posts',
+  text_popular_posts: 'popular posts',
+  continue_reading_post: 'continue reading',
+  email_must_be_valid: 'Email must be valid',
+  forgot_password: 'Forgot your password?',
+  email_is_not_found: 'Email is not found'
 }

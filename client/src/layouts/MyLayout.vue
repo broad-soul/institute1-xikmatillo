@@ -191,15 +191,15 @@ export default {
         { title: this.$t('sidebarPages').about_us, path: '/about-us', icon: 'pages' },
         { title: this.$t('sidebarPages').teachers, path: '/teachers', icon: 'pages' },
         { title: this.$t('sidebarPages').event, path: '/events', icon: 'pages' },
-        // { title: this.$t('sidebarPages').blog, path: '/blog', icon: 'pages' },
+        { title: this.$t('sidebarPages').blog, path: '/blog', icon: 'pages' },
         { title: this.$t('sidebarPages').extra_classes, path: '/extra-classes', icon: 'pages' },
         { title: this.$t('sidebarPages').gallery, path: '/gallery', icon: 'pages' },
         { title: this.$t('sidebarPages').statistics, path: '/statistics', icon: 'pages' },
         { title: this.$t('sidebarPages').faq, path: '/faq', icon: 'pages' },
         { title: this.$t('sidebarPages').partners, path: '/partners', icon: 'pages' },
         { title: this.$t('sidebarPages').contests, path: '/contests', icon: 'pages' },
-        { title: this.$t('sidebarPages').regulations, path: '/regulations', icon: 'pages' }
-        // { title: this.$t('sidebarPages').contacts, path: '/contacts', icon: 'pages' }
+        { title: this.$t('sidebarPages').regulations, path: '/regulations', icon: 'pages' },
+        { title: this.$t('sidebarPages').contacts, path: '/contacts', icon: 'pages' }
       ]
     },
     logoTitle () {

@@ -21,9 +21,11 @@
               lazy-rules
               color="grey-10"
               bg-color="teal-24"
-              type="email"
               clearable
-              :rules="[ val => val && val.length > 0 || 'Email is required']"
+              :rules="[
+                val => !!val || $t('required_fields'),
+                val => getRegExpEmail.test(val) || this.$t('email_must_be_valid')
+              ]"
               :error-message="email_error_message"
               :error="email_error"
             >
@@ -34,7 +36,7 @@
             <q-input
               :disable="loading"
               filled
-              type="password"
+              :type="type_password"
               v-model.trim="form.password"
               label="Your password *"
               lazy-rules
@@ -43,13 +45,15 @@
               clearable
               counter
               :rules="[
-                val => val !== null && val !== '' || 'Password is required',
-                val => val.length > 5 || 'Password must be less than 6 characters'
+                val => val !== null && val !== '' || $t('required_fields'),
               ]"
               :error="password_error"
             >
               <template v-slot:prepend>
                 <q-icon name="mdi-textbox-password" />
+              </template>
+              <template v-slot:append>
+                <q-icon v-if="form.password" class="cursor-pointer" :name="show_hide_password_icon" @click="toggleShowPassword"/>
               </template>
             </q-input>
             <q-toggle v-model="form.remember_me" color="cyan" label="Remember me" :loading="loading" />
@@ -58,6 +62,9 @@
               <q-btn label="Cancel" to="/" class="btn__actions-reset" color="amber" outline :disable="loading" />
             </div>
           </q-form>
+          <div class="row">
+            <q-btn :label="$t('forgot_password')" to="/password/reset" class="mt-2 ml-auto" color="cyan" flat :disable="loading" />
+          </div>
         </q-card-section>
       </q-card>
     </div>
@@ -71,12 +78,15 @@ import store from '../store'
 export default {
   name: 'Login',
   beforeRouteEnter (to, from, next) {
-    store.dispatch('isAuthorized')
-      .then(() => next('/admin'))
-      .catch(() => next())
+    store.dispatch('isAuthorized').then(res => {
+      if (res.data.is_admin === 1) next('/admin')
+      next()
+    }).catch(() => next())
   },
   data () {
     return {
+      show_hide_password_icon: 'mdi-eye-off',
+      type_password: 'password',
       email_error_message: '',
       email_error: false,
       password_error: false,
@@ -90,6 +100,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'getRegExpEmail'
     ])
   },
   mounted () {
@@ -117,6 +128,15 @@ export default {
       this.form.email = null
       this.form.password = null
       this.form.remember_me = false
+    },
+    toggleShowPassword () {
+      if (this.type_password === 'password') {
+        this.type_password = 'text'
+        this.show_hide_password_icon = 'mdi-eye'
+      } else {
+        this.show_hide_password_icon = 'mdi-eye-off'
+        this.type_password = 'password'
+      }
     }
   }
 }

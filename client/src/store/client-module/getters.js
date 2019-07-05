@@ -101,3 +101,11 @@ export function getThumbStyle () {
     zIndex: 99999
   }
 }
+
+export function getUser (state) {
+  return state.user
+}
+
+export function getRegExpEmail () {
+  return /^(([^<>()\\\\.,;:\s@"]+(\.[^<>()\\\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,24}))$/
+}

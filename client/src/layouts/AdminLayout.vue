@@ -107,6 +107,30 @@
               <q-item-label>Titles</q-item-label>
             </q-item-section>
           </q-item>
+          <q-item clickable to="/admin/categories" active-class="admin__sidebar-menu__link">
+            <q-item-section avatar>
+              <q-icon name="mdi-playlist-minus" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>Categories</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item clickable to="/admin/tags" active-class="admin__sidebar-menu__link">
+            <q-item-section avatar>
+              <q-icon name="mdi-pound" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>Tags</q-item-label>
+            </q-item-section>
+          </q-item>
+          <q-item clickable to="/admin/settings" active-class="admin__sidebar-menu__link">
+            <q-item-section avatar>
+              <q-icon name="mdi-settings" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label>Settings</q-item-label>
+            </q-item-section>
+          </q-item>
         </q-list>
       </q-scroll-area>
     </q-drawer>
@@ -196,15 +220,15 @@ export default {
         },
         { title: this.$t('sidebarPagesAdmin').teachers, path: '/admin/teachers', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').event, path: '/admin/event', icon: 'bookmark_border' },
-        // { title: this.$t('sidebarPagesAdmin').blog, path: '/admin/blog', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').posts, path: '/admin/posts', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').extra_classes, path: '/admin/extra-classes', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').gallery, path: '/admin/gallery', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').statistics, path: '/admin/statistics', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').faq, path: '/admin/faq', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').partners, path: '/admin/partners', icon: 'bookmark_border' },
         { title: this.$t('sidebarPagesAdmin').contests, path: '/admin/contests', icon: 'bookmark_border' },
-        { title: this.$t('sidebarPagesAdmin').regulations, path: '/admin/regulations', icon: 'bookmark_border' }
-        // { title: this.$t('sidebarPagesAdmin').contacts, path: '/admin/contacts', icon: 'bookmark_border' }
+        { title: this.$t('sidebarPagesAdmin').regulations, path: '/admin/regulations', icon: 'bookmark_border' },
+        { title: this.$t('sidebarPagesAdmin').contacts, path: '/admin/contacts', icon: 'bookmark_border' }
       ]
     }
   },

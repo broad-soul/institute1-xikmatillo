@@ -29,13 +29,13 @@
         </q-tabs>
         <q-separator class="mt-2" />
         <q-tab-panels v-model="logo.titleTab" animated>
-          <q-tab-panel name="lang-en" class="px-0">
+          <q-tab-panel name="lang-en" class="">
             <q-input v-model="logo.title.en" placeholder="title" filled clearable type="" />
           </q-tab-panel>
-          <q-tab-panel name="lang-ru" class="px-0">
+          <q-tab-panel name="lang-ru" class="">
             <q-input v-model="logo.title.ru" placeholder="название" filled clearable type="" />
           </q-tab-panel>
-          <q-tab-panel name="lang-uz" class="px-0">
+          <q-tab-panel name="lang-uz" class="">
             <q-input v-model="logo.title.uz" placeholder="номи" filled clearable type="" />
           </q-tab-panel>
         </q-tab-panels>

@@ -212,6 +212,8 @@
                   clearable
                   lazy-rules
                   :disable="loading"
+                  mask="(##) ### - ## - ##"
+                  fill-mask
                   :rules="[val => !!val || $t('required_fields')]"
                 />
                 <q-uploader

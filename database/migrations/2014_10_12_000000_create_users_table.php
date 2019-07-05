@@ -17,11 +17,10 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('email_verify')->nullable();
             $table->integer('is_admin')->default(0);
             $table->integer('status')->default(0);
-            $table->rememberToken();
             $table->timestamps();
         });
     }
